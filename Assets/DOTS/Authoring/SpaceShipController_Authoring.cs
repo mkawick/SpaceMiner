@@ -5,7 +5,18 @@ using Unity.Transforms;
 
 public class SpaceShipAuthoringComponent_Dots : MonoBehaviour
 {
+    [Tooltip("Top forward speed in units per second")]
     public float speed = 2f;
+    [Tooltip("Units per second gained per second of thrust")]
+    public float acceleration = 12f;
+    [Tooltip("Turn rate in degrees per second")]
+    public float turnSpeedDegrees = 120f;
+    [Tooltip("How quickly the ship slows down with no thrust")]
+    public float drag = 1.5f;
+    [Tooltip("Top reverse speed as a fraction of top speed")]
+    public float reverseSpeedFactor = 0.4f;
+    [Tooltip("Projectile speed in units per second, on top of the ship's speed")]
+    public float projectileSpeed = 60f;
     //public GameObject spaceship;
     public GameObject weapon;
 }
@@ -14,6 +25,11 @@ public class SpaceShipAuthoringComponent_Dots : MonoBehaviour
 public struct SpaceShipControllerData_Dots : IComponentData
 {
     public float maxSpeed;
+    public float acceleration;
+    public float turnSpeed; // radians per second
+    public float drag;
+    public float reverseSpeedFactor;
+    public float projectileSpeed;
     public Entity firingObject;
     public float3 firingPoint;
     public float maxHealth;
@@ -52,6 +68,11 @@ public class SpaceShipBaker_Dots : Baker<SpaceShipAuthoringComponent_Dots>
                 AddComponent(spaceshipEntity, new SpaceShipControllerData_Dots
                 {
                     maxSpeed = authoring.speed,
+                    acceleration = authoring.acceleration,
+                    turnSpeed = math.radians(authoring.turnSpeedDegrees),
+                    drag = authoring.drag,
+                    reverseSpeedFactor = authoring.reverseSpeedFactor,
+                    projectileSpeed = authoring.projectileSpeed,
                     firingPoint = firingPosition,
                     firingObject = weaponPrefab,
                     maxHealth = 100,

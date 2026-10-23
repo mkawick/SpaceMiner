@@ -23,6 +23,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4640082839775715069}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -57,13 +58,13 @@ Transform:
   - {fileID: 6434278197751716111}
   - {fileID: 6434278197650293916}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &6015052604444899723
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 40124329439148522, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
@@ -125,12 +126,15 @@ PrefabInstance:
     - target: {fileID: 5283061137559076899, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6551042262188445185, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Weapon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
 --- !u!4 &6050391094740107361 stripped
 Transform:
@@ -142,23 +146,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 734904328039251772, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
       propertyPath: m_RootOrder
       value: 26
-      objectReference: {fileID: 0}
-    - target: {fileID: 734904328039251772, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 734904328039251772, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 734904328039251772, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 734904328039251772, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
       propertyPath: m_LocalPosition.x
@@ -203,12 +196,15 @@ PrefabInstance:
     - target: {fileID: 4344739983569129985, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 7291481953122274870, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Wing
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
 --- !u!4 &6434278197751716111 stripped
 Transform:
@@ -220,6 +216,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 2096480275538945799, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
@@ -229,18 +226,6 @@ PrefabInstance:
     - target: {fileID: 4275616523708778376, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275616523708778376, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275616523708778376, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275616523708778376, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4275616523708778376, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -285,8 +270,11 @@ PrefabInstance:
     - target: {fileID: 8214158770423809193, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
 --- !u!4 &7507440014407288666 stripped
 Transform:
@@ -298,6 +286,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 40124329439148522, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
@@ -359,12 +348,15 @@ PrefabInstance:
     - target: {fileID: 5283061137559076899, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6551042262188445185, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Weapon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
 --- !u!4 &6050391094854973035 stripped
 Transform:
@@ -376,23 +368,12 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 734904328039251772, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
       propertyPath: m_RootOrder
       value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 734904328039251772, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 734904328039251772, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 734904328039251772, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 734904328039251772, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
       propertyPath: m_LocalPosition.x
@@ -437,12 +418,15 @@ PrefabInstance:
     - target: {fileID: 4344739983569129985, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 7291481953122274870, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Wing
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68648d1973e7d9e4283b2d0b7eb3e539, type: 3}
 --- !u!4 &6434278197650293916 stripped
 Transform:
@@ -454,6 +438,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 2096480275538945799, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
@@ -462,18 +447,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4275616523708778376, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275616523708778376, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275616523708778376, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4275616523708778376, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
-      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4275616523708778376, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
@@ -519,8 +492,11 @@ PrefabInstance:
     - target: {fileID: 8214158770423809193, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65d8e34378667a14ea9539c5dc34457b, type: 3}
 --- !u!4 &7507440014220324733 stripped
 Transform:
@@ -532,6 +508,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 882163373099331284, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
@@ -541,7 +518,7 @@ PrefabInstance:
     - target: {fileID: 5683088331135064217, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 5966681603464888424, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -599,6 +576,9 @@ PrefabInstance:
       value: -105.579
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
 --- !u!4 &122770607795700042 stripped
 Transform:
@@ -610,6 +590,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 882163373099331284, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
@@ -619,22 +600,10 @@ PrefabInstance:
     - target: {fileID: 5683088331135064217, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 5966681603464888424, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966681603464888424, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966681603464888424, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966681603464888424, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5966681603464888424, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -677,6 +646,9 @@ PrefabInstance:
       value: -70.28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
 --- !u!4 &122770607756515461 stripped
 Transform:
@@ -688,27 +660,16 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 5820298500595648082, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_RootOrder
       value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -755,6 +716,9 @@ PrefabInstance:
       value: StarSparrow_Tail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
 --- !u!4 &314992081080224725 stripped
 Transform:
@@ -766,6 +730,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 40124329439148522, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
@@ -827,12 +792,15 @@ PrefabInstance:
     - target: {fileID: 5283061137559076899, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6551042262188445185, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Weapon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
 --- !u!4 &6050391094182900196 stripped
 Transform:
@@ -844,12 +812,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 6162970901258171178, guid: 4d8da171407a87a49b7bb5b3b0918e36, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 7976344614928492256, guid: 4d8da171407a87a49b7bb5b3b0918e36, type: 3}
       propertyPath: m_RootOrder
       value: 16
@@ -911,6 +880,9 @@ PrefabInstance:
       value: StarSparrow_Thruster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8da171407a87a49b7bb5b3b0918e36, type: 3}
 --- !u!4 &4451924037325169398 stripped
 Transform:
@@ -922,6 +894,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 61788937235550592, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
@@ -931,22 +904,10 @@ PrefabInstance:
     - target: {fileID: 3967308146219110847, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 4757039036906004179, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757039036906004179, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757039036906004179, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757039036906004179, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4757039036906004179, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -989,6 +950,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
 --- !u!4 &1260347868532707869 stripped
 Transform:
@@ -1000,6 +964,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 40124329439148522, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
@@ -1061,12 +1026,15 @@ PrefabInstance:
     - target: {fileID: 5283061137559076899, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6551042262188445185, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Weapon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
 --- !u!4 &6050391094076984711 stripped
 Transform:
@@ -1078,12 +1046,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 6162970901258171178, guid: 4d8da171407a87a49b7bb5b3b0918e36, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 7976344614928492256, guid: 4d8da171407a87a49b7bb5b3b0918e36, type: 3}
       propertyPath: m_RootOrder
       value: 17
@@ -1145,6 +1114,9 @@ PrefabInstance:
       value: StarSparrow_Thruster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8da171407a87a49b7bb5b3b0918e36, type: 3}
 --- !u!4 &4451924038806525346 stripped
 Transform:
@@ -1156,6 +1128,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 882163373099331284, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
@@ -1165,22 +1138,10 @@ PrefabInstance:
     - target: {fileID: 5683088331135064217, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 5966681603464888424, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
       propertyPath: m_RootOrder
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966681603464888424, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966681603464888424, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5966681603464888424, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5966681603464888424, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1223,6 +1184,9 @@ PrefabInstance:
       value: 70.28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
 --- !u!4 &122770609322339298 stripped
 Transform:
@@ -1234,6 +1198,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 40124329439148522, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
@@ -1295,12 +1260,15 @@ PrefabInstance:
     - target: {fileID: 5283061137559076899, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6551042262188445185, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Weapon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
 --- !u!4 &6050391093856255461 stripped
 Transform:
@@ -1312,12 +1280,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 5820298500595648082, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -1379,6 +1348,9 @@ PrefabInstance:
       value: StarSparrow_Tail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
 --- !u!4 &314992079809786431 stripped
 Transform:
@@ -1390,12 +1362,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 6162970901258171178, guid: 4d8da171407a87a49b7bb5b3b0918e36, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 7976344614928492256, guid: 4d8da171407a87a49b7bb5b3b0918e36, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -1457,6 +1430,9 @@ PrefabInstance:
       value: StarSparrow_Thruster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d8da171407a87a49b7bb5b3b0918e36, type: 3}
 --- !u!4 &4451924038575070938 stripped
 Transform:
@@ -1468,12 +1444,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 5820298500595648082, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -1535,6 +1512,9 @@ PrefabInstance:
       value: StarSparrow_Tail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
 --- !u!4 &314992080027268047 stripped
 Transform:
@@ -1546,6 +1526,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 882163373099331284, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
@@ -1555,7 +1536,7 @@ PrefabInstance:
     - target: {fileID: 5683088331135064217, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 5966681603464888424, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1613,6 +1594,9 @@ PrefabInstance:
       value: 105.579
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3f5a95bf53de5744b3140ce9f35902f, type: 3}
 --- !u!4 &122770608674108678 stripped
 Transform:
@@ -1624,6 +1608,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 61788937235550592, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
@@ -1633,22 +1618,10 @@ PrefabInstance:
     - target: {fileID: 3967308146219110847, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 4757039036906004179, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757039036906004179, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757039036906004179, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4757039036906004179, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4757039036906004179, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1691,6 +1664,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c3973db67bc50449bfac34c2093ea4f, type: 3}
 --- !u!4 &1260347867506660682 stripped
 Transform:
@@ -1702,27 +1678,16 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 22615069859619496, guid: af02f4c9657b3244d8afdbb272e74d19, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 1584018252125097626, guid: af02f4c9657b3244d8afdbb272e74d19, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1584018252125097626, guid: af02f4c9657b3244d8afdbb272e74d19, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1584018252125097626, guid: af02f4c9657b3244d8afdbb272e74d19, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1584018252125097626, guid: af02f4c9657b3244d8afdbb272e74d19, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1584018252125097626, guid: af02f4c9657b3244d8afdbb272e74d19, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1769,6 +1734,9 @@ PrefabInstance:
       value: StarSparrow_Core
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af02f4c9657b3244d8afdbb272e74d19, type: 3}
 --- !u!4 &5080713819501244542 stripped
 Transform:
@@ -1780,12 +1748,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 5820298500595648082, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1847,6 +1816,9 @@ PrefabInstance:
       value: StarSparrow_Tail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
 --- !u!4 &314992079144899027 stripped
 Transform:
@@ -1858,27 +1830,16 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 5820298500595648082, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_RootOrder
       value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1925,6 +1886,9 @@ PrefabInstance:
       value: StarSparrow_Tail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
 --- !u!4 &314992079167523047 stripped
 Transform:
@@ -1936,6 +1900,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 40124329439148522, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
@@ -1997,12 +1962,15 @@ PrefabInstance:
     - target: {fileID: 5283061137559076899, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6551042262188445185, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Weapon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
 --- !u!4 &6050391093355946412 stripped
 Transform:
@@ -2014,6 +1982,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 40124329439148522, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
@@ -2075,12 +2044,15 @@ PrefabInstance:
     - target: {fileID: 5283061137559076899, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6551042262188445185, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Weapon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
 --- !u!4 &6050391092845718537 stripped
 Transform:
@@ -2092,6 +2064,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 40124329439148522, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
@@ -2153,12 +2126,15 @@ PrefabInstance:
     - target: {fileID: 5283061137559076899, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6551042262188445185, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
       propertyPath: m_Name
       value: StarSparrow_Weapon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01a1e23558e35e64989f5b1129a2c195, type: 3}
 --- !u!4 &6050391092902015250 stripped
 Transform:
@@ -2170,12 +2146,13 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5417604327655588935}
     m_Modifications:
     - target: {fileID: 5820298500595648082, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3057f5a2b92dd3b47b45415db850c097, type: 2}
+      objectReference: {fileID: 2100000, guid: 3770b71d67e66f44181678f8632913c6, type: 2}
     - target: {fileID: 6279937461973957239, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -2237,6 +2214,9 @@ PrefabInstance:
       value: StarSparrow_Tail
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff3f7421d8b30da41bea8673056fafa8, type: 3}
 --- !u!4 &314992079493926224 stripped
 Transform:

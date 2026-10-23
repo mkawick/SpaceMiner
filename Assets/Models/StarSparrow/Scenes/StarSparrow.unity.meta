@@ -10,6 +10,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 73167
   packageName: Star Sparrow Modular Spaceship
-  packageVersion: 4.2
-  assetPath: Assets/StarSparrow/Scenes/StarSparrow.unity
-  uploadId: 754346
+  packageVersion: 6.0
+  assetPath: Assets/Models/StarSparrow/Scenes/StarSparrow.unity
+  uploadId: 980240

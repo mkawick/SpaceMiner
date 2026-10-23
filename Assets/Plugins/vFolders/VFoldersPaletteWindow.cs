@@ -691,6 +691,7 @@ namespace VFolders
         }
 
         public List<string> guids = new();
+        [System.NonSerialized]
         public List<FolderDataWrapper> folderDatas = new();
 
         public List<string> iconNamesOrGuids_initial = new();

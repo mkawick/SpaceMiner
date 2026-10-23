@@ -1,55 +1,33 @@
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
-using Unity.Mathematics;
-using UnityEngine;
-
 
 public struct LifetimeEntityTag_Dots : IComponentData
 {
-    public float deathSystemTime;
+    public float deathSystemTime; // in SystemAPI.Time.ElapsedTime seconds
 }
 
-
+// Marks entities for destruction once their lifetime runs out.
+[BurstCompile]
 public partial struct LifetimeEntitiesSystem_Dots : ISystem
 {
-    private EntityManager entityManager;
-
     [BurstCompile]
-    public void OnCreate(ref SystemState state)
+    public void OnUpdate(ref SystemState state)
     {
-        entityManager = state.EntityManager;
-    }
+        float now = (float)SystemAPI.Time.ElapsedTime;
+        var ecb = new EntityCommandBuffer(Allocator.Temp);
 
-    [WithAll(typeof(LifetimeEntityTag_Dots))]
-    private partial struct AllTaggedEntitiesAge : IJobEntity
-    {
-        public EntityCommandBuffer ecb;
-
-        public float currentTime;
-        private void Execute(Entity entity, LifetimeEntityTag_Dots lifetime, [ChunkIndexInQuery] int index)
+        foreach (var (lifetime, entity) in
+                 SystemAPI.Query<RefRO<LifetimeEntityTag_Dots>>().WithEntityAccess())
         {
-            if(lifetime.deathSystemTime < currentTime)
+            if (lifetime.ValueRO.deathSystemTime < now)
             {
                 ecb.AddComponent<DestroyedEntityTag_Dots>(entity);
                 ecb.RemoveComponent<LifetimeEntityTag_Dots>(entity);
             }
         }
-    }
 
-
-    [BurstCompile]
-    public void OnUpdate(ref SystemState state)
-    {
-        EntityCommandBuffer entityCommandBuffer = new EntityCommandBuffer(Allocator.TempJob);
-        AllTaggedEntitiesAge taggedAge = new AllTaggedEntitiesAge
-        {
-            ecb = entityCommandBuffer,
-            currentTime = Time.time
-        };
-        taggedAge.Schedule();
-        state.Dependency.Complete();
-        entityCommandBuffer.Playback(state.EntityManager);
-        entityCommandBuffer.Dispose();
+        ecb.Playback(state.EntityManager);
+        ecb.Dispose();
     }
 }

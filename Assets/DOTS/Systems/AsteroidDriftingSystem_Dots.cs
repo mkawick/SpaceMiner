@@ -1,24 +1,22 @@
+using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
 
+// Slowly tumbles asteroids. rotation is in degrees per second on each axis.
+[BurstCompile]
 public partial struct AsteroidDriftingSystem_Dots : ISystem
 {
+    [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
-        foreach(var (driftData, transform) in 
-                SystemAPI.Query<
-                    RefRO<AsteroidComponent_Dots>, 
-                    RefRW<LocalTransform>>()) 
+        float dt = SystemAPI.Time.DeltaTime;
+
+        foreach (var (drift, transform) in
+                 SystemAPI.Query<RefRO<AsteroidComponent_Dots>, RefRW<LocalTransform>>())
         {
-            Vector3 rotationAmount = driftData.ValueRO.rotation;
-            //Unity.Mathematics.float3;
-            Quaternion frameRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);// * driftData.ValueRO.rotationSpeed);
-            //Debug.Log("drifting");
-            quaternion q = transform.ValueRO.Rotation;
-            q = math.mul(q, frameRotation);
-            transform.ValueRW.Rotation = q;
+            float3 step = math.radians(drift.ValueRO.rotation) * dt;
+            transform.ValueRW.Rotation = math.mul(transform.ValueRO.Rotation, quaternion.EulerZXY(step));
         }
     }
 }

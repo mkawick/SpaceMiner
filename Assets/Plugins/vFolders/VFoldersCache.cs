@@ -41,6 +41,7 @@ namespace VFolders
         }
         public bool HasIcon(int key) => instance.iconTextureDatas_byKey.ContainsKey(key);
 
+        [System.NonSerialized]
         public Dictionary<int, Texture2D> iconTextures_byKey = new();
         public SerializableDictionary<int, TextureData> iconTextureDatas_byKey = new();
 

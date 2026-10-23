@@ -1,11 +1,7 @@
 using Unity.Burst;
-using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEditor.PackageManager.Requests;
-using UnityEngine;
-
 
 public struct MoveEntityTag_Dots : IComponentData
 {
@@ -13,48 +9,25 @@ public struct MoveEntityTag_Dots : IComponentData
     public quaternion dir;
 }
 
-
+// Moves projectiles (and anything else tagged) straight along their rotation's forward axis.
+[BurstCompile]
 public partial struct MoveEntitiesSystem_Dots : ISystem
 {
-    private EntityManager entityManager;
-
     [BurstCompile]
-    public void OnCreate(ref SystemState state)
+    private partial struct MoveJob : IJobEntity
     {
-        entityManager = state.EntityManager;
-    }
+        public float deltaTime;
 
-    [WithAll(typeof(MoveEntityTag_Dots))]
-    private partial struct AllTaggedEntitiesMove : IJobEntity
-    {
-        public EntityCommandBuffer ecb;
-
-        public float elapsedTime;
-
-        private void Execute(Entity entity, MoveEntityTag_Dots movement, ref LocalTransform transform)
+        private void Execute(in MoveEntityTag_Dots movement, ref LocalTransform transform)
         {
-            // transform.LocalPosition localPosition
-            float3 newPosition = transform.Position;
-            newPosition = math.EulerZXY(movement.dir) *  movement.speed * elapsedTime + newPosition;
-            transform.Position = newPosition;
-
-            //Debug.Log($"<b> <size=13> <color=#9DF155>move speed{movement.speed}, dir {movement.dir}, math.euler {math.EulerZXY(movement.dir)} </color> </size> </b>");
+            float3 direction = math.mul(movement.dir, new float3(0f, 0f, 1f));
+            transform.Position += direction * movement.speed * deltaTime;
         }
     }
-
 
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
-        EntityCommandBuffer entityCommandBuffer = new EntityCommandBuffer(Allocator.TempJob);
-        AllTaggedEntitiesMove taggedMove = new AllTaggedEntitiesMove
-        {
-            ecb = entityCommandBuffer,
-            elapsedTime = Time.deltaTime
-        };
-        taggedMove.Schedule();
-        state.Dependency.Complete();
-        entityCommandBuffer.Playback(state.EntityManager);
-        entityCommandBuffer.Dispose();
+        new MoveJob { deltaTime = SystemAPI.Time.DeltaTime }.ScheduleParallel();
     }
 }

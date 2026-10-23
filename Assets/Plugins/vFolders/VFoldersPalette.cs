@@ -196,11 +196,11 @@ namespace VFolders
             }));
             iconRows.Add(new IconRow(new[]
             {
-            #if UNITY_6000_0_OR_NEWER
+#if UNITY_6000_0_OR_NEWER
                 "PhysicsMaterial Icon",
-            #else
+#else
                 "PhysicMaterial Icon",
-            #endif
+#endif
                 "BoxCollider Icon",
                 "TerrainCollider Icon",
                 "MeshCollider Icon",
@@ -245,7 +245,11 @@ namespace VFolders
 
             var iconPaths = iconRows.SelectMany(r => r.customIcons).Select(r => r.ToPath()).Where(r => !r.IsNullOrEmpty());
 
+#if UNITY_6000_6_OR_NEWER
+            UnityEditor.AssetPackage.Package.Export(new UnityEditor.AssetPackage.ExportPackageParameters(iconPaths.Append(this.GetPath()).ToArray(), packagePath));
+#else
             AssetDatabase.ExportPackage(iconPaths.Append(this.GetPath()).ToArray(), packagePath);
+#endif
 
             EditorUtility.RevealInFinder(packagePath);
 

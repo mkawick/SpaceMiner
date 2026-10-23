@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d8db12f6c2c691f4b871a05aa25dadd6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57126
+  packageName: Lowpoly Asteroids
+  packageVersion: 1.0
+  assetPath: Assets/Models/LowPolyAsteroids/ExampleScene+Readme/ExampleSceneSettings.lighting
+  uploadId: 957084

@@ -111,6 +111,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 73167
   packageName: Star Sparrow Modular Spaceship
-  packageVersion: 4.2
-  assetPath: Assets/StarSparrow/Textures/StarSparrow_Green.png
-  uploadId: 754346
+  packageVersion: 6.0
+  assetPath: Assets/Models/StarSparrow/Textures/StarSparrow_Green.png
+  uploadId: 980240
