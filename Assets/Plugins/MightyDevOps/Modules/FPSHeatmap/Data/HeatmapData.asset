@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534076c0a17fc8b4bbabd3b151589cbd, type: 3}
+  m_Name: HeatmapData
+  m_EditorClassIdentifier: Assembly-CSharp::MightyFPSHeatmap.FPSHeatmapData
+  settings:
+    fpsHeatmapMode: 2
+    cellsize: 3
+    sigma: 1
+    kernal: 5
+    targetFPS: 10
+    relativeFPS: 1
+    showHeatmap: 1
+    maxProjectionDistance: 10
+    polygonThreshold: 100000
+    maxDeltaAngle: 45
+    fustrumFOV: 60
+    useDirectionalWeighting: 1
+    fpsMin: 1
+    fpsMax: 150
+    polyMin: 0
+    polyMax: 100000
+    lowFPSColor: {r: 1, g: 0, b: 0, a: 1}
+    highFPSColor: {r: 0, g: 1, b: 0, a: 1}
+    opacityFPSHeatmap: 0.5
+    showFPSGizmos: 1
+    sceneView:
+      borderColor: {r: 0, g: 0, b: 0, a: 0}
+      distanceStart: 5
+      distanceEnd: 100
+      show: 1
+    borderColor: {r: 0, g: 0, b: 0, a: 0}
+    distanceStart: 5
+    distanceEnd: 100
+    show: 1
+    aggregationMethod: 0
+  scenes: []

@@ -1,0 +1,1422 @@
+fileFormatVersion: 2
+guid: d00b3976687b1a9408f8fbd7ee296e31
+timeCreated: 18446744011573954816
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Mech_Rig
+    100004: Mech_RigHips
+    100006: Mech_RigHub001Bone001
+    100008: Mech_RigHub001Bone001Bone001
+    100010: Mech_RigHub001Bone001Bone001Bone001
+    100012: Mech_RigLArm1
+    100014: Mech_RigLArm2
+    100016: Mech_RigLArmCollarbone
+    100018: Mech_RigLArmPalm
+    100020: Mech_RigLLeg1
+    100022: Mech_RigLLeg2
+    100024: Mech_RigLLegAnkle
+    100026: Mech_RigLLegPlatform
+    100028: Mech_RigPalmBone001
+    100030: Mech_RigPalmBone001 1
+    100032: Mech_RigPalmBone002
+    100034: Mech_RigPalmBone002 1
+    100036: Mech_RigRArm1
+    100038: Mech_RigRArm2
+    100040: Mech_RigRArmCollarbone
+    100042: Mech_RigRArmPalm
+    100044: Mech_RigRLeg1
+    100046: Mech_RigRLeg2
+    100048: Mech_RigRLegAnkle
+    100050: Mech_RigRLegPlatform
+    100052: Point001
+    400000: //RootNode
+    400002: Mech_Rig
+    400004: Mech_RigHips
+    400006: Mech_RigHub001Bone001
+    400008: Mech_RigHub001Bone001Bone001
+    400010: Mech_RigHub001Bone001Bone001Bone001
+    400012: Mech_RigLArm1
+    400014: Mech_RigLArm2
+    400016: Mech_RigLArmCollarbone
+    400018: Mech_RigLArmPalm
+    400020: Mech_RigLLeg1
+    400022: Mech_RigLLeg2
+    400024: Mech_RigLLegAnkle
+    400026: Mech_RigLLegPlatform
+    400028: Mech_RigPalmBone001
+    400030: Mech_RigPalmBone001 1
+    400032: Mech_RigPalmBone002
+    400034: Mech_RigPalmBone002 1
+    400036: Mech_RigRArm1
+    400038: Mech_RigRArm2
+    400040: Mech_RigRArmCollarbone
+    400042: Mech_RigRArmPalm
+    400044: Mech_RigRLeg1
+    400046: Mech_RigRLeg2
+    400048: Mech_RigRLegAnkle
+    400050: Mech_RigRLegPlatform
+    400052: Point001
+    7400000: Launch
+    7400002: Walk_Start
+    7400004: Walk_Loop
+    7400006: Walk_End
+    7400008: Shoot_Rockets
+    7400010: Shoot_Hands_Start
+    7400012: Shoot_Hands_Loop
+    7400014: Shoot_Hands_End
+    7400016: Shield_Stance
+    7400018: Shield_Stance_Shoot
+    7400020: Shield_Stance_End
+    7400022: Damage
+    7400024: Death
+    7400026: Idle01
+    7400028: Idle02
+    9500000: //RootNode
+    11100000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Launch
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 143
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk_Start
+      takeName: Take 001
+      firstFrame: 143
+      lastFrame: 162
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk_Loop
+      takeName: Take 001
+      firstFrame: 161
+      lastFrame: 221
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walk_End
+      takeName: Take 001
+      firstFrame: 222
+      lastFrame: 342
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shoot_Rockets
+      takeName: Take 001
+      firstFrame: 342
+      lastFrame: 496
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shoot_Hands_Start
+      takeName: Take 001
+      firstFrame: 496
+      lastFrame: 510
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shoot_Hands_Loop
+      takeName: Take 001
+      firstFrame: 511
+      lastFrame: 528
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shoot_Hands_End
+      takeName: Take 001
+      firstFrame: 529
+      lastFrame: 549
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shield_Stance
+      takeName: Take 001
+      firstFrame: 549
+      lastFrame: 614
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shield_Stance_Shoot
+      takeName: Take 001
+      firstFrame: 614
+      lastFrame: 635
+      wrapMode: 2
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shield_Stance_End
+      takeName: Take 001
+      firstFrame: 635
+      lastFrame: 669
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Damage
+      takeName: Take 001
+      firstFrame: 669
+      lastFrame: 717
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 717
+      lastFrame: 763
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle01
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 1.1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle02
+      takeName: Take 001
+      firstFrame: 143
+      lastFrame: 143.1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Mech_Rig
+        weight: 1
+      - path: Mech_RigHips
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigHub001Bone001Bone001Bone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone001
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigLArmCollarbone/Mech_RigLArm1/Mech_RigLArm2/Mech_RigLArmPalm/Mech_RigPalmBone002
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone001
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigHub001Bone001/Mech_RigHub001Bone001Bone001/Mech_RigRArmCollarbone/Mech_RigRArm1/Mech_RigRArm2/Mech_RigRArmPalm/Mech_RigPalmBone002
+          1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigLLeg1/Mech_RigLLeg2/Mech_RigLLegAnkle
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2
+        weight: 1
+      - path: Mech_RigHips/Mech_RigRLeg1/Mech_RigRLeg2/Mech_RigRLegAnkle
+        weight: 1
+      - path: Mech_RigLLegPlatform
+        weight: 1
+      - path: Mech_RigRLegPlatform
+        weight: 1
+      - path: Point001
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 43041
+  packageName: Sci-Fi Animated Space Robots
+  packageVersion: 1.1
+  assetPath: Assets/Animated_Mech/Mech_animation.FBX
+  uploadId: 246123

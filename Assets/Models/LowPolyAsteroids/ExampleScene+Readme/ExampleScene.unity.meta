@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c865ac6cc1807164889ae7c604b7575c
+timeCreated: 1456694774
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57126
+  packageName: Lowpoly Asteroids
+  packageVersion: 1.0
+  assetPath: Assets/LowPolyAsteroids/ExampleScene+Readme/ExampleScene.unity
+  uploadId: 410330

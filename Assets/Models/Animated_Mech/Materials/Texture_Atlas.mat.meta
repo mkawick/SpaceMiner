@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 2c764c1a71d2a9c4a9184338b5a80385
+timeCreated: 1526390467
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 43041
+  packageName: Sci-Fi Animated Space Robots
+  packageVersion: 1.1
+  assetPath: Assets/Animated_Mech/Materials/Texture_Atlas.mat
+  uploadId: 246123

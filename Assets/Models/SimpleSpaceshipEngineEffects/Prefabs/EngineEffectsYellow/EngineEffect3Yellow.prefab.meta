@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e3eebf72c303f7c46a0babeaf1b656fb
+timeCreated: 1428702180
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 34447
+  packageName: Simple Spaceship Engine Effects
+  packageVersion: 1.1
+  assetPath: Assets/SimpleSpaceshipEngineEffects/Prefabs/EngineEffectsYellow/EngineEffect3Yellow.prefab
+  uploadId: 410319

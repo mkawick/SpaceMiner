@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 412799162340c884d9c044d93876dde2
+timeCreated: 1456695641
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57126
+  packageName: Lowpoly Asteroids
+  packageVersion: 1.0
+  assetPath: Assets/LowPolyAsteroids/FBX/Asteroids/Materials/LowPolyAsteroidsTexture1.mat
+  uploadId: 410330

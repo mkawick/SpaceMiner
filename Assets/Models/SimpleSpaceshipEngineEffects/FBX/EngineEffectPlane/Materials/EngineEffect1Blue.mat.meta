@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c779962f1021d27438c5ee83ee61c21a
+timeCreated: 1428698579
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 34447
+  packageName: Simple Spaceship Engine Effects
+  packageVersion: 1.1
+  assetPath: Assets/SimpleSpaceshipEngineEffects/FBX/EngineEffectPlane/Materials/EngineEffect1Blue.mat
+  uploadId: 410319

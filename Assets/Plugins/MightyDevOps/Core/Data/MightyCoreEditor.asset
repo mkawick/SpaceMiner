@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5370d308d4153494f98fc006d63673dc, type: 3}
+  m_Name: MightyCoreEditor
+  m_EditorClassIdentifier: Assembly-CSharp::Mighty.MightyCoreData
+  mapRefreshSeconds: 5
+  newsRefreshSeconds: 300
+  lastNewsCheckTime: 0
+  MappableTypesInfo:
+  - TypeName: MightyFPSHeatmap.FPSHeatmapData+HeatmapTracking+Root
+    Name: FPSHeatmap
+    IsActive: 1
+    released: 1
+  - TypeName: MightyLandmarks.LandmarksData+Landmark+Root
+    Name: Landmarks
+    IsActive: 1
+    released: 1
+  - TypeName: MightyPortal.Portal+Root
+    Name: Portal
+    IsActive: 1
+    released: 1
+  - TypeName: MightyScreenshots.ScreenshotsData+Screenshot+Root
+    Name: Screenshots
+    IsActive: 1
+    released: 1
+  - TypeName: MightyTracking.TrackingData+Tracking+Root
+    Name: Tracking
+    IsActive: 1
+    released: 1
+  sceneIndex: -1
+  projectIndex: -1
+  newsItems: []
+  moduleUpdates: []
+  hasUnreadNews: 0
+  run_id: 0
+  run_selected: 
+  run_ids: []
+  run_playbackCursor: 0
+  run_playbackCount: 0
+  run_playbackMax: 0
+  run_playbackMin: 0
+  run_playbackRange: {x: 0, y: 0}
+  scenes:
+  - name: Project
+    miniMap:
+      map: {fileID: 0}
+      mapPath: 
+      cachePos: {x: 0, y: 0, z: 0}
+      widthCache: 0
+      heightCache: 0
+      orthSizeCache: 0
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 0}
+      orthSize: 200
+      pixelWidth: 0
+      pixelHeight: 0
+      topleft: {x: 0, y: 0, z: 0}
+      topright: {x: 0, y: 0, z: 0}
+      botleft: {x: 0, y: 0, z: 0}
+      botright: {x: 0, y: 0, z: 0}
+    scenePath: 
+    runID: 
+    selectedRun: 
+    playTrackingList:
+    - name: Default
+      run_id: 
+      startTicks: 0
+      endTicks: 0
+      totalTicks: 0
+      color: {r: 0, g: 0, b: 0, a: 0}
+    runPlaybackCursor: 0
+    runPlaybackCount: 0
+    runPlaybackMax: 0
+    runPlaybackMin: 0
+    runPlaybackSelectedMax: 0
+    runPlaybackSelectedMin: 0
+    runPlaybackRange: {x: 0, y: 0}
+    deleteMe: 0
+    recordPlaythrough: 0
+    CollectedData: []
+    totalPolyCount: 0
+    meshFilterCount: 0
+  svPos: {x: -16.006357, y: 19.547937, z: 10.303047}
+  _svPos: {x: -16.006357, y: 19.547937, z: 10.303047}
+  svRot: {x: -0.19090392, y: -0.8050231, z: 0.34971875, w: -0.43953437}
+  _svRot: {x: -0.19090392, y: -0.8050231, z: 0.34971875, w: -0.43953437}
+  landmarkMaxId: 0
+  selectedID: 0

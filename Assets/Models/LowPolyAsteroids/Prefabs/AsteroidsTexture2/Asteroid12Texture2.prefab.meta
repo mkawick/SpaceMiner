@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 803908dc1c2d8e74683b5390b9dcc847
+timeCreated: 1456695985
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 57126
+  packageName: Lowpoly Asteroids
+  packageVersion: 1.0
+  assetPath: Assets/LowPolyAsteroids/Prefabs/AsteroidsTexture2/Asteroid12Texture2.prefab
+  uploadId: 410330

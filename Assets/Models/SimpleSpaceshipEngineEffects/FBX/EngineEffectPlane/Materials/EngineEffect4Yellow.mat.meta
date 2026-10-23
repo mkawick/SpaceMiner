@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a31e14fd7d720ad49a26cdcade9ece5e
+timeCreated: 1428702313
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 34447
+  packageName: Simple Spaceship Engine Effects
+  packageVersion: 1.1
+  assetPath: Assets/SimpleSpaceshipEngineEffects/FBX/EngineEffectPlane/Materials/EngineEffect4Yellow.mat
+  uploadId: 410319

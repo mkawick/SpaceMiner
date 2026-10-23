@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 6c5dd8a24661cc040a0f8f9df2d4579f
+timeCreated: 1524062038
+licenseType: Store
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 43041
+  packageName: Sci-Fi Animated Space Robots
+  packageVersion: 1.1
+  assetPath: Assets/Animated_Mech/DemoScene/Scenes/Demo.unity
+  uploadId: 246123

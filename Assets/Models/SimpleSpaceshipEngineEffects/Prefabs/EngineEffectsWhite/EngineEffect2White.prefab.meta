@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 024966676dd40174c90a91ee66e36d48
+timeCreated: 1428745745
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 34447
+  packageName: Simple Spaceship Engine Effects
+  packageVersion: 1.1
+  assetPath: Assets/SimpleSpaceshipEngineEffects/Prefabs/EngineEffectsWhite/EngineEffect2White.prefab
+  uploadId: 410319

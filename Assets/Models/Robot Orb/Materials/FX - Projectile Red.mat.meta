@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c911c5ed3c3ae5543b69fb08dc4eb698
+timeCreated: 1468235949
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 66991
+  packageName: Robot Orb
+  packageVersion: 1.0
+  assetPath: Assets/Robot Orb/Materials/FX - Projectile Red.mat
+  uploadId: 126680

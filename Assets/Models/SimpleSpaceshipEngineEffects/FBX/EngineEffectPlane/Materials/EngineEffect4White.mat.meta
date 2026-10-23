@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1ef218e688303624b834101263111999
+timeCreated: 1428745789
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 34447
+  packageName: Simple Spaceship Engine Effects
+  packageVersion: 1.1
+  assetPath: Assets/SimpleSpaceshipEngineEffects/FBX/EngineEffectPlane/Materials/EngineEffect4White.mat
+  uploadId: 410319

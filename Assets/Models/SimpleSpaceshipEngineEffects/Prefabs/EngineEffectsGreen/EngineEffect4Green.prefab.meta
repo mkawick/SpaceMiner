@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6571f87cd326e4942b1f318e9413ef6f
+timeCreated: 1428702179
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 34447
+  packageName: Simple Spaceship Engine Effects
+  packageVersion: 1.1
+  assetPath: Assets/SimpleSpaceshipEngineEffects/Prefabs/EngineEffectsGreen/EngineEffect4Green.prefab
+  uploadId: 410319

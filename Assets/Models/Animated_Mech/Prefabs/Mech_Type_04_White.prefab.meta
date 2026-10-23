@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bd84659e23d1727429e45ab9ee65f9fb
+timeCreated: 18446744011573954816
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 43041
+  packageName: Sci-Fi Animated Space Robots
+  packageVersion: 1.1
+  assetPath: Assets/Animated_Mech/Prefabs/Mech_Type_04_White.prefab
+  uploadId: 246123

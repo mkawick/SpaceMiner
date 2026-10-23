@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8b6af3c809d190d4ab898c750ed92310
+timeCreated: 18446744011573954816
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 43041
+  packageName: Sci-Fi Animated Space Robots
+  packageVersion: 1.1
+  assetPath: Assets/Animated_Mech/Prefabs/Mech_Type_01_Orange.prefab
+  uploadId: 246123

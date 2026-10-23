@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: fbbd8bd3e33f4fd41bd3c23e936ca4ac
+timeCreated: 18446744011573954816
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 43041
+  packageName: Sci-Fi Animated Space Robots
+  packageVersion: 1.1
+  assetPath: Assets/Animated_Mech/Materials/Mech_Mat04.mat
+  uploadId: 246123

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f86eba1ac647d7949b497987137a5d09
+timeCreated: 1468235930
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 66991
+  packageName: Robot Orb
+  packageVersion: 1.0
+  assetPath: Assets/Robot Orb/Prefabs/FX - Projectile - Blue.prefab
+  uploadId: 126680

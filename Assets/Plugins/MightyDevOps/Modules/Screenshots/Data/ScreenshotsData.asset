@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df42ff21bbb2f314483c043bed230536, type: 3}
+  m_Name: ScreenshotsData
+  m_EditorClassIdentifier: Assembly-CSharp::MightyScreenshots.ScreenshotsData
+  settings:
+    borderColor: {r: 0, g: 0, b: 0, a: 0}
+    hotkey1: 304
+    hotkey2: 306
+    hotkey3: 308
+    screenshotResolution: 1
+    screenshotQuality: 100
+    screenshotFormat: 0
+    sceneView:
+      borderColor: {r: 0, g: 0, b: 0, a: 0}
+      distanceStart: 5
+      distanceEnd: 100
+      show: 1
+  scenes: []

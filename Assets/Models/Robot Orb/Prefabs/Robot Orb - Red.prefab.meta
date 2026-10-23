@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ede9675bf1584164b840c51399004db3
+timeCreated: 1468236276
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 66991
+  packageName: Robot Orb
+  packageVersion: 1.0
+  assetPath: Assets/Robot Orb/Prefabs/Robot Orb - Red.prefab
+  uploadId: 126680

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f8b0826308f774a48b8dd41043722b3a
+timeCreated: 1428745886
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 34447
+  packageName: Simple Spaceship Engine Effects
+  packageVersion: 1.1
+  assetPath: Assets/SimpleSpaceshipEngineEffects/FBX/EngineFrontPlane/Materials/EngineFrontWhite.mat
+  uploadId: 410319

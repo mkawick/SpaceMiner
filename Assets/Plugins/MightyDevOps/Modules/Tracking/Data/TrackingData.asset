@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfaf589c06b8fbe44ba08f0c332dddf7, type: 3}
+  m_Name: TrackingData
+  m_EditorClassIdentifier: Assembly-CSharp::MightyTracking.TrackingData
+  settings:
+    showTrackingTrails: 1
+    showTrackingCaptures: 1
+    lineWidth: 2
+    sceneView:
+      borderColor: {r: 0, g: 0, b: 0, a: 0}
+      distanceStart: 2
+      distanceEnd: 50
+      show: 1
+  scenes: []

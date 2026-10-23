@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8616b97c3fa5e73469b5fa8bf2b32fdb
+timeCreated: 1468235722
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 66991
+  packageName: Robot Orb
+  packageVersion: 1.0
+  assetPath: Assets/Robot Orb/Materials/FX - Projectile Blue.mat
+  uploadId: 126680

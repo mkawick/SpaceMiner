@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a211640dc43176044ae40e629aa55bfa
+timeCreated: 1525940920
+licenseType: Store
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 43041
+  packageName: Sci-Fi Animated Space Robots
+  packageVersion: 1.1
+  assetPath: Assets/Animated_Mech/DemoScene/Scripts/Manager/desktop.ini
+  uploadId: 246123

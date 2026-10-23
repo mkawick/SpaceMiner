@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 26f544a3dc27de344a4f815c118bf4f7
+timeCreated: 18446744011573954816
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 43041
+  packageName: Sci-Fi Animated Space Robots
+  packageVersion: 1.1
+  assetPath: Assets/Animated_Mech/Prefabs/Mech_Type_01_Red.prefab
+  uploadId: 246123

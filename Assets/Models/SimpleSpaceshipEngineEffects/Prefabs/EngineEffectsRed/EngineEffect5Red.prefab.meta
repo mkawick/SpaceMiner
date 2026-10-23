@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6cdcc3b15f66c6f4d8a8295f408d5af3
+timeCreated: 1428702180
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 34447
+  packageName: Simple Spaceship Engine Effects
+  packageVersion: 1.1
+  assetPath: Assets/SimpleSpaceshipEngineEffects/Prefabs/EngineEffectsRed/EngineEffect5Red.prefab
+  uploadId: 410319

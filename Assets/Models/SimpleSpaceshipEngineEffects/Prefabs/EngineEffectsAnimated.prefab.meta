@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e268aa7220eb45c4595885a42de1ca47
+timeCreated: 1524778182
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 34447
+  packageName: Simple Spaceship Engine Effects
+  packageVersion: 1.1
+  assetPath: Assets/SimpleSpaceshipEngineEffects/Prefabs/EngineEffectsAnimated.prefab
+  uploadId: 410319

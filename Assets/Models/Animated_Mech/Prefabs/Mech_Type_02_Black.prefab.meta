@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5233aebc3532f3446af566c9fd7aeaa3
+timeCreated: 18446744011573954816
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 43041
+  packageName: Sci-Fi Animated Space Robots
+  packageVersion: 1.1
+  assetPath: Assets/Animated_Mech/Prefabs/Mech_Type_02_Black.prefab
+  uploadId: 246123

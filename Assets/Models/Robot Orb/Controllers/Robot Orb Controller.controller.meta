@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 02386867f79c2d648807222ee1ef5897
+timeCreated: 1468230127
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 66991
+  packageName: Robot Orb
+  packageVersion: 1.0
+  assetPath: Assets/Robot Orb/Controllers/Robot Orb Controller.controller
+  uploadId: 126680

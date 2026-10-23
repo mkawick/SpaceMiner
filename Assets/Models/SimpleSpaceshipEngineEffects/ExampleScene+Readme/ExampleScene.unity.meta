@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9a54edbda1612b94daff22967258e4ee
+timeCreated: 1428513897
+licenseType: Store
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 34447
+  packageName: Simple Spaceship Engine Effects
+  packageVersion: 1.1
+  assetPath: Assets/SimpleSpaceshipEngineEffects/ExampleScene+Readme/ExampleScene.unity
+  uploadId: 410319

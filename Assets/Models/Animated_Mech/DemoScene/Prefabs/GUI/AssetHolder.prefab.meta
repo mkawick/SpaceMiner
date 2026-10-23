@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: c366005ba98c59443938ea838ae39891
+timeCreated: 1524584101
+licenseType: Store
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 43041
+  packageName: Sci-Fi Animated Space Robots
+  packageVersion: 1.1
+  assetPath: Assets/Animated_Mech/DemoScene/Prefabs/GUI/AssetHolder.prefab
+  uploadId: 246123

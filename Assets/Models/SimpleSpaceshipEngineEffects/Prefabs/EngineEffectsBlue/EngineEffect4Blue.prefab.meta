@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f8d0f1c0e1d833f4a91569c62fee0aee
+timeCreated: 1428700782
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 34447
+  packageName: Simple Spaceship Engine Effects
+  packageVersion: 1.1
+  assetPath: Assets/SimpleSpaceshipEngineEffects/Prefabs/EngineEffectsBlue/EngineEffect4Blue.prefab
+  uploadId: 410319

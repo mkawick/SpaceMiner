@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c046668267db40941989c7ce2ce58136
+timeCreated: 1524777553
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 34447
+  packageName: Simple Spaceship Engine Effects
+  packageVersion: 1.1
+  assetPath: Assets/SimpleSpaceshipEngineEffects/FBX/EngineEffectAnimated.anim
+  uploadId: 410319

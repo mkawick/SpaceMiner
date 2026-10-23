@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c6de203880116194db1e2b226521522a
+timeCreated: 1468228917
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 66991
+  packageName: Robot Orb
+  packageVersion: 1.0
+  assetPath: Assets/Robot Orb/Materials/Robot Orb - Red.mat
+  uploadId: 126680
