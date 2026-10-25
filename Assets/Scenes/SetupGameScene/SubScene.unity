@@ -119,7 +119,91 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &999038444
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 999038446}
+  - component: {fileID: 999038445}
+  m_Layer: 0
+  m_Name: AsteroidField
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &999038445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999038444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef2e681241ade9a4fab891a58f1d9157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AsteroidField_Authoring
+  seed: 20261024
+  mapRadius: 10000
+  hexSize: 200
+  grixHome: {x: 4500, y: -6200}
+  postibuleHome: {x: -7400, y: 900}
+  fairwayHome: {x: 5400, y: 5400}
+  newbieZoneRadius: 1800
+  starterRingRadius: 4000
+  asteroidPrefabs:
+  - {fileID: 182638, guid: d1a84be7d4a59ce48beab514512e6c9c, type: 3}
+  - {fileID: 150088, guid: 5bd685b5825d34b42a6448ba854e4616, type: 3}
+  - {fileID: 100826, guid: f16b21e73a65d0e4886a0ce03a3e3d34, type: 3}
+  - {fileID: 110192, guid: b8458750998ab294b8c50052c356ccad, type: 3}
+  - {fileID: 112914, guid: bfece70680b0b1f448974f03ddb4bf40, type: 3}
+  - {fileID: 117178, guid: 54486bc5d39dbb342a4d26c68090c937, type: 3}
+  - {fileID: 180822, guid: dc9d4de667293334080e0fed65f8324c, type: 3}
+  - {fileID: 158646, guid: 8e3cceccae8ab3446b1c02419dff0a1a, type: 3}
+  - {fileID: 127754, guid: 818814f4660cbfe4bad7019fa82cce0e, type: 3}
+  - {fileID: 181616, guid: ad55ded2a0f88f64e895d08a97c23203, type: 3}
+  - {fileID: 130646, guid: e20384a523dd5204ba204a551d549e51, type: 3}
+  - {fileID: 117568, guid: d28d5685ea100ed4ba793b6538265402, type: 3}
+  - {fileID: 182638, guid: 570f98335f07661438c9f7cbcf3cd7dc, type: 3}
+  - {fileID: 150088, guid: c36b4326e2493ef40a4bc76d4c581c1f, type: 3}
+  - {fileID: 100826, guid: 1e626be4963606d4dae866e9c4e6a91b, type: 3}
+  - {fileID: 110192, guid: a106e6757de19414b8632d200bb83605, type: 3}
+  - {fileID: 112914, guid: fba2f8407683e1f4fbb6b379ed2706c2, type: 3}
+  - {fileID: 117178, guid: 2656b6bd353c2cc479695d815f4933d2, type: 3}
+  - {fileID: 180822, guid: 582a93c7d01ff6441b8845e57a1d68b9, type: 3}
+  - {fileID: 158646, guid: 5d61431dc288f334680a9f7c26ea4556, type: 3}
+  - {fileID: 127754, guid: 8dd4762c7634bd948a9d2c366d159fcb, type: 3}
+  - {fileID: 181616, guid: 990bc51eb7c495145a46efeef92870bd, type: 3}
+  - {fileID: 130646, guid: 22a82758e12490543851605b45080dc7, type: 3}
+  - {fileID: 117568, guid: 803908dc1c2d8e74683b5390b9dcc847, type: 3}
+  starterAsteroidsPerHex: 6
+  wildAsteroidsPerHex: {x: 2, y: 6}
+  radiusRange: {x: 4, y: 18}
+  spinDegreesPerSecond: {x: 2, y: 8}
+  playerFaction: 2
+  playerStartSlot: 0
+--- !u!4 &999038446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999038444}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
-  m_Roots: []
+  m_Roots:
+  - {fileID: 999038446}

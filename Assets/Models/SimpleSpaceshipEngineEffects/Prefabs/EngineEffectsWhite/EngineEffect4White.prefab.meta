@@ -10,6 +10,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 34447
   packageName: Simple Spaceship Engine Effects
-  packageVersion: 1.1
-  assetPath: Assets/SimpleSpaceshipEngineEffects/Prefabs/EngineEffectsWhite/EngineEffect4White.prefab
-  uploadId: 410319
+  packageVersion: 1.2
+  assetPath: Assets/Models/SimpleSpaceshipEngineEffects/Prefabs/EngineEffectsWhite/EngineEffect4White.prefab
+  uploadId: 956648

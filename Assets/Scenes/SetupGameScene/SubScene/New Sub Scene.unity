@@ -778,7 +778,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2e5a3284e53ba5f4b8b58b493ce933c6, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 65b40926c0f7c72408c2eeed5552b7a6, type: 2}
+      objectReference: {fileID: 2100000, guid: bbc1d7823395f2f4ab512a77590560d7, type: 2}
     - target: {fileID: 919132149155446097, guid: 2e5a3284e53ba5f4b8b58b493ce933c6, type: 3}
       propertyPath: m_Name
       value: StarSparrow17

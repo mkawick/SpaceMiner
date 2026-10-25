@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 964beedf4403b8541ae7bbebfde52a82
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 34447
+  packageName: Simple Spaceship Engine Effects
+  packageVersion: 1.2
+  assetPath: Assets/Models/SimpleSpaceshipEngineEffects/Prefabs/EngineEffectsExample.prefab
+  uploadId: 956648

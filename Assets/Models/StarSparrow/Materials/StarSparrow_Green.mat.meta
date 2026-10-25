@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 138dd97cb63790543aebb7ab1036fcb7
+guid: bbc1d7823395f2f4ab512a77590560d7
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
@@ -10,6 +10,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 73167
   packageName: Star Sparrow Modular Spaceship
-  packageVersion: 4.2
+  packageVersion: 6.0
   assetPath: Assets/StarSparrow/Materials/StarSparrow_Green.mat
-  uploadId: 754346
+  uploadId: 980240

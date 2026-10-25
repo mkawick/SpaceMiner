@@ -10,6 +10,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 34447
   packageName: Simple Spaceship Engine Effects
-  packageVersion: 1.1
-  assetPath: Assets/SimpleSpaceshipEngineEffects/FBX/EngineEffectPlane/Materials/EngineEffect4Blue.mat
-  uploadId: 410319
+  packageVersion: 1.2
+  assetPath: Assets/Models/SimpleSpaceshipEngineEffects/FBX/EngineEffectPlane/Materials/EngineEffect4Blue.mat
+  uploadId: 956648

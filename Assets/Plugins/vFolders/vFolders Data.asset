@@ -20,6 +20,8 @@ MonoBehaviour:
     - 5951fa88fa7848d49b948a82e56f5ddf
     - 15c091c43bda732499cc0000e3b186e8
     - 1ff99bf2035e9484fb5d3fe721ce5029
+    - 5a90968d9ed147f4cb26f603456f40e5
+    - 3cff1abf5f2aa6e45aca45ac16a7bec3
     values:
     - iconNameOrGuid: ProbeVolume Icon
       colorIndex: 0
@@ -30,7 +32,7 @@ MonoBehaviour:
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: BuildSettings.Lumin On
-      colorIndex: 0
+      colorIndex: 5
       isIconRecursive: 0
       isColorRecursive: 0
     - iconNameOrGuid: ConfigurableJoint Icon
@@ -43,6 +45,14 @@ MonoBehaviour:
       isColorRecursive: 0
     - iconNameOrGuid: LightmapParameters Icon
       colorIndex: 0
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: 
+      colorIndex: 9
+      isIconRecursive: 0
+      isColorRecursive: 0
+    - iconNameOrGuid: WheelCollider Icon
+      colorIndex: 2
       isIconRecursive: 0
       isColorRecursive: 0
   bookmarks: []

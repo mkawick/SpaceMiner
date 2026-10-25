@@ -39,7 +39,7 @@ public class ChaseCamera : MonoBehaviour
             cam.gameObject.AddComponent<ChaseCamera>();
     }
 
-    private bool TryGetPlayer(out LocalToWorld playerTransform)
+    private bool TryGetPlayer(out LocalTransform playerTransform)
     {
         playerTransform = default;
         World world = World.DefaultGameObjectInjectionWorld;
@@ -50,14 +50,14 @@ public class ChaseCamera : MonoBehaviour
         {
             playerQuery = world.EntityManager.CreateEntityQuery(
                 ComponentType.ReadOnly<InputData_Dots>(),
-                ComponentType.ReadOnly<LocalToWorld>());
+                ComponentType.ReadOnly<LocalTransform>());
             queryWorld = world;
         }
 
         if (playerQuery.CalculateEntityCount() != 1)
             return false;
 
-        playerTransform = playerQuery.GetSingleton<LocalToWorld>();
+        playerTransform = playerQuery.GetSingleton<LocalTransform>();
         return true;
     }
 
@@ -68,7 +68,7 @@ public class ChaseCamera : MonoBehaviour
         if (mouse != null)
         {
             float scroll = mouse.scroll.ReadValue().y;
-            if (scroll != 0f)
+            if (scroll != 0f && !MinimapOverlay.PointerOverMap)
                 distance = Mathf.Clamp(distance * (1f - zoomStep * Mathf.Sign(scroll)), minDistance, maxDistance);
 
             if (mouse.rightButton.isPressed)
@@ -83,11 +83,11 @@ public class ChaseCamera : MonoBehaviour
             }
         }
 
-        if (!TryGetPlayer(out LocalToWorld ship))
+        if (!TryGetPlayer(out LocalTransform ship))
             return;
 
         Vector3 shipPosition = ship.Position;
-        Vector3 forward = ship.Forward;
+        Vector3 forward = ship.Forward();
         forward.y = 0f;
         float shipYaw = forward.sqrMagnitude > 1e-4f ? Mathf.Atan2(forward.x, forward.z) * Mathf.Rad2Deg : 0f;
 
@@ -96,6 +96,8 @@ public class ChaseCamera : MonoBehaviour
         Vector3 desired = target - view * Vector3.forward * distance;
 
         float blend = 1f - Mathf.Exp(-followSharpness * dt);
+        if ((transform.position - desired).sqrMagnitude > 1000f * 1000f)
+            blend = 1f; // the ship jumped (e.g. moved to its start hex): snap instead of flying across the map
         transform.position = Vector3.Lerp(transform.position, desired, blend);
         transform.rotation = Quaternion.LookRotation(target - transform.position, Vector3.up);
     }
