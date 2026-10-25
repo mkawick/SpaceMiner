@@ -45,6 +45,7 @@ public class ResourceHud : MonoBehaviour
 
         int rows = AsteroidFieldRules.ResourceCount;
         Rect panel = new Rect(margin, margin, width, 28f + rows * rowHeight + 8f);
+        GameInput.RegisterUiRect(panel);
         DrawRect(panel, new Color(0.03f, 0.04f, 0.06f, 0.75f));
         DrawRect(new Rect(panel.x, panel.y, panel.width, 2f), new Color(0.78f, 0.32f, 0.04f, 1f));
 

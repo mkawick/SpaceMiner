@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 514786755}
   - component: {fileID: 514786756}
+  - component: {fileID: 514786757}
   m_Layer: 0
   m_Name: AsteroidField
   m_TagString: Untagged
@@ -200,8 +201,68 @@ MonoBehaviour:
   wildAsteroidsPerHex: {x: 2, y: 6}
   radiusRange: {x: 4, y: 18}
   spinDegreesPerSecond: {x: 2, y: 8}
+  oreDropChance: 0.5
+  orePerAsteroid: 100
+  oreScatterDistance: {x: 1, y: 2}
+  oreScatterTime: 0.4
+  oreSpreadDegrees: 70
+  orePrefabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   playerFaction: 2
   playerStartSlot: 0
+--- !u!114 &514786757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514786754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6e7d81346dd81409f7e9585035c594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BuildCatalog_Authoring
+  placementRange: 60
+  freeBuild: 1
+  workerFactoryCost:
+    iron: 60
+    copper: 20
+    silicate: 40
+    ice: 0
+    carbon: 0
+    gold: 0
+    fermite: 0
+  workerFactoryBuildTime: 15
+  workerFactoryRadius: 10
+  workerFactoryPrefab: {fileID: 3589572839203520836, guid: 3b117bb265e6a8640a1c7e7b7c627902, type: 3}
+  grixWorkerFactory: {fileID: 5142868828862878338, guid: 45b2cf411711e7540b5891a39370d0f3, type: 3}
+  fairwayWorkerFactory: {fileID: 7564680319383017926, guid: 37c13b67a1b31b04faf3b1dd09ea6947, type: 3}
+  postibuleWorkerFactory: {fileID: 7466815815044705455, guid: 3bb49d0767dbf9448aaac8f262bb1447, type: 3}
+  workerBotCost:
+    iron: 15
+    copper: 5
+    silicate: 0
+    ice: 0
+    carbon: 5
+    gold: 0
+    fermite: 0
+  workerBotTrainTime: 8
+  workerBotPrefab: {fileID: 1713916825385834004, guid: b292fae9ab12dbb44b770540a58f2263, type: 3}
+  botSpeed: 14
+  botTurnSpeedDegrees: 240
+  botCargoCapacity: 10
+  botCollectorRadius: 8
+  botMiningStandOff: 5
+  botGatherRadius: 30
+  botFireInterval: 0.6
+  botProjectileSpeed: 45
+  botSelectRadius: 2.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

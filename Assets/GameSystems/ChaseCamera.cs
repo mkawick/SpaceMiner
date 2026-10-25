@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // Spacey chase camera. Follows the player's ship (the entity with InputData_Dots) from a
-// three-quarter view. Hold the right mouse button to orbit and tilt; use the mouse wheel to zoom
+// three-quarter view. Hold the middle mouse button to orbit and tilt; use the mouse wheel to zoom
 // from a bird's-eye view down to close behind the ship.
 // It attaches itself to the main camera when play starts; add it by hand to tune the values.
 public class ChaseCamera : MonoBehaviour
@@ -15,7 +15,7 @@ public class ChaseCamera : MonoBehaviour
     public float maxDistance = 150f;
     [Range(0.02f, 0.5f)] public float zoomStep = 0.12f;
 
-    [Header("Orbit (hold right mouse)")]
+    [Header("Orbit (hold middle mouse)")]
     public float pitch = 35f;
     public float minPitch = 8f;
     public float maxPitch = 85f;
@@ -71,7 +71,7 @@ public class ChaseCamera : MonoBehaviour
             if (scroll != 0f && !MinimapOverlay.PointerOverMap)
                 distance = Mathf.Clamp(distance * (1f - zoomStep * Mathf.Sign(scroll)), minDistance, maxDistance);
 
-            if (mouse.rightButton.isPressed)
+            if (mouse.middleButton.isPressed)
             {
                 Vector2 delta = mouse.delta.ReadValue();
                 orbitYaw += delta.x * orbitSensitivity;

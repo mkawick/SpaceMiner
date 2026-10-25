@@ -3,9 +3,12 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-// Reads the Input System and writes it into the player ship's InputData_Dots.
-// Left mouse fires along the ship's facing. The right mouse button now belongs to the chase camera.
+// Reads the keyboard and writes it into the player ship's InputData_Dots.
+// W/S thrust, A/D strafe, Q/E rotate, Space fires along the ship's facing.
+// The mouse is free for selecting (left) and giving orders (right).
+// moveDir = (strafe, thrust), lookDir.x = rotation (-1 Q, +1 E).
 public partial class Input_to_SpaceShip_System_Dots : SystemBase
 {
     private InputControls input;
@@ -29,7 +32,15 @@ public partial class Input_to_SpaceShip_System_Dots : SystemBase
     protected override void OnUpdate()
     {
         float2 move = input.Player.Move.ReadValue<Vector2>();
-        bool firing = input.Player.Attack.ReadValue<float>() > 0f;
+        Keyboard keyboard = Keyboard.current;
+        float rotate = 0f;
+        bool firing = false;
+        if (keyboard != null)
+        {
+            if (keyboard.qKey.isPressed) rotate -= 1f;
+            if (keyboard.eKey.isPressed) rotate += 1f;
+            firing = keyboard.spaceKey.isPressed;
+        }
         float now = (float)SystemAPI.Time.ElapsedTime;
 
         var ecb = new EntityCommandBuffer(Allocator.Temp);
@@ -41,7 +52,7 @@ public partial class Input_to_SpaceShip_System_Dots : SystemBase
                                  RefRO<LocalTransform>>())
         {
             inputData.ValueRW.moveDir = move;
-            inputData.ValueRW.lookDir = float2.zero;
+            inputData.ValueRW.lookDir = new float2(rotate, 0f);
 
             if (!firing || now < status.ValueRO.nextTimeToFire)
                 continue;

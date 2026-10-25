@@ -15,6 +15,7 @@ public partial struct OreCollectionSystem_Dots : ISystem
         public Entity entity;
         public float3 position;
         public OreCollector settings;
+        public float free; // cargo space left, counting ore already flying in
     }
 
     public void OnCreate(ref SystemState state)
@@ -35,12 +36,37 @@ public partial struct OreCollectionSystem_Dots : ISystem
         foreach (var (collector, transform, entity) in
                  SystemAPI.Query<RefRO<OreCollector>, RefRO<LocalTransform>>().WithEntityAccess())
         {
+            float free = float.MaxValue;
+            if (collector.ValueRO.capacity > 0f && SystemAPI.HasBuffer<CargoItem>(entity))
+            {
+                DynamicBuffer<CargoItem> held = SystemAPI.GetBuffer<CargoItem>(entity);
+                float total = 0f;
+                for (int i = 0; i < held.Length; i++)
+                    total += held[i].amount;
+                free = collector.ValueRO.capacity - total;
+            }
             collectors.Add(new CollectorInfo
             {
                 entity = entity,
                 position = transform.ValueRO.Position,
-                settings = collector.ValueRO
+                settings = collector.ValueRO,
+                free = free
             });
+        }
+
+        // Ore already being pulled in counts against its collector's free space.
+        foreach (var chunk in SystemAPI.Query<RefRO<OreChunk>>())
+        {
+            if (chunk.ValueRO.state != OreState.Collecting)
+                continue;
+            for (int i = 0; i < collectors.Length; i++)
+            {
+                if (collectors[i].entity != chunk.ValueRO.collector)
+                    continue;
+                CollectorInfo c = collectors[i];
+                c.free -= chunk.ValueRO.amount;
+                collectors[i] = c;
+            }
         }
 
         var ecb = new EntityCommandBuffer(Allocator.Temp);
@@ -64,17 +90,27 @@ public partial struct OreCollectionSystem_Dots : ISystem
             if (ore.state != OreState.Collecting)
             {
                 float bestSqr = float.MaxValue;
+                int best = -1;
                 for (int i = 0; i < collectors.Length; i++)
                 {
+                    if (collectors[i].free < ore.amount)
+                        continue; // that hold is full
                     float dSqr = math.distancesq(position, collectors[i].position);
                     float r = collectors[i].settings.radius;
                     if (dSqr <= r * r && dSqr < bestSqr)
                     {
                         bestSqr = dSqr;
-                        ore.collector = collectors[i].entity;
-                        ore.state = OreState.Collecting;
-                        ore.speed = 0f;
+                        best = i;
                     }
+                }
+                if (best >= 0)
+                {
+                    CollectorInfo claimed = collectors[best];
+                    claimed.free -= ore.amount;
+                    collectors[best] = claimed;
+                    ore.collector = claimed.entity;
+                    ore.state = OreState.Collecting;
+                    ore.speed = 0f;
                 }
             }
 

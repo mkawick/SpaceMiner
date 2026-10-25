@@ -105,6 +105,7 @@ public struct OreCollector : IComponentData
     public float pickupDistance;
     public float pullAcceleration;
     public float maxPullSpeed;
+    public float capacity; // total cargo it can hold; 0 = unlimited
 }
 
 // Which hex an asteroid was generated in, its index there (a stable ID), and its radius for hit tests.

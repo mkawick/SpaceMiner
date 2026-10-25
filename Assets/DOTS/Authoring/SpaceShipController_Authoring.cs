@@ -15,6 +15,8 @@ public class SpaceShipAuthoringComponent_Dots : MonoBehaviour
     public float drag = 1.5f;
     [Tooltip("Top reverse speed as a fraction of top speed")]
     public float reverseSpeedFactor = 0.4f;
+    [Tooltip("Top strafe (A/D) speed as a fraction of top speed")]
+    public float strafeSpeedFactor = 0.6f;
     [Tooltip("Projectile speed in units per second, on top of the ship's speed")]
     public float projectileSpeed = 60f;
     [Tooltip("How far this ship's radar reaches, in units; the minimap shows this far")]
@@ -41,6 +43,7 @@ public struct SpaceShipControllerData_Dots : IComponentData
     public float turnSpeed; // radians per second
     public float drag;
     public float reverseSpeedFactor;
+    public float strafeSpeedFactor;
     public float projectileSpeed;
     public Entity firingObject;
     public float3 firingPoint;
@@ -51,7 +54,8 @@ public struct SpaceShipStatus_Dots : IComponentData
 {
     public float health;
     public float shield;
-    public float speed;
+    public float speed;       // forward speed
+    public float strafeSpeed; // sideways speed, + is right
 
     public float nextTimeToFire; // move to weapon
     public float weaponSpeed; // move to weapon
@@ -84,6 +88,7 @@ public class SpaceShipBaker_Dots : Baker<SpaceShipAuthoringComponent_Dots>
                     turnSpeed = math.radians(authoring.turnSpeedDegrees),
                     drag = authoring.drag,
                     reverseSpeedFactor = authoring.reverseSpeedFactor,
+                    strafeSpeedFactor = authoring.strafeSpeedFactor,
                     projectileSpeed = authoring.projectileSpeed,
                     firingPoint = firingPosition,
                     firingObject = weaponPrefab,
