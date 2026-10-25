@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 // Spacey chase camera. Follows the player's ship (the entity with InputData_Dots) from a
-// three-quarter view. Hold the middle mouse button to orbit and tilt; use the mouse wheel to zoom
-// from a bird's-eye view down to close behind the ship.
+// three-quarter view. Hold Insert to tilt up to looking straight down on the ship, Delete to tilt
+// down to level with the play plane; holding the middle mouse button and dragging forward/back does the
+// same. Use the mouse wheel to zoom.
 // It attaches itself to the main camera when play starts; add it by hand to tune the values.
 public class ChaseCamera : MonoBehaviour
 {
@@ -15,10 +16,13 @@ public class ChaseCamera : MonoBehaviour
     public float maxDistance = 150f;
     [Range(0.02f, 0.5f)] public float zoomStep = 0.12f;
 
-    [Header("Orbit (hold middle mouse)")]
+    [Header("Tilt (hold Insert = up to overhead, Delete = down to level)")]
     public float pitch = 35f;
-    public float minPitch = 8f;
-    public float maxPitch = 85f;
+    public float minPitch = 0f;
+    public float maxPitch = 89f;
+    public float tiltSpeed = 60f; // degrees per second while the key is held
+
+    [Header("Tilt with mouse (hold middle mouse, drag forward/back)")]
     public float orbitSensitivity = 0.2f;
     [Tooltip("How fast the camera swings back behind the ship after orbiting. 0 = stay where you left it.")]
     public float recenterSpeed = 1.5f;
@@ -64,6 +68,16 @@ public class ChaseCamera : MonoBehaviour
     private void LateUpdate()
     {
         float dt = Time.deltaTime;
+        Keyboard keyboard = Keyboard.current;
+        if (keyboard != null)
+        {
+            float tilt = 0f;
+            if (keyboard.insertKey.isPressed) tilt += 1f;
+            if (keyboard.deleteKey.isPressed) tilt -= 1f;
+            if (tilt != 0f)
+                pitch = Mathf.Clamp(pitch + tilt * tiltSpeed * dt, minPitch, maxPitch);
+        }
+
         Mouse mouse = Mouse.current;
         if (mouse != null)
         {
@@ -74,7 +88,6 @@ public class ChaseCamera : MonoBehaviour
             if (mouse.middleButton.isPressed)
             {
                 Vector2 delta = mouse.delta.ReadValue();
-                orbitYaw += delta.x * orbitSensitivity;
                 pitch = Mathf.Clamp(pitch - delta.y * orbitSensitivity, minPitch, maxPitch);
             }
             else if (recenterSpeed > 0f)
