@@ -106,6 +106,9 @@ public partial struct BuildingSystem_Dots : ISystem
                 baseScale = baseScale
             });
             em.AddComponentData(building, new Selectable { radius = radius, kind = 1 });
+            Combat.ApplyTargetable(em, building,
+                new Targetable { layer = CollisionLayer.Building, radius = radius, density = 0.2f },
+                catalog.workerFactoryHealth, faction);
             em.AddComponentData(building, new TrainQueue());
         }
     }
@@ -232,6 +235,9 @@ public partial struct BuildingSystem_Dots : ISystem
             botCount++;
             em.AddComponentData(bot, new WorkerBot { state = BotState.Idle, home = factory, number = botCount });
             em.AddComponentData(bot, new Selectable { radius = catalog.botSelectRadius, kind = 0 });
+            Combat.ApplyTargetable(em, bot,
+                new Targetable { layer = CollisionLayer.Bot, radius = catalog.botSelectRadius, density = 0f },
+                catalog.botHealth, building.faction);
             em.AddComponentData(bot, new OreCollector
             {
                 radius = catalog.botCollectorRadius,

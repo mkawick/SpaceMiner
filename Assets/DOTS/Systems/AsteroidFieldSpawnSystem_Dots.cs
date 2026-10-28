@@ -64,6 +64,11 @@ public partial struct AsteroidFieldSpawnSystem_Dots : ISystem
         int orePerAsteroid = em.HasComponent<MiningConfig>(configEntity)
             ? em.GetComponentData<MiningConfig>(configEntity).orePerAsteroid
             : 100;
+        float dropChance = em.HasComponent<MiningConfig>(configEntity)
+            ? math.max(0.01f, em.GetComponentData<MiningConfig>(configEntity).oreDropChance)
+            : 0.5f;
+        // Enough health that a mining laser usually knocks out all the ore before the rock breaks.
+        float asteroidHealth = orePerAsteroid / dropChance * 1.5f;
 
         var spawns = new NativeList<Spawn>(16384, Allocator.Temp);
         var playerStarts = new NativeList<int2>(512, Allocator.Temp);
@@ -91,7 +96,7 @@ public partial struct AsteroidFieldSpawnSystem_Dots : ISystem
             }
         }
 
-        Instantiate(em, prefabs, spawns, orePerAsteroid);
+        Instantiate(em, prefabs, spawns, orePerAsteroid, asteroidHealth);
 
         int2 playerHex = int2.zero;
         if (playerStarts.Length > 0)
@@ -214,7 +219,7 @@ public partial struct AsteroidFieldSpawnSystem_Dots : ISystem
         return ResourceType.Fermite;
     }
 
-    private static void Instantiate(EntityManager em, NativeArray<AsteroidVisualPrefab> prefabs, NativeList<Spawn> spawns, int orePerAsteroid)
+    private static void Instantiate(EntityManager em, NativeArray<AsteroidVisualPrefab> prefabs, NativeList<Spawn> spawns, int orePerAsteroid, float asteroidHealth)
     {
         var indices = new NativeList<int>(spawns.Length, Allocator.Temp);
         for (int p = 0; p < prefabs.Length; p++)
@@ -226,6 +231,7 @@ public partial struct AsteroidFieldSpawnSystem_Dots : ISystem
             if (indices.Length == 0)
                 continue;
 
+            CollisionLayer layer = em.GetComponentData<Targetable>(prefabs[p].prefab).layer;
             NativeArray<Entity> entities = em.Instantiate(prefabs[p].prefab, indices.Length, Allocator.Temp);
             for (int k = 0; k < entities.Length; k++)
             {
@@ -245,6 +251,14 @@ public partial struct AsteroidFieldSpawnSystem_Dots : ISystem
                 });
                 em.SetComponentData(e, new AsteroidResource { type = s.type, amount = orePerAsteroid });
                 em.SetComponentData(e, new AsteroidHex { hex = s.hex, index = s.index, radius = s.radius });
+                em.SetComponentData(e, new Health { current = asteroidHealth, max = asteroidHealth });
+                em.SetComponentData(e, new Targetable
+                {
+                    layer = layer,
+                    faction = CombatFaction.None,
+                    radius = s.radius,
+                    density = Combat.AsteroidDensity(s.type)
+                });
             }
         }
     }
@@ -268,6 +282,11 @@ public partial struct AsteroidFieldSpawnSystem_Dots : ISystem
         em.AddComponent<AsteroidComponent_Dots>(prefab);
         em.AddComponent<AsteroidResource>(prefab);
         em.AddComponent<AsteroidHex>(prefab);
+        // A Targetable_Authoring on the asteroid prefab sets its layer; otherwise it's an Asteroid.
+        if (!em.HasComponent<Targetable>(prefab))
+            em.AddComponentData(prefab, new Targetable { layer = CollisionLayer.Asteroid });
+        if (!em.HasComponent<Health>(prefab))
+            em.AddComponent<Health>(prefab);
     }
 
     private static void StripPhysics(EntityManager em, Entity e)

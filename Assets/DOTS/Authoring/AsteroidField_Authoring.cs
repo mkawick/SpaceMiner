@@ -49,6 +49,10 @@ public class AsteroidField_Authoring : MonoBehaviour
              "Empty slots fall back to Assets/Prefabs/Ore/Ore_<Type>.prefab")]
     public GameObject[] orePrefabs = new GameObject[AsteroidFieldRules.ResourceCount];
 
+    [Header("Layers")]
+    [Tooltip("Which layers hit and target each other. Empty = " + LayerMatrixSettings.DefaultPath + " (Tools > Spacey > Layer Matrix)")]
+    public LayerMatrixSettings layerMatrix;
+
     [Header("Player start")]
     public CombatFaction playerFaction = CombatFaction.PostibuleSanctuary;
     [Tooltip("Which starter hex to use; different numbers give different hexes")]
@@ -103,6 +107,21 @@ class AsteroidField_Baker : Baker<AsteroidField_Authoring>
             oreScatterTime = math.max(0.01f, a.oreScatterTime),
             oreSpreadDegrees = math.clamp(a.oreSpreadDegrees, 0f, 180f)
         });
+
+        LayerMatrixSettings matrix = a.layerMatrix;
+#if UNITY_EDITOR
+        if (matrix == null)
+            matrix = UnityEditor.AssetDatabase.LoadAssetAtPath<LayerMatrixSettings>(LayerMatrixSettings.DefaultPath);
+#endif
+        if (matrix != null)
+        {
+            DependsOn(matrix);
+            AddComponent(entity, matrix.ToMatrix());
+        }
+        else
+        {
+            AddComponent(entity, LayerMatrix.Default());
+        }
 
         DynamicBuffer<OrePrefab> orePrefabs = AddBuffer<OrePrefab>(entity);
         for (int i = 0; i < AsteroidFieldRules.ResourceCount; i++)

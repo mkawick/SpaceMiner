@@ -129,12 +129,14 @@ public partial struct WorkerBotSystem_Dots : ISystem
                             Entity request = ecb.CreateEntity();
                             ecb.AddComponent(request, new ProjectileRequest
                             {
-                                projectileEnum = 0,
-                                damageIfHits = 1,
-                                ownerId = entity.Index,
+                                weapon = WeaponId.MiningLaser,
+                                owner = entity,
+                                faction = SystemAPI.HasComponent<Targetable>(entity)
+                                    ? SystemAPI.GetComponent<Targetable>(entity).faction
+                                    : CombatFaction.None,
                                 position = t.Position + toRock * (catalog.botSelectRadius + 0.5f),
                                 dir = quaternion.LookRotationSafe(toRock, math.up()),
-                                speed = catalog.botProjectileSpeed
+                                speedBonus = 0f
                             });
                         }
                     }

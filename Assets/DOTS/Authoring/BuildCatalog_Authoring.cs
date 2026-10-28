@@ -17,6 +17,7 @@ public class BuildCatalog_Authoring : MonoBehaviour
     public float workerFactoryBuildTime = 15f;
     [Tooltip("Footprint radius, used for placement and clicking")]
     public float workerFactoryRadius = 10f;
+    public float workerFactoryHealth = 500f;
     [Tooltip("Used when a faction has no prefab of its own. Empty = Assets/Prefabs/Worker Factory.prefab")]
     public GameObject workerFactoryPrefab;
     [Tooltip("Empty = Assets/Prefabs/Grix/Tvornica - Worker Factory.prefab")]
@@ -41,6 +42,7 @@ public class BuildCatalog_Authoring : MonoBehaviour
     public float botFireInterval = 0.6f;
     public float botProjectileSpeed = 45f;
     public float botSelectRadius = 2.5f;
+    public float botHealth = 40f;
 }
 
 class BuildCatalog_Baker : Baker<BuildCatalog_Authoring>
@@ -55,6 +57,7 @@ class BuildCatalog_Baker : Baker<BuildCatalog_Authoring>
             workerFactoryCost = a.workerFactoryCost,
             workerFactoryBuildTime = math.max(0.1f, a.workerFactoryBuildTime),
             workerFactoryRadius = math.max(1f, a.workerFactoryRadius),
+            workerFactoryHealth = math.max(1f, a.workerFactoryHealth),
             workerBotCost = a.workerBotCost,
             workerBotTrainTime = math.max(0.1f, a.workerBotTrainTime),
             botSpeed = a.botSpeed,
@@ -65,7 +68,8 @@ class BuildCatalog_Baker : Baker<BuildCatalog_Authoring>
             botGatherRadius = a.botGatherRadius,
             botFireInterval = math.max(0.05f, a.botFireInterval),
             botProjectileSpeed = a.botProjectileSpeed,
-            botSelectRadius = a.botSelectRadius
+            botSelectRadius = a.botSelectRadius,
+            botHealth = math.max(1f, a.botHealth)
         });
 
         DynamicBuffer<FactionBuildingPrefab> buildings = AddBuffer<FactionBuildingPrefab>(entity);

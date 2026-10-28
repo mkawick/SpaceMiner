@@ -22,6 +22,13 @@ public class SpaceShipAuthoringComponent_Dots : MonoBehaviour
     [Tooltip("How far this ship's radar reaches, in units; the minimap shows this far")]
     public float radarRange = 1200f;
 
+    [Header("Combat")]
+    public float maxHealth = 100f;
+    [Tooltip("Hit radius on the play plane")]
+    public float hitRadius = 3f;
+    [Tooltip("Testing: fit every weapon now. Off = mining laser only; the others come from upgrades later")]
+    public bool startWithAllWeapons = true;
+
     [Header("Ore collector")]
     [Tooltip("Ore within this distance starts flying to the ship")]
     public float collectorRadius = 12f;
@@ -108,6 +115,29 @@ public class SpaceShipBaker_Dots : Baker<SpaceShipAuthoringComponent_Dots>
             });
 
             AddComponent(spaceshipEntity, new ShipRadar { range = authoring.radarRange });
+
+            // A Targetable_Authoring on the ship overrides these. Faction is filled in at runtime
+            // from the field config (HealthSystem_Dots).
+            if (GetComponent<Targetable_Authoring>() == null)
+            {
+                AddComponent(spaceshipEntity, new Health { current = authoring.maxHealth, max = authoring.maxHealth });
+                AddComponent(spaceshipEntity, new Targetable
+                {
+                    layer = CollisionLayer.Ship,
+                    faction = CombatFaction.None,
+                    radius = authoring.hitRadius,
+                    density = 0f
+                });
+            }
+            AddComponent(spaceshipEntity, new PlayerTarget());
+            AddComponent(spaceshipEntity, new ActiveWeapon { slot = 0 });
+            DynamicBuffer<WeaponSlot> weapons = AddBuffer<WeaponSlot>(spaceshipEntity);
+            weapons.Add(new WeaponSlot { id = WeaponId.MiningLaser });
+            if (authoring.startWithAllWeapons)
+            {
+                weapons.Add(new WeaponSlot { id = WeaponId.PulseLaser });
+                weapons.Add(new WeaponSlot { id = WeaponId.Rockets });
+            }
             AddComponent(spaceshipEntity, new OreCollector
             {
                 radius = authoring.collectorRadius,

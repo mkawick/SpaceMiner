@@ -59,6 +59,7 @@ public struct BuildCatalog : IComponentData
     public ResourceCost workerFactoryCost;
     public float workerFactoryBuildTime;
     public float workerFactoryRadius;
+    public float workerFactoryHealth;
 
     public ResourceCost workerBotCost;
     public float workerBotTrainTime;
@@ -71,6 +72,7 @@ public struct BuildCatalog : IComponentData
     public float botFireInterval;
     public float botProjectileSpeed;
     public float botSelectRadius;
+    public float botHealth;
 }
 
 // A building prefab per faction. faction None = the fallback used when a faction has no prefab.

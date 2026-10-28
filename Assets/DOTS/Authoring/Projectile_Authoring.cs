@@ -1,11 +1,12 @@
 using Unity.Entities;
-using Unity.Mathematics;
 using UnityEngine;
 
+// On a projectile prefab. Weapons overwrite these values when they fire (see WeaponDef).
 class Projectile_Authoring : MonoBehaviour
 {
     public float speed;
     public int damage;
+    public CollisionLayer layer = CollisionLayer.Projectile;
     class Projectile_AuthoringBaker : Baker<Projectile_Authoring>
     {
         public override void Bake(Projectile_Authoring authoring)
@@ -14,8 +15,11 @@ class Projectile_Authoring : MonoBehaviour
             AddComponent(entity, new Projectile
             {
                 speed = authoring.speed,
-                damage = authoring.damage,
-                owner = Entity.Null
+                hullDamage = authoring.damage,
+                rockDamage = authoring.damage,
+                owner = Entity.Null,
+                faction = CombatFaction.None,
+                layer = authoring.layer
             });
         }
     }
@@ -24,25 +28,9 @@ class Projectile_Authoring : MonoBehaviour
 public struct Projectile : IComponentData
 {
     public float speed;
-    public int damage;
-    public Entity owner;
+    public float hullDamage;
+    public float rockDamage;
+    public Entity owner;           // never hits its own shooter
+    public CombatFaction faction;  // never hits this faction
+    public CollisionLayer layer;   // the Layer Matrix decides what it hits
 }
-
-/*
-public struct ShootAttack : IComponentData
-{
-    public float interval;
-    public float nextFireTime;
-    
-    public int attackDamage;
-    public float attackRange;
-    public float3 projectileSpawnOffset;
-    public OnShootEvent onShoot;
-    
-    public struct OnShootEvent
-    {
-        public bool isTriggered;
-        public float3 projectileSpawnPosition;
-        
-    }
-}*/
