@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f55b31c11dee0e4dacdb0326616ccd6, type: 3}
+  m_Name: Raiders
+  m_EditorClassIdentifier: Assembly-CSharp::PirateParty
+  chance: 50
+  goal: 0
+  aggression: 0.6
+  lootToLeave: 0
+  ships:
+  - prefab: {fileID: 918234457439945310, guid: 8d3561e209537014f834f784e54bbc3e, type: 3}
+    min: 2
+    max: 3
+  formation: 0
+  spacing: 0
+  notes: Hit stations and worker bots, fight anyone who shows up.

@@ -4,24 +4,46 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 
-// Pirate behaviour, a small state machine per ship:
-//   Hunt   pick the best target in sight and fly at it. Lone worker bots are the favourite prey,
-//          then buildings, then ships (score = distance x weight).
-//   Attack circle the target at preferredRange, nose on it, and fire whenever it's in the arc,
-//          alternating between guns. Back to Hunt if it gets away.
-//   Flee   below fleeBelow health: run from the target and disappear once nobody is in sight.
-// Targets are anything the Layer Matrix lets a Ship target that isn't neutral or a pirate.
-// Pirates only shoot through the normal projectile pipeline, so the matrix, density damage and
-// friendly fire rules all apply to them too.
+// Pirate behaviour, a small state machine per ship, shaped by its party's goal and aggression:
+//   Hunt    pick the best target in sight (or loot) and fly to it.
+//   Attack  circle the target at range, nose on it, and fire when it's in the arc.
+//   Flee    badly damaged: run, and vanish once nobody is in sight.
+//   Depart  has enough loot: leave the same way.
+// Goals:
+//   Raid      targets stations first, then bots, then ships.
+//   Scavenge  steals loose ore (flies over it); shadows worker bots when there's none; only
+//             shoots back after being hit.
+//   Slavers   wears worker bots down and carries them off when they're nearly dead.
+//   Hunt      goes for ships first.
+// Aggression (0..1) widens sight, tightens the orbit and makes it run later.
+// Pirates keep apart from each other (separation steering), and shoot through the normal
+// projectile pipeline, so the layer matrix, density damage and friendly fire rules all apply.
 [BurstCompile]
 [UpdateAfter(typeof(WorkerBotSystem_Dots))]
 public partial struct PirateSystem_Dots : ISystem
 {
+    private const float LootPerOre = 1f;
+    private const float LootPerCapture = 5f;
+
     private struct Candidate
     {
         public Entity entity;
         public float2 position;
-        public float weight;
+        public CollisionLayer layer;
+        public bool isWorkerBot;
+    }
+
+    private struct Ore
+    {
+        public Entity entity;
+        public float2 position;
+    }
+
+    private struct Mate
+    {
+        public Entity entity;
+        public float2 position;
+        public float radius;
     }
 
     public void OnCreate(ref SystemState state)
@@ -55,23 +77,46 @@ public partial struct PirateSystem_Dots : ISystem
                 continue;
             if (!matrix.CanTarget(CollisionLayer.Ship, tg.layer))
                 continue;
-            float weight = tg.layer == CollisionLayer.Bot ? 0.6f
-                         : tg.layer == CollisionLayer.Building ? 0.8f
-                         : 1f;
-            candidates.Add(new Candidate { entity = entity, position = transform.ValueRO.Position.xz, weight = weight });
+            candidates.Add(new Candidate
+            {
+                entity = entity,
+                position = transform.ValueRO.Position.xz,
+                layer = tg.layer,
+                isWorkerBot = SystemAPI.HasComponent<WorkerBot>(entity)
+            });
         }
 
-        var pirates = new NativeList<Entity>(Allocator.Temp);
-        foreach (var (ai, entity) in SystemAPI.Query<RefRO<PirateAI>>().WithNone<DestroyedEntityTag_Dots>().WithEntityAccess())
-            pirates.Add(entity);
+        // Loose ore nobody is pulling in yet.
+        var ore = new NativeList<Ore>(Allocator.Temp);
+        foreach (var (chunk, transform, entity) in
+                 SystemAPI.Query<RefRO<OreChunk>, RefRO<LocalTransform>>()
+                          .WithNone<DestroyedEntityTag_Dots>()
+                          .WithEntityAccess())
+            if (chunk.ValueRO.state != OreState.Collecting)
+                ore.Add(new Ore { entity = entity, position = transform.ValueRO.Position.xz });
 
+        // The pirates themselves, for separation.
+        var mates = new NativeList<Mate>(Allocator.Temp);
+        foreach (var (ai, transform, entity) in
+                 SystemAPI.Query<RefRO<PirateAI>, RefRO<LocalTransform>>()
+                          .WithNone<DestroyedEntityTag_Dots>()
+                          .WithEntityAccess())
+        {
+            float radius = SystemAPI.HasComponent<Targetable>(entity) ? SystemAPI.GetComponent<Targetable>(entity).radius : 3f;
+            mates.Add(new Mate { entity = entity, position = transform.ValueRO.Position.xz, radius = radius });
+        }
+
+        var taken = new NativeHashSet<Entity>(8, Allocator.Temp); // ore and bots claimed this frame
         var ecb = new EntityCommandBuffer(Allocator.Temp);
 
-        for (int p = 0; p < pirates.Length; p++)
+        for (int p = 0; p < mates.Length; p++)
         {
-            Entity self = pirates[p];
+            Entity self = mates[p].entity;
             PirateAI ai = SystemAPI.GetComponent<PirateAI>(self);
             PirateSettings s = SystemAPI.GetComponent<PirateSettings>(self);
+            PirateBehaviour b = SystemAPI.HasComponent<PirateBehaviour>(self)
+                ? SystemAPI.GetComponent<PirateBehaviour>(self)
+                : new PirateBehaviour { goal = PirateGoal.Raid, aggression = 0.5f };
             LocalTransform t = SystemAPI.GetComponent<LocalTransform>(self);
             float2 me = t.Position.xz;
 
@@ -86,44 +131,85 @@ public partial struct PirateSystem_Dots : ISystem
                 }
             }
 
-            float healthFraction = SystemAPI.HasComponent<Health>(self) ? SystemAPI.GetComponent<Health>(self).Fraction : 1f;
-            if (healthFraction < s.fleeBelow && ai.state != PirateState.Flee)
-                ai.state = PirateState.Flee;
+            // Personality.
+            float a = math.saturate(b.aggression);
+            float sight = s.sightRange * math.lerp(0.6f, 1.4f, a);
+            float range = s.preferredRange * math.lerp(1.25f, 0.85f, a);
+            float fleeBelow = s.fleeBelow * math.lerp(1.6f, 0.4f, a);
 
-            // Is the current target still around?
+            // Hit? Remember it for a while (scavengers only fight when provoked).
+            Health health = SystemAPI.HasComponent<Health>(self) ? SystemAPI.GetComponent<Health>(self) : new Health { current = 1f, max = 1f };
+            if (ai.lastHealth > 0f && health.current < ai.lastHealth - 0.01f)
+                ai.provokedTimer = 8f;
+            ai.lastHealth = health.current;
+            ai.provokedTimer = math.max(0f, ai.provokedTimer - dt);
+            bool provoked = ai.provokedTimer > 0f;
+            bool peaceful = b.goal == PirateGoal.Scavenge && !provoked;
+
+            if (health.Fraction < fleeBelow && ai.state != PirateState.Flee)
+                ai.state = PirateState.Flee;
+            if (b.lootGoal > 0f && ai.loot >= b.lootGoal && ai.state != PirateState.Flee)
+                ai.state = PirateState.Depart;
+
+            // Where is the current target now?
             bool targetValid = false;
             float2 targetPos = float2.zero;
-            for (int c = 0; c < candidates.Length; c++)
-                if (candidates[c].entity == ai.target)
-                {
-                    targetValid = true;
-                    targetPos = candidates[c].position;
-                    break;
-                }
+            int targetIndex = -1;
+            if (ai.targetIsOre)
+            {
+                for (int o = 0; o < ore.Length; o++)
+                    if (ore[o].entity == ai.target && !taken.Contains(ore[o].entity))
+                    {
+                        targetValid = true;
+                        targetPos = ore[o].position;
+                        break;
+                    }
+            }
+            else
+            {
+                for (int c = 0; c < candidates.Length; c++)
+                    if (candidates[c].entity == ai.target)
+                    {
+                        targetValid = true;
+                        targetPos = candidates[c].position;
+                        targetIndex = c;
+                        break;
+                    }
+            }
 
+            // Pick a target.
             ai.retargetTimer -= dt;
-            if (ai.state != PirateState.Flee && (!targetValid || ai.retargetTimer <= 0f))
+            bool hunting = ai.state == PirateState.Hunt || ai.state == PirateState.Attack;
+            if (hunting && (!targetValid || ai.retargetTimer <= 0f))
             {
                 ai.retargetTimer = 2f;
-                float best = float.MaxValue;
-                Entity bestEntity = Entity.Null;
-                for (int c = 0; c < candidates.Length; c++)
+                Entity best = Entity.Null;
+                bool bestIsOre = false;
+                float bestScore = float.MaxValue;
+
+                if (b.goal == PirateGoal.Scavenge && !provoked)
                 {
-                    float d = math.distance(candidates[c].position, me);
-                    if (d > s.sightRange)
-                        continue;
-                    float score = d * candidates[c].weight;
-                    if (candidates[c].entity == ai.target)
-                        score *= 0.8f; // stick with what you're on unless something much better shows up
-                    if (score < best)
+                    for (int o = 0; o < ore.Length; o++)
                     {
-                        best = score;
-                        bestEntity = candidates[c].entity;
-                        targetPos = candidates[c].position;
+                        if (taken.Contains(ore[o].entity)) continue;
+                        float d = math.distance(ore[o].position, me);
+                        if (d < sight && d < bestScore) { bestScore = d; best = ore[o].entity; targetPos = ore[o].position; bestIsOre = true; }
                     }
                 }
-                ai.target = bestEntity;
-                targetValid = bestEntity != Entity.Null;
+                if (best == Entity.Null)
+                {
+                    for (int c = 0; c < candidates.Length; c++)
+                    {
+                        float d = math.distance(candidates[c].position, me);
+                        if (d > sight) continue;
+                        float score = d * Weight(b.goal, candidates[c], provoked);
+                        if (candidates[c].entity == ai.target) score *= 0.8f; // stick with it unless something much better shows up
+                        if (score < bestScore) { bestScore = score; best = candidates[c].entity; targetPos = candidates[c].position; targetIndex = c; bestIsOre = false; }
+                    }
+                }
+                ai.target = best;
+                ai.targetIsOre = bestIsOre;
+                targetValid = best != Entity.Null;
                 if (!targetValid && ai.state == PirateState.Attack)
                     ai.state = PirateState.Hunt;
             }
@@ -135,18 +221,41 @@ public partial struct PirateSystem_Dots : ISystem
             switch (ai.state)
             {
                 case PirateState.Hunt:
-                    if (targetValid)
+                    if (!targetValid)
+                        break;
+                    if (ai.targetIsOre)
+                    {
+                        // Fly over the ore and scoop it up.
+                        desiredVelocity = math.normalizesafe(targetPos - me) * s.maxSpeed;
+                        face = math.normalizesafe(targetPos - me, face);
+                        if (distance < mates[p].radius + 2f && taken.Add(ai.target))
+                        {
+                            ecb.AddComponent<DestroyedEntityTag_Dots>(ai.target);
+                            ai.loot += LootPerOre;
+                            ai.target = Entity.Null;
+                            ai.retargetTimer = 0f;
+                        }
+                    }
+                    else if (peaceful)
+                    {
+                        // Shadow the miners from a distance, waiting for ore to appear.
+                        float2 away = math.normalizesafe(me - targetPos, face);
+                        float2 goal = targetPos + away * range * 2f;
+                        desiredVelocity = math.normalizesafe(goal - me) * math.min(s.maxSpeed, math.distance(goal, me));
+                        face = math.normalizesafe(targetPos - me, face);
+                    }
+                    else
                     {
                         float2 toTarget = math.normalizesafe(targetPos - me);
                         desiredVelocity = toTarget * s.maxSpeed;
                         face = toTarget;
-                        if (distance < s.preferredRange * 1.5f)
+                        if (distance < range * 1.5f)
                             ai.state = PirateState.Attack;
                     }
                     break;
 
                 case PirateState.Attack:
-                    if (!targetValid)
+                    if (!targetValid || ai.targetIsOre || peaceful)
                     {
                         ai.state = PirateState.Hunt;
                         break;
@@ -154,29 +263,55 @@ public partial struct PirateSystem_Dots : ISystem
                     {
                         float2 radial = math.normalizesafe(me - targetPos, new float2(1f, 0f));
                         float2 tangent = new float2(-radial.y, radial.x) * ai.orbitSign;
-                        float2 goal = targetPos + math.normalizesafe(radial + tangent * 0.8f) * s.preferredRange;
+                        float2 goal = targetPos + math.normalizesafe(radial + tangent * 0.8f) * range;
                         float2 toGoal = goal - me;
                         desiredVelocity = math.normalizesafe(toGoal) * math.min(s.maxSpeed, math.length(toGoal) * 2f + s.maxSpeed * 0.4f);
                         face = math.normalizesafe(targetPos - me);
-                        if (distance > s.preferredRange * 3f)
+                        if (distance > range * 3f)
                             ai.state = PirateState.Hunt;
+
+                        // Slavers: carry off a worker bot once it's nearly dead.
+                        if (b.goal == PirateGoal.Slavers && targetIndex >= 0 && candidates[targetIndex].isWorkerBot
+                            && distance < range * 0.9f && SystemAPI.HasComponent<Health>(ai.target)
+                            && SystemAPI.GetComponent<Health>(ai.target).Fraction < 0.35f && taken.Add(ai.target))
+                        {
+                            ecb.AddComponent<DestroyedEntityTag_Dots>(ai.target);
+                            ai.loot += LootPerCapture;
+                            ai.target = Entity.Null;
+                            ai.retargetTimer = 0f;
+                            ai.state = PirateState.Hunt;
+                            targetValid = false;
+                        }
                     }
                     break;
 
                 case PirateState.Flee:
+                case PirateState.Depart:
                 {
-                    float2 away = targetValid ? math.normalizesafe(me - targetPos, face) : face;
+                    float2 away = targetValid && !ai.targetIsOre ? math.normalizesafe(me - targetPos, face) : face;
                     desiredVelocity = away * s.maxSpeed;
                     face = away;
-                    // Escaped: nobody in sight any more.
                     bool seen = false;
                     for (int c = 0; c < candidates.Length && !seen; c++)
-                        seen = math.distance(candidates[c].position, me) < s.sightRange * 1.2f;
+                        seen = math.distance(candidates[c].position, me) < sight * 1.2f;
                     if (!seen)
-                        ecb.AddComponent<DestroyedEntityTag_Dots>(self);
+                        ecb.AddComponent<DestroyedEntityTag_Dots>(self); // got away
                     break;
                 }
             }
+
+            // Keep apart from the other pirates.
+            float2 push = float2.zero;
+            for (int m = 0; m < mates.Length; m++)
+            {
+                if (m == p) continue;
+                float2 offset = me - mates[m].position;
+                float minGap = (mates[p].radius + mates[m].radius) * 1.6f;
+                float d = math.length(offset);
+                if (d < minGap)
+                    push += (d > 0.01f ? offset / d : new float2(ai.orbitSign, 0f)) * (1f - d / minGap);
+            }
+            desiredVelocity += push * s.maxSpeed;
 
             // Fly: ease the velocity toward the wanted one, then turn toward the wanted facing.
             float2 v = ai.velocity.xz;
@@ -185,6 +320,9 @@ public partial struct PirateSystem_Dots : ISystem
             if (math.lengthsq(dv) > maxDv * maxDv)
                 dv = math.normalize(dv) * maxDv;
             v += dv;
+            float speedCap = s.maxSpeed * 1.2f;
+            if (math.lengthsq(v) > speedCap * speedCap)
+                v = math.normalize(v) * speedCap;
             ai.velocity = new float3(v.x, 0f, v.y);
             t.Position += ai.velocity * dt;
             t.Position.y = 0f;
@@ -192,14 +330,16 @@ public partial struct PirateSystem_Dots : ISystem
 
             // Shoot.
             ai.fireTimer -= dt;
-            if (targetValid && ai.state != PirateState.Flee && ai.fireTimer <= 0f)
+            bool mayShoot = targetValid && !ai.targetIsOre && !peaceful
+                            && (ai.state == PirateState.Hunt || ai.state == PirateState.Attack);
+            if (mayShoot && ai.fireTimer <= 0f)
             {
                 WeaponDef def = WeaponData.Find(s.weapon, hasCatalog, catalog);
-                float range = def.speed * def.lifetime * 0.9f;
+                float weaponRange = def.speed * def.lifetime * 0.9f;
                 float2 forward = Forward2(t);
                 float2 toTarget = math.normalizesafe(targetPos - me);
                 float angle = math.acos(math.clamp(math.dot(forward, toTarget), -1f, 1f));
-                if (distance <= range && angle <= s.fireArc)
+                if (distance <= weaponRange && angle <= s.fireArc)
                 {
                     DynamicBuffer<PirateGun> guns = SystemAPI.GetBuffer<PirateGun>(self);
                     float3 muzzle = t.TransformPoint(guns[ai.nextGun % guns.Length].localPosition);
@@ -226,8 +366,23 @@ public partial struct PirateSystem_Dots : ISystem
 
         ecb.Playback(state.EntityManager);
         ecb.Dispose();
-        pirates.Dispose();
+        taken.Dispose();
+        mates.Dispose();
+        ore.Dispose();
         candidates.Dispose();
+    }
+
+    // Lower = more attractive. Multiplies the distance when choosing a target.
+    private static float Weight(PirateGoal goal, in Candidate c, bool provoked)
+    {
+        bool bot = c.layer == CollisionLayer.Bot, building = c.layer == CollisionLayer.Building;
+        switch (goal)
+        {
+            case PirateGoal.Raid:     return building ? 0.5f : bot ? 0.7f : 1f;
+            case PirateGoal.Slavers:  return c.isWorkerBot ? 0.4f : building ? 3f : 1.5f;
+            case PirateGoal.Hunt:     return building ? 1.5f : bot ? 1f : 0.5f;
+            default:                  return provoked ? (building ? 2f : 1f) : (c.isWorkerBot ? 0.5f : 2f); // Scavenge
+        }
     }
 
     private static float2 Forward2(LocalTransform t)

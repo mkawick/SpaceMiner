@@ -2,25 +2,15 @@ using Unity.Entities;
 using UnityEngine;
 
 // Put one of these in the subscene (next to the Build Catalog is fine). It bakes the game-wide
-// libraries so systems can spawn things at runtime: ship types and engine flames.
+// libraries so systems can spawn things at runtime: ship types, pirate parties and engine flames.
 public class GameLibrary_Authoring : MonoBehaviour
 {
     [Tooltip("Ship prefabs the game can spawn. GameSession's Starting Ship Type picks one by its position in this list (0 = first).")]
     public GameObject[] shipTypes = new GameObject[0];
 
     [Header("Pirates")]
-    [Tooltip("Pirate ship prefabs (each needs Pirate_Authoring). Waves pick from these at random.")]
-    public GameObject[] pirateShips = new GameObject[0];
-    public bool piratesEnabled = true;
-    [Tooltip("Seconds after the start before the first wave. F9 sends one immediately.")]
-    public float firstWaveDelay = 90f;
-    public float waveInterval = 180f;
-    [Tooltip("Ships per wave: x = min, y = max")]
-    public Vector2Int groupSize = new Vector2Int(2, 3);
-    [Tooltip("How far from the player a wave appears")]
-    public float spawnDistance = 350f;
-    [Tooltip("No new waves while this many pirates are alive")]
-    public int maxPirates = 8;
+    [Tooltip("Which pirate parties appear and when. Empty = " + PirateRoster.DefaultPath + " (Tools > Spacey > Pirate Roster)")]
+    public PirateRoster pirateRoster;
 
     [Tooltip("Empty = " + EngineEffectLibrary.DefaultPath + " (Tools > Spacey > Engine Effect Library)")]
     public EngineEffectLibrary engineEffects;
@@ -37,20 +27,7 @@ public class GameLibrary_Authoring : MonoBehaviour
                     if (ship != null)
                         ships.Add(new ShipPrefab { name = ship.name, prefab = GetEntity(ship, TransformUsageFlags.Dynamic) });
 
-            AddComponent(entity, new PirateSpawnConfig
-            {
-                enabled = a.piratesEnabled,
-                firstWaveDelay = Mathf.Max(0f, a.firstWaveDelay),
-                waveInterval = Mathf.Max(5f, a.waveInterval),
-                groupSize = new Unity.Mathematics.int2(Mathf.Max(1, a.groupSize.x), Mathf.Max(a.groupSize.x, a.groupSize.y)),
-                spawnDistance = Mathf.Max(50f, a.spawnDistance),
-                maxAlive = Mathf.Max(1, a.maxPirates)
-            });
-            DynamicBuffer<PiratePrefab> pirates = AddBuffer<PiratePrefab>(entity);
-            if (a.pirateShips != null)
-                foreach (GameObject ship in a.pirateShips)
-                    if (ship != null)
-                        pirates.Add(new PiratePrefab { prefab = GetEntity(ship, TransformUsageFlags.Dynamic) });
+            BakePirates(a, entity);
 
             DynamicBuffer<EngineEffectPrefab> buffer = AddBuffer<EngineEffectPrefab>(entity);
 
@@ -74,6 +51,67 @@ public class GameLibrary_Authoring : MonoBehaviour
                     style = (byte)Mathf.Clamp(e.style, 0, 255),
                     colour = e.colour,
                     prefab = GetEntity(e.prefab, TransformUsageFlags.Dynamic)
+                });
+            }
+        }
+
+        private void BakePirates(GameLibrary_Authoring a, Entity entity)
+        {
+            DynamicBuffer<PiratePartyDef> parties = AddBuffer<PiratePartyDef>(entity);
+            DynamicBuffer<PiratePartyShip> partyShips = AddBuffer<PiratePartyShip>(entity);
+
+            PirateRoster roster = a.pirateRoster;
+#if UNITY_EDITOR
+            if (roster == null)
+                roster = UnityEditor.AssetDatabase.LoadAssetAtPath<PirateRoster>(PirateRoster.DefaultPath);
+#endif
+            if (roster == null)
+            {
+                AddComponent(entity, new PirateSpawnConfig { enabled = false });
+                return;
+            }
+            DependsOn(roster);
+            AddComponent(entity, new PirateSpawnConfig
+            {
+                enabled = roster.enabled,
+                firstWaveDelay = Mathf.Max(0f, roster.firstWaveDelay),
+                waveInterval = Mathf.Max(5f, roster.waveInterval),
+                spawnDistance = Mathf.Max(50f, roster.spawnDistance),
+                maxAlive = Mathf.Max(1, roster.maxAlive)
+            });
+
+            foreach (PirateParty party in roster.parties)
+            {
+                if (party == null)
+                    continue;
+                DependsOn(party);
+                int start = partyShips.Length;
+                foreach (PirateParty.ShipEntry ship in party.ships)
+                {
+                    if (ship.prefab == null)
+                        continue;
+                    if (ship.prefab.GetComponent<Pirate_Authoring>() == null)
+                        Debug.LogWarning($"Pirate party {party.name}: {ship.prefab.name} has no Pirate_Authoring, so it won't fly or fight.");
+                    partyShips.Add(new PiratePartyShip
+                    {
+                        prefab = GetEntity(ship.prefab, TransformUsageFlags.Dynamic),
+                        min = Mathf.Max(0, ship.min),
+                        max = Mathf.Max(ship.min, ship.max)
+                    });
+                }
+                if (partyShips.Length == start)
+                    continue; // no ships: can't appear
+                parties.Add(new PiratePartyDef
+                {
+                    name = party.name,
+                    weight = Mathf.Max(0f, party.chance),
+                    goal = party.goal,
+                    aggression = Mathf.Clamp01(party.aggression),
+                    lootGoal = Mathf.Max(0f, party.lootToLeave),
+                    formation = party.formation,
+                    spacing = Mathf.Max(0f, party.spacing),
+                    shipStart = start,
+                    shipCount = partyShips.Length - start
                 });
             }
         }

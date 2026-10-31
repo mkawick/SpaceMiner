@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f55b31c11dee0e4dacdb0326616ccd6, type: 3}
+  m_Name: Scavengers
+  m_EditorClassIdentifier: Assembly-CSharp::PirateParty
+  chance: 30
+  goal: 1
+  aggression: 0.25
+  lootToLeave: 12
+  ships:
+  - prefab: {fileID: 918234457439945310, guid: 8d3561e209537014f834f784e54bbc3e, type: 3}
+    min: 1
+    max: 2
+  formation: 1
+  spacing: 0
+  notes: Shadow miners and steal loose ore. Only fight back when shot.
