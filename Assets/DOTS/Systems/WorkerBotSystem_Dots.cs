@@ -58,6 +58,15 @@ public partial struct WorkerBotSystem_Dots : ISystem
             LocalTransform t = SystemAPI.GetComponent<LocalTransform>(entity);
             DynamicBuffer<CargoItem> held = SystemAPI.GetBuffer<CargoItem>(entity);
 
+            // Under fire: drop what you're doing and run home. Mining resumes from there.
+            if (SystemAPI.HasComponent<Health>(entity))
+            {
+                float health = SystemAPI.GetComponent<Health>(entity).current;
+                if (bot.lastHealth > 0f && health < bot.lastHealth - 0.01f && bot.state != BotState.Returning)
+                    bot.state = BotState.Returning;
+                bot.lastHealth = health;
+            }
+
             switch (bot.state)
             {
                 case BotState.Moving:

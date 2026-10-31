@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05d91b5be79e1ce42854d815bec436ce, type: 3}
+  m_Name: EngineEffectLibrary
+  m_EditorClassIdentifier: Assembly-CSharp::EngineEffectLibrary
+  entries:
+  - style: 1
+    colour: 0
+    prefab: {fileID: 154652, guid: 0f489bd6a9a47a54ca8caa279cd94210, type: 3}
+  - style: 1
+    colour: 1
+    prefab: {fileID: 154652, guid: d8dcd00755dddd24d937de6f2f51b6d5, type: 3}
+  - style: 1
+    colour: 2
+    prefab: {fileID: 154652, guid: 075efd05ef2cf0742ab096556d713a03, type: 3}
+  - style: 1
+    colour: 3
+    prefab: {fileID: 154652, guid: 0cad978f330fdba4ead6cce2ba7018c9, type: 3}
+  - style: 1
+    colour: 4
+    prefab: {fileID: 154652, guid: 3fcfe1eb97845dc48a732803ab118cdd, type: 3}
+  - style: 2
+    colour: 0
+    prefab: {fileID: 188180, guid: 2c1da28a69801a5488202365ee1e3d4c, type: 3}
+  - style: 2
+    colour: 1
+    prefab: {fileID: 188180, guid: eb7999205a9da6245be781e004544c2b, type: 3}
+  - style: 2
+    colour: 2
+    prefab: {fileID: 188180, guid: 402acf60133a4384ebf3d6b8bc0d60b2, type: 3}
+  - style: 2
+    colour: 3
+    prefab: {fileID: 188180, guid: 024966676dd40174c90a91ee66e36d48, type: 3}
+  - style: 2
+    colour: 4
+    prefab: {fileID: 188180, guid: d15a7199438faba4486dd2485983d82a, type: 3}
+  - style: 3
+    colour: 0
+    prefab: {fileID: 160276, guid: 121f8b75ac6c12842a7692722b5a1f33, type: 3}
+  - style: 3
+    colour: 1
+    prefab: {fileID: 160276, guid: 6c82c6f8263147a448ccce4af2ee7b23, type: 3}
+  - style: 3
+    colour: 2
+    prefab: {fileID: 160276, guid: bd5fcece67251a049b1eadf068437414, type: 3}
+  - style: 3
+    colour: 3
+    prefab: {fileID: 160276, guid: 942d25a3b01da3948bdcbd266bf83f0d, type: 3}
+  - style: 3
+    colour: 4
+    prefab: {fileID: 160276, guid: e3eebf72c303f7c46a0babeaf1b656fb, type: 3}
+  - style: 4
+    colour: 0
+    prefab: {fileID: 167884, guid: f8d0f1c0e1d833f4a91569c62fee0aee, type: 3}
+  - style: 4
+    colour: 1
+    prefab: {fileID: 167884, guid: 6571f87cd326e4942b1f318e9413ef6f, type: 3}
+  - style: 4
+    colour: 2
+    prefab: {fileID: 167884, guid: 995a4ad4d4c5dfd40845d03968db428a, type: 3}
+  - style: 4
+    colour: 3
+    prefab: {fileID: 167884, guid: 9b6bd45afdff62246a050bfec4f37988, type: 3}
+  - style: 4
+    colour: 4
+    prefab: {fileID: 167884, guid: 01aa2f251511a2742aaf0b7ffe41e0ec, type: 3}
+  - style: 5
+    colour: 0
+    prefab: {fileID: 184122, guid: d715d9b2deaf8c7479ba05f4d0ee0539, type: 3}
+  - style: 5
+    colour: 1
+    prefab: {fileID: 184122, guid: fe5e248c888b065498ea68738fb60989, type: 3}
+  - style: 5
+    colour: 2
+    prefab: {fileID: 184122, guid: 6cdcc3b15f66c6f4d8a8295f408d5af3, type: 3}
+  - style: 5
+    colour: 3
+    prefab: {fileID: 184122, guid: db8551ea26b731842acd4f050fd94139, type: 3}
+  - style: 5
+    colour: 4
+    prefab: {fileID: 184122, guid: 1926d3c2f39946541bf4f4fdeaddd746, type: 3}
+  - style: 6
+    colour: 0
+    prefab: {fileID: 199298, guid: 4d58a661aba98604384f7b0652365d86, type: 3}
+  - style: 6
+    colour: 1
+    prefab: {fileID: 199298, guid: fffe0f667b1e48b4fb07a9d4253cffd6, type: 3}
+  - style: 6
+    colour: 2
+    prefab: {fileID: 199298, guid: 55d630a33c787b944b2e5d424d4cc7ba, type: 3}
+  - style: 6
+    colour: 3
+    prefab: {fileID: 199298, guid: 43bb3d71ee49c9e4ca54e07f52419e5e, type: 3}
+  - style: 6
+    colour: 4
+    prefab: {fileID: 199298, guid: e3102d6601dfda74e972ee949ea38541, type: 3}

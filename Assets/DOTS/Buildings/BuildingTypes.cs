@@ -147,4 +147,5 @@ public struct WorkerBot : IComponentData
     public float3 destination; // for Moving
     public float fireTimer;
     public int number;         // shown in the worker list
+    public float lastHealth;   // to notice being shot
 }

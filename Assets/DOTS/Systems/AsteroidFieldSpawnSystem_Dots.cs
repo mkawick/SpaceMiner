@@ -5,8 +5,8 @@ using Unity.Physics;
 using Unity.Transforms;
 using Random = Unity.Mathematics.Random;
 
-// Startup sequence: builds the whole asteroid field from the seed once, then moves the player's
-// ship to its start hex. Every hex is generated from hash(seed, q, r) alone, so the result does
+// Startup sequence: builds the whole asteroid field from the seed once and picks the player's
+// start hex (AsteroidFieldReady.playerHex); PlayerSpawnSystem_Dots puts the ship there. Every hex is generated from hash(seed, q, r) alone, so the result does
 // not depend on generation order and any machine with the same seed gets the same field.
 [UpdateInGroup(typeof(InitializationSystemGroup))]
 public partial struct AsteroidFieldSpawnSystem_Dots : ISystem
@@ -39,10 +39,8 @@ public partial struct AsteroidFieldSpawnSystem_Dots : ISystem
         if (!em.HasComponent<AsteroidFieldReady>(configEntity))
             Generate(em, configEntity, cfg);
 
-        if (!em.HasComponent<PlayerStartPlaced>(configEntity))
-            TryPlacePlayer(ref state, em, configEntity, cfg);
-
-        if (em.HasComponent<AsteroidFieldReady>(configEntity) && em.HasComponent<PlayerStartPlaced>(configEntity))
+        // Placing the player is PlayerSpawnSystem_Dots's job; it reads AsteroidFieldReady.playerHex.
+        if (em.HasComponent<AsteroidFieldReady>(configEntity))
             state.Enabled = false;
     }
 
@@ -298,36 +296,5 @@ public partial struct AsteroidFieldSpawnSystem_Dots : ISystem
         em.RemoveComponent<PhysicsDamping>(e);
         em.RemoveComponent<PhysicsGravityFactor>(e);
         em.RemoveComponent<PhysicsColliderKeyEntityPair>(e);
-    }
-
-    private void TryPlacePlayer(ref SystemState state, EntityManager em, Entity configEntity, AsteroidFieldConfig cfg)
-    {
-        if (!em.HasComponent<AsteroidFieldReady>(configEntity))
-            return;
-
-        EntityQuery playerQuery = SystemAPI.QueryBuilder()
-            .WithAll<InputData_Dots, LocalTransform, SpaceShipStatus_Dots>()
-            .Build();
-        if (playerQuery.IsEmpty)
-            return; // the ship hasn't loaded yet; try again next frame
-
-        int2 hex = em.GetComponentData<AsteroidFieldReady>(configEntity).playerHex;
-        float2 centre = HexGrid.HexToWorld(hex, cfg.hexSize);
-        float3 toMapCentre = new float3(-centre.x, 0f, -centre.y);
-
-        NativeArray<Entity> players = playerQuery.ToEntityArray(Allocator.Temp);
-        for (int i = 0; i < players.Length; i++)
-        {
-            LocalTransform t = em.GetComponentData<LocalTransform>(players[i]);
-            t.Position = new float3(centre.x, 0f, centre.y);
-            t.Rotation = quaternion.LookRotationSafe(toMapCentre, math.up());
-            em.SetComponentData(players[i], t);
-
-            SpaceShipStatus_Dots status = em.GetComponentData<SpaceShipStatus_Dots>(players[i]);
-            status.speed = 0f;
-            em.SetComponentData(players[i], status);
-        }
-
-        em.AddComponent<PlayerStartPlaced>(configEntity);
     }
 }

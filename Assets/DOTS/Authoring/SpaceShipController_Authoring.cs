@@ -22,6 +22,11 @@ public class SpaceShipAuthoringComponent_Dots : MonoBehaviour
     [Tooltip("How far this ship's radar reaches, in units; the minimap shows this far")]
     public float radarRange = 1200f;
 
+    [Header("Control")]
+    [Tooltip("Ticked: flown by the player when placed directly in a scene. Ships spawned by GameSession get " +
+             "player control from the spawner, so ship prefabs can leave this off (AI and bot ships must).")]
+    public bool playerControlledInScene = true;
+
     [Header("Combat")]
     public float maxHealth = 100f;
     [Tooltip("Hit radius on the play plane")]
@@ -110,9 +115,8 @@ public class SpaceShipBaker_Dots : Baker<SpaceShipAuthoringComponent_Dots>
             
             // the position
             AddComponent(spaceshipEntity, LocalTransform.FromPosition(newPosition.position));
-            AddComponent(spaceshipEntity, new InputData_Dots 
-            { 
-            });
+            if (authoring.playerControlledInScene)
+                AddComponent(spaceshipEntity, new InputData_Dots());
 
             AddComponent(spaceshipEntity, new ShipRadar { range = authoring.radarRange });
 

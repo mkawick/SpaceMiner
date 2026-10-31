@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 514786755}
   - component: {fileID: 514786756}
   - component: {fileID: 514786757}
+  - component: {fileID: 514786758}
   m_Layer: 0
   m_Name: AsteroidField
   m_TagString: Untagged
@@ -214,6 +215,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  layerMatrix: {fileID: 11400000, guid: d2d3f1cb4bbf89f418ebcd15381dbf51, type: 2}
   playerFaction: 2
   playerStartSlot: 0
 --- !u!114 &514786757
@@ -240,6 +242,7 @@ MonoBehaviour:
     fermite: 0
   workerFactoryBuildTime: 15
   workerFactoryRadius: 10
+  workerFactoryHealth: 500
   workerFactoryPrefab: {fileID: 3589572839203520836, guid: 3b117bb265e6a8640a1c7e7b7c627902, type: 3}
   grixWorkerFactory: {fileID: 5142868828862878338, guid: 45b2cf411711e7540b5891a39370d0f3, type: 3}
   fairwayWorkerFactory: {fileID: 7564680319383017926, guid: 37c13b67a1b31b04faf3b1dd09ea6947, type: 3}
@@ -263,6 +266,30 @@ MonoBehaviour:
   botFireInterval: 0.6
   botProjectileSpeed: 45
   botSelectRadius: 2.5
+  botHealth: 40
+--- !u!114 &514786758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514786754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 521df4d881c0cb34787489c55c49793d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameLibrary_Authoring
+  shipTypes:
+  - {fileID: 4924025555383616216, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
+  pirateShips:
+  - {fileID: 918234457439945310, guid: 8d3561e209537014f834f784e54bbc3e, type: 3}
+  piratesEnabled: 1
+  firstWaveDelay: 90
+  waveInterval: 180
+  groupSize: {x: 2, y: 3}
+  spawnDistance: 350
+  maxPirates: 8
+  engineEffects: {fileID: 11400000, guid: 6774363d728f3e14aae9ea32f15aa24c, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -19,11 +19,15 @@ public class Targetable_Authoring : MonoBehaviour
 
     public float EffectiveRadius()
     {
-        if (radius > 0f)
-            return radius;
+        return radius > 0f ? radius : RadiusFromRenderers(transform);
+    }
+
+    // How far the object's renderers reach from its centre on the play plane.
+    public static float RadiusFromRenderers(Transform root)
+    {
         float r = 0f;
-        Vector3 centre = transform.position;
-        foreach (Renderer renderer in GetComponentsInChildren<Renderer>())
+        Vector3 centre = root.position;
+        foreach (Renderer renderer in root.GetComponentsInChildren<Renderer>())
         {
             Bounds b = renderer.bounds;
             float dx = Mathf.Max(Mathf.Abs(b.min.x - centre.x), Mathf.Abs(b.max.x - centre.x));

@@ -9,6 +9,7 @@ public enum CombatFaction : byte
     Grix = 1 << 0, // 1          // green
     PostibuleSanctuary = 1 << 1, // 2   // Blue
     FairwayDominion  = 1 << 2, // 4   // red
+    Pirates = 1 << 3,          // 8   // hostile to everyone; yellow flames
     All = 0xFF   // Helper to target everything
 }
 

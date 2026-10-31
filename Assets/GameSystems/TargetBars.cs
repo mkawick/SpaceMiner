@@ -256,6 +256,8 @@ public class TargetBars : MonoBehaviour
             return FactionNames.Name(UnitId.WorkerBot, tg.faction);
         if (em.HasComponent<TrainingDrone>(e))
             return "Training drone";
+        if (em.HasComponent<PirateAI>(e))
+            return "Pirate";
         return tg.layer.ToString();
     }
 
