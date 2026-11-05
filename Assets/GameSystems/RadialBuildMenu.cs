@@ -56,7 +56,7 @@ public class RadialBuildMenu : MonoBehaviour
         slots = new[]
         {
             new Slot { title = FactionNames.Name(BuildingId.WorkerFactory, faction), subtitle = FactionNames.English(BuildingId.WorkerFactory), enabled = true, id = BuildingId.WorkerFactory },
-            new Slot { title = "Station", subtitle = "coming soon" },
+            new Slot { title = FactionNames.Name(BuildingId.Storage, faction), subtitle = FactionNames.English(BuildingId.Storage), enabled = true, id = BuildingId.Storage },
             new Slot { title = "Refinery", subtitle = "coming soon" },
             new Slot { title = "Defense Tower", subtitle = "coming soon" },
             new Slot { title = "Radar", subtitle = "coming soon" },
@@ -166,7 +166,7 @@ public class RadialBuildMenu : MonoBehaviour
             return;
         }
 
-        float radius = catalog.workerFactoryRadius;
+        float radius = catalog.RadiusOf(placingId);
         Vector2 at = new Vector2(ghostPosition.x, ghostPosition.z);
 
         if (Vector2.Distance(at, new Vector2(ship.Position.x, ship.Position.z)) > catalog.placementRange)
@@ -203,7 +203,7 @@ public class RadialBuildMenu : MonoBehaviour
         if (!catalog.freeBuild)
         {
             DynamicBuffer<CargoItem> cargo = em.GetBuffer<CargoItem>(player, true);
-            if (!catalog.workerFactoryCost.CanAfford(cargo))
+            if (!catalog.CostOf(placingId).CanAfford(cargo))
             {
                 ghostProblem = "Not enough resources";
                 return;
@@ -302,12 +302,12 @@ public class RadialBuildMenu : MonoBehaviour
         GLDraw.Begin();
         if (GameEcs.TryGetPlayer(out _, out LocalTransform ship))
             GLDraw.WorldCircle(ship.Position, catalog.placementRange, new Color(1f, 1f, 1f, 0.35f), 1.5f, 72, dashed: true);
-        GLDraw.WorldCircle(ghostPosition, catalog.workerFactoryRadius, colour, 3f, 48);
-        GLDraw.WorldCircle(ghostPosition, catalog.workerFactoryRadius * 0.15f, colour, 2f, 16);
+        GLDraw.WorldCircle(ghostPosition, catalog.RadiusOf(placingId), colour, 3f, 48);
+        GLDraw.WorldCircle(ghostPosition, catalog.RadiusOf(placingId) * 0.15f, colour, 2f, 16);
         GLDraw.End();
 
         CombatFaction faction = GameEcs.PlayerFaction;
-        string cost = catalog.freeBuild ? "Free (testing)" : GameEcs.CostText(catalog.workerFactoryCost);
+        string cost = catalog.freeBuild ? "Free (testing)" : GameEcs.CostText(catalog.CostOf(placingId));
         string text = $"{FactionNames.Name(placingId, faction)} ({FactionNames.English(placingId)})\n{cost}";
         if (!ghostValid && ghostProblem != null)
             text += "\n" + ghostProblem;

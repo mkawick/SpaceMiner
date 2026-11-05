@@ -168,19 +168,27 @@ public partial struct WorkerBotSystem_Dots : ISystem
                     if (!MoveTowards(ref t, dock, catalog, dt, 1.5f))
                         break;
 
-                    // Unload into the player's cargo.
+                    // Unload into the player's storage, as much as fits; the rest stays aboard.
                     if (player != Entity.Null)
                     {
                         DynamicBuffer<CargoItem> playerCargo = SystemAPI.GetBuffer<CargoItem>(player);
+                        bool limited = SystemAPI.HasBuffer<StorageCapacity>(player);
+                        DynamicBuffer<StorageCapacity> limits = limited ? SystemAPI.GetBuffer<StorageCapacity>(player) : default;
                         for (int i = 0; i < held.Length && i < playerCargo.Length; i++)
                         {
+                            float room = limited && i < limits.Length ? math.max(0f, limits[i].value - playerCargo[i].amount) : float.MaxValue;
+                            float moved = math.min(held[i].amount, room);
                             CargoItem item = playerCargo[i];
-                            item.amount += held[i].amount;
+                            item.amount += moved;
                             playerCargo[i] = item;
+                            held[i] = new CargoItem { amount = held[i].amount - moved };
                         }
                     }
-                    for (int i = 0; i < held.Length; i++)
-                        held[i] = new CargoItem();
+                    else
+                    {
+                        for (int i = 0; i < held.Length; i++)
+                            held[i] = new CargoItem();
+                    }
 
                     bot.state = BotState.Mining; // back to work; Mining picks a new rock if the old one is gone
                     break;

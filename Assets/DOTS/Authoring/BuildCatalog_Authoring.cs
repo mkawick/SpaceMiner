@@ -27,6 +27,15 @@ public class BuildCatalog_Authoring : MonoBehaviour
     [Tooltip("Empty = Assets/Prefabs/Postibule Sanctuary/Robotkammare - Worker Factory.prefab")]
     public GameObject postibuleWorkerFactory;
 
+    [Header("Storage Depot")]
+    [Tooltip("Unlocks 2,000 of block storage (upgradeable from the Storage screen)")]
+    public ResourceCost storageCost = new ResourceCost { iron = 80, silicate = 60, carbon = 30 };
+    public float storageBuildTime = 12f;
+    public float storageRadius = 8f;
+    public float storageHealth = 400f;
+    [Tooltip("Empty = Assets/Prefabs/Storage Depot.prefab")]
+    public GameObject storagePrefab;
+
     [Header("Worker bot")]
     public ResourceCost workerBotCost = new ResourceCost { iron = 15, copper = 5, carbon = 5 };
     public float workerBotTrainTime = 8f;
@@ -58,6 +67,10 @@ class BuildCatalog_Baker : Baker<BuildCatalog_Authoring>
             workerFactoryBuildTime = math.max(0.1f, a.workerFactoryBuildTime),
             workerFactoryRadius = math.max(1f, a.workerFactoryRadius),
             workerFactoryHealth = math.max(1f, a.workerFactoryHealth),
+            storageCost = a.storageCost,
+            storageBuildTime = math.max(0.1f, a.storageBuildTime),
+            storageRadius = math.max(1f, a.storageRadius),
+            storageHealth = math.max(1f, a.storageHealth),
             workerBotCost = a.workerBotCost,
             workerBotTrainTime = math.max(0.1f, a.workerBotTrainTime),
             botSpeed = a.botSpeed,
@@ -77,6 +90,7 @@ class BuildCatalog_Baker : Baker<BuildCatalog_Authoring>
         AddBuilding(buildings, BuildingId.WorkerFactory, CombatFaction.Grix, a.grixWorkerFactory, "Assets/Prefabs/Grix/Tvornica - Worker Factory.prefab");
         AddBuilding(buildings, BuildingId.WorkerFactory, CombatFaction.FairwayDominion, a.fairwayWorkerFactory, "Assets/Prefabs/Fairway Dominion/Roboterstube - Worker Factory.prefab");
         AddBuilding(buildings, BuildingId.WorkerFactory, CombatFaction.PostibuleSanctuary, a.postibuleWorkerFactory, "Assets/Prefabs/Postibule Sanctuary/Robotkammare - Worker Factory.prefab");
+        AddBuilding(buildings, BuildingId.Storage, CombatFaction.None, a.storagePrefab, "Assets/Prefabs/Storage Depot.prefab");
 
         GameObject bot = Resolve(a.workerBotPrefab, "Assets/Prefabs/Worker Bot.prefab");
         AddComponent(entity, new WorkerBotPrefab

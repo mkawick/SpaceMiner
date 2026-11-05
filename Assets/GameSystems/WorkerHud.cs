@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class WorkerHud : MonoBehaviour
 {
     public float margin = 16f;
-    public float top = 200f; // just under the cargo panel
+    public float top = 104f; // just under the resource panel
     public float width = 210f;
     public int maxRows = 16;
 

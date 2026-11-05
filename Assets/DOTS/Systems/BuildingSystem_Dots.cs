@@ -59,8 +59,8 @@ public partial struct BuildingSystem_Dots : ISystem
             BuildRequest request = em.GetComponentData<BuildRequest>(requests[i]);
             em.DestroyEntity(requests[i]);
 
-            float radius = catalog.workerFactoryRadius;
-            ResourceCost cost = catalog.workerFactoryCost;
+            float radius = catalog.RadiusOf(request.id);
+            ResourceCost cost = catalog.CostOf(request.id);
             float3 position = new float3(request.position.x, 0f, request.position.z);
 
             if (!IsPlacementValid(ref state, position, radius, playerPosition, catalog.placementRange))
@@ -90,7 +90,7 @@ public partial struct BuildingSystem_Dots : ISystem
             Entity building = em.Instantiate(prefab);
             LocalTransform t = em.GetComponentData<LocalTransform>(building);
             float baseScale = t.Scale;
-            float buildTime = catalog.freeBuild ? 0.5f : catalog.workerFactoryBuildTime;
+            float buildTime = catalog.freeBuild ? 0.5f : catalog.BuildTimeOf(request.id);
             t.Position = position;
             t.Rotation = request.rotation;
             t.Scale = baseScale * 0.2f;
@@ -108,8 +108,9 @@ public partial struct BuildingSystem_Dots : ISystem
             em.AddComponentData(building, new Selectable { radius = radius, kind = 1 });
             Combat.ApplyTargetable(em, building,
                 new Targetable { layer = CollisionLayer.Building, radius = radius, density = 0.2f },
-                catalog.workerFactoryHealth, faction);
-            em.AddComponentData(building, new TrainQueue());
+                catalog.HealthOf(request.id), faction);
+            if (request.id == BuildingId.WorkerFactory)
+                em.AddComponentData(building, new TrainQueue());
         }
     }
 
@@ -157,7 +158,7 @@ public partial struct BuildingSystem_Dots : ISystem
             Entity factory = em.GetComponentData<TrainRequest>(requests[i]).building;
             em.DestroyEntity(requests[i]);
 
-            if (!em.Exists(factory) || !em.HasComponent<Building>(factory) || !em.GetComponentData<Building>(factory).IsComplete)
+            if (!em.Exists(factory) || !em.HasComponent<TrainQueue>(factory) || !em.GetComponentData<Building>(factory).IsComplete)
                 continue;
 
             if (!catalog.freeBuild)

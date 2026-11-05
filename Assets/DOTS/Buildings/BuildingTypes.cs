@@ -4,6 +4,7 @@ using Unity.Mathematics;
 public enum BuildingId : byte
 {
     WorkerFactory = 0,
+    Storage = 1,
 }
 
 public enum UnitId : byte
@@ -61,6 +62,11 @@ public struct BuildCatalog : IComponentData
     public float workerFactoryRadius;
     public float workerFactoryHealth;
 
+    public ResourceCost storageCost;
+    public float storageBuildTime;
+    public float storageRadius;
+    public float storageHealth;
+
     public ResourceCost workerBotCost;
     public float workerBotTrainTime;
     public float botSpeed;
@@ -73,6 +79,11 @@ public struct BuildCatalog : IComponentData
     public float botProjectileSpeed;
     public float botSelectRadius;
     public float botHealth;
+
+    public ResourceCost CostOf(BuildingId id) => id == BuildingId.Storage ? storageCost : workerFactoryCost;
+    public float RadiusOf(BuildingId id) => id == BuildingId.Storage ? storageRadius : workerFactoryRadius;
+    public float BuildTimeOf(BuildingId id) => id == BuildingId.Storage ? storageBuildTime : workerFactoryBuildTime;
+    public float HealthOf(BuildingId id) => id == BuildingId.Storage ? storageHealth : workerFactoryHealth;
 }
 
 // A building prefab per faction. faction None = the fallback used when a faction has no prefab.

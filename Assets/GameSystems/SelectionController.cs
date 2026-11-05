@@ -283,6 +283,12 @@ public class SelectionController : MonoBehaviour
     private void DrawPanel(EntityManager em)
     {
         CombatFaction faction = GameEcs.PlayerFaction;
+        Entity storage = SelectedBuilding(em, BuildingId.Storage);
+        if (storage != Entity.Null)
+        {
+            DrawStoragePanel(em, storage, faction);
+            return;
+        }
         Entity factory = SelectedFactory(em);
         int botCount = 0;
         foreach (Entity e in selected)
@@ -331,6 +337,39 @@ public class SelectionController : MonoBehaviour
             GUI.Label(new Rect(x, y, w, 20f), $"{botCount} × {botName} ({FactionNames.English(UnitId.WorkerBot)})", panelTitle);
             GUI.Label(new Rect(x, y + 22f, w, 18f), "Right-click an asteroid to mine it, or open space to move there.", panelText);
         }
+    }
+
+    private Entity SelectedBuilding(EntityManager em, BuildingId id)
+    {
+        if (selected.Count != 1 || !em.Exists(selected[0]) || !em.HasComponent<Building>(selected[0]))
+            return Entity.Null;
+        return em.GetComponentData<Building>(selected[0]).id == id ? selected[0] : Entity.Null;
+    }
+
+    private void DrawStoragePanel(EntityManager em, Entity storage, CombatFaction faction)
+    {
+        Building building = em.GetComponentData<Building>(storage);
+        float width = 420f, height = 76f;
+        panelRect = new Rect((Screen.width - width) * 0.5f, Screen.height - height - 16f, width, height);
+        GameInput.RegisterUiRect(panelRect);
+        GUI.color = new Color(0.03f, 0.04f, 0.06f, 0.82f);
+        GUI.DrawTexture(panelRect, Texture2D.whiteTexture);
+        GUI.color = new Color(0.78f, 0.32f, 0.04f, 1f);
+        GUI.DrawTexture(new Rect(panelRect.x, panelRect.y, panelRect.width, 2f), Texture2D.whiteTexture);
+        GUI.color = Color.white;
+
+        float x = panelRect.x + 12f, y = panelRect.y + 8f, w = width - 24f;
+        GUI.Label(new Rect(x, y, w, 20f), $"{FactionNames.Name(building.id, faction)}  ·  {FactionNames.English(building.id)}", panelTitle);
+        if (!building.IsComplete)
+        {
+            float pct = building.progress / math.max(0.01f, building.buildTime);
+            GUI.Label(new Rect(x, y + 24f, w, 18f), $"Under construction  {pct * 100f:0}%", panelText);
+            DrawBar(new Rect(x, y + 46f, w, 8f), pct);
+            return;
+        }
+        if (GUI.Button(new Rect(x, y + 28f, 200f, 30f), "Open storage", buttonStyle))
+            StorageScreen.Open();
+        GUI.Label(new Rect(x + 210f, y + 30f, w - 210f, 36f), "Or right-click the cargo bars.", panelText);
     }
 
     private static void DrawBar(Rect r, float fraction)

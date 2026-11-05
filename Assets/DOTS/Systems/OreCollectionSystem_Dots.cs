@@ -16,6 +16,8 @@ public partial struct OreCollectionSystem_Dots : ISystem
         public float3 position;
         public OreCollector settings;
         public float free; // cargo space left, counting ore already flying in
+        public bool typed; // has per-resource storage limits (the player)
+        public FixedList64Bytes<float> typeFree; // space left per resource type, when typed
     }
 
     public void OnCreate(ref SystemState state)
@@ -45,13 +47,22 @@ public partial struct OreCollectionSystem_Dots : ISystem
                     total += held[i].amount;
                 free = collector.ValueRO.capacity - total;
             }
-            collectors.Add(new CollectorInfo
+            var info = new CollectorInfo
             {
                 entity = entity,
                 position = transform.ValueRO.Position,
                 settings = collector.ValueRO,
                 free = free
-            });
+            };
+            if (SystemAPI.HasBuffer<StorageCapacity>(entity) && SystemAPI.HasBuffer<CargoItem>(entity))
+            {
+                DynamicBuffer<StorageCapacity> capacity = SystemAPI.GetBuffer<StorageCapacity>(entity);
+                DynamicBuffer<CargoItem> held = SystemAPI.GetBuffer<CargoItem>(entity);
+                info.typed = true;
+                for (int t = 0; t < capacity.Length && t < held.Length; t++)
+                    info.typeFree.Add(capacity[t].value - held[t].amount);
+            }
+            collectors.Add(info);
         }
 
         // Ore already being pulled in counts against its collector's free space.
@@ -65,6 +76,9 @@ public partial struct OreCollectionSystem_Dots : ISystem
                     continue;
                 CollectorInfo c = collectors[i];
                 c.free -= chunk.ValueRO.amount;
+                int type = (int)chunk.ValueRO.type;
+                if (c.typed && type < c.typeFree.Length)
+                    c.typeFree[type] -= chunk.ValueRO.amount;
                 collectors[i] = c;
             }
         }
@@ -95,6 +109,9 @@ public partial struct OreCollectionSystem_Dots : ISystem
                 {
                     if (collectors[i].free < ore.amount)
                         continue; // that hold is full
+                    int oreType = (int)ore.type;
+                    if (collectors[i].typed && oreType < collectors[i].typeFree.Length && collectors[i].typeFree[oreType] < ore.amount)
+                        continue; // no room for this resource in storage
                     float dSqr = math.distancesq(position, collectors[i].position);
                     float r = collectors[i].settings.radius;
                     if (dSqr <= r * r && dSqr < bestSqr)
@@ -107,6 +124,9 @@ public partial struct OreCollectionSystem_Dots : ISystem
                 {
                     CollectorInfo claimed = collectors[best];
                     claimed.free -= ore.amount;
+                    int claimedType = (int)ore.type;
+                    if (claimed.typed && claimedType < claimed.typeFree.Length)
+                        claimed.typeFree[claimedType] -= ore.amount;
                     collectors[best] = claimed;
                     ore.collector = claimed.entity;
                     ore.state = OreState.Collecting;
