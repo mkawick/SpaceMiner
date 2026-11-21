@@ -4,8 +4,8 @@ using Unity.Mathematics;
 using Unity.Transforms;
 
 // Puts the player in the game once the asteroid field exists.
-//   JoinRequest: spawn the requested ship type from the Game Library at the player's start hex
-//   and give it player control (input, target, respawn point). In multiplayer this runs on the
+//   JoinRequest: spawn the requested ship type from the Game Library at the player's start hex,
+//   give it player control (input, target, respawn point) and the starting resources. In multiplayer this runs on the
 //   server and the new ship gets the requesting connection as its owner.
 //   A ship placed directly in a subscene with player control (the old way) is simply moved to
 //   the start hex instead, so scenes made before the spawner keep working.
@@ -35,7 +35,10 @@ public partial struct PlayerSpawnSystem_Dots : ISystem
         {
             NativeArray<Entity> existing = players.ToEntityArray(Allocator.Temp);
             for (int i = 0; i < existing.Length; i++)
+            {
                 PlaceAt(em, existing[i], start, facing);
+                GiveStartingResources(ref state, em, existing[i]);
+            }
             existing.Dispose();
             em.AddComponent<PlayerStartPlaced>(configEntity);
         }
@@ -64,6 +67,7 @@ public partial struct PlayerSpawnSystem_Dots : ISystem
             Entity ship = em.Instantiate(prefab);
             PlaceAt(em, ship, start, facing);
             GivePlayerControl(em, ship, start);
+            GiveStartingResources(ref state, em, ship);
             em.AddComponent<PlayerStartPlaced>(configEntity);
         }
         requestEntities.Dispose();
@@ -78,6 +82,17 @@ public partial struct PlayerSpawnSystem_Dots : ISystem
         if (ships.Length == 0)
             return Entity.Null;
         return ships[math.clamp(type, 0, ships.Length - 1)].prefab;
+    }
+
+    // The Build Catalog's Starting Resources, set once when the player enters the game.
+    private void GiveStartingResources(ref SystemState state, EntityManager em, Entity ship)
+    {
+        if (!SystemAPI.HasSingleton<BuildCatalog>() || !em.HasBuffer<CargoItem>(ship))
+            return;
+        ResourceCost start = SystemAPI.GetSingleton<BuildCatalog>().startingResources;
+        DynamicBuffer<CargoItem> cargo = em.GetBuffer<CargoItem>(ship);
+        for (int i = 0; i < cargo.Length; i++)
+            cargo[i] = new CargoItem { amount = start.Get(i) };
     }
 
     private static void PlaceAt(EntityManager em, Entity ship, float3 position, quaternion rotation)

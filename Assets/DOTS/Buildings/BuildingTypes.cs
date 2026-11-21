@@ -9,7 +9,12 @@ public enum BuildingId : byte
 
 public enum UnitId : byte
 {
-    WorkerBot = 0,
+    WorkerBot = 0,   // mining bot
+    BuilderBot = 1,  // planned
+    DefenderBot = 2, // planned
+    AttackerBot = 3, // planned
+    DefenceShip = 4, // planned
+    AttackShip = 5,  // planned
 }
 
 // An amount of each ResourceType, in enum order.
@@ -79,6 +84,11 @@ public struct BuildCatalog : IComponentData
     public float botProjectileSpeed;
     public float botSelectRadius;
     public float botHealth;
+    public float botScale;             // size multiplier for mining bots (model, click and hit radius)
+    public ResourceCost startingResources; // what the player starts with
+
+    public ResourceCost UnitCost(UnitId unit) => unit == UnitId.WorkerBot ? workerBotCost : UnitRules.PlannedCost(unit);
+    public float UnitTime(UnitId unit) => freeBuild ? 0.5f : unit == UnitId.WorkerBot ? workerBotTrainTime : UnitRules.PlannedTime(unit);
 
     public ResourceCost CostOf(BuildingId id) => id == BuildingId.Storage ? storageCost : workerFactoryCost;
     public float RadiusOf(BuildingId id) => id == BuildingId.Storage ? storageRadius : workerFactoryRadius;
@@ -109,9 +119,24 @@ public struct BuildRequest : IComponentData
 }
 
 // The player asks a factory for one more bot.
+// Add a unit to a factory's queue (free; it's paid for when it starts building).
 public struct TrainRequest : IComponentData
 {
     public Entity building;
+    public UnitId unit;
+}
+
+// Take a waiting unit out of a factory's queue. index 0, the one being built, can't be removed.
+public struct QueueRemoveRequest : IComponentData
+{
+    public Entity building;
+    public int index;
+}
+
+// A factory's build queue, in order. Element 0 is the unit being built.
+public struct QueuedUnit : IBufferElementData
+{
+    public UnitId unit;
 }
 
 public struct Building : IComponentData
@@ -126,11 +151,52 @@ public struct Building : IComponentData
     public bool IsComplete => progress >= buildTime;
 }
 
+// Progress of a factory's queue. The front unit is paid for when it starts; if the player can't
+// afford it, the queue stalls until they can.
 public struct TrainQueue : IComponentData
 {
-    public int queued;
-    public float progress; // seconds into the current bot
+    public float progress; // seconds into the current unit
+    public bool paid;      // the current unit has been paid for
+    public bool stalled;   // waiting for resources (or switched off in Bot Config)
     public int trained;
+}
+
+// What each unit costs and how long it takes. Mining bots read the Build Catalog; the others are
+// placeholders until those units exist.
+public static class UnitRules
+{
+    public const int MaxQueue = 10;
+
+    // What the bot factory offers, in menu order.
+    public static readonly UnitId[] FactoryUnits = { UnitId.WorkerBot, UnitId.BuilderBot, UnitId.DefenderBot, UnitId.AttackerBot };
+
+    public static bool Implemented(UnitId unit) => unit == UnitId.WorkerBot;
+
+    public static ResourceCost PlannedCost(UnitId unit)
+    {
+        switch (unit)
+        {
+            case UnitId.BuilderBot: return new ResourceCost { iron = 25, copper = 10, silicate = 10 };
+            case UnitId.DefenderBot: return new ResourceCost { iron = 40, copper = 15, carbon = 10 };
+            case UnitId.AttackerBot: return new ResourceCost { iron = 50, copper = 20, carbon = 15, gold = 5 };
+            case UnitId.DefenceShip: return new ResourceCost { iron = 150, copper = 60, carbon = 40, gold = 10 };
+            case UnitId.AttackShip: return new ResourceCost { iron = 200, copper = 80, carbon = 60, gold = 20 };
+            default: return new ResourceCost { iron = 8, copper = 2 };
+        }
+    }
+
+    public static float PlannedTime(UnitId unit)
+    {
+        switch (unit)
+        {
+            case UnitId.BuilderBot: return 12f;
+            case UnitId.DefenderBot: return 15f;
+            case UnitId.AttackerBot: return 18f;
+            case UnitId.DefenceShip: return 40f;
+            case UnitId.AttackShip: return 50f;
+            default: return 7f;
+        }
+    }
 }
 
 // Anything the player can click on. kind: 0 = unit, 1 = building.

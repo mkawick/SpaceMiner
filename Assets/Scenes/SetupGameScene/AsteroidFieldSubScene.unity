@@ -248,14 +248,14 @@ MonoBehaviour:
   fairwayWorkerFactory: {fileID: 7564680319383017926, guid: 37c13b67a1b31b04faf3b1dd09ea6947, type: 3}
   postibuleWorkerFactory: {fileID: 7466815815044705455, guid: 3bb49d0767dbf9448aaac8f262bb1447, type: 3}
   workerBotCost:
-    iron: 15
-    copper: 5
+    iron: 8
+    copper: 2
     silicate: 0
     ice: 0
-    carbon: 5
+    carbon: 0
     gold: 0
     fermite: 0
-  workerBotTrainTime: 8
+  workerBotTrainTime: 7
   workerBotPrefab: {fileID: 1713916825385834004, guid: b292fae9ab12dbb44b770540a58f2263, type: 3}
   botSpeed: 14
   botTurnSpeedDegrees: 240

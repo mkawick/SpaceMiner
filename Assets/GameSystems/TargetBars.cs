@@ -75,7 +75,7 @@ public class TargetBars : MonoBehaviour
             target = em.GetComponentData<PlayerTarget>(player).target;
 
         Keyboard keyboard = Keyboard.current;
-        if (keyboard != null && keyboard.f8Key.wasPressedThisFrame)
+        if (keyboard != null && keyboard.f8Key.wasPressedThisFrame && BotConfig.Rules.trainingDrones)
             SpawnTrainingDrones(em, playerTransform, us);
 
         using NativeArray<Entity> entities = targetQuery.ToEntityArray(Allocator.Temp);

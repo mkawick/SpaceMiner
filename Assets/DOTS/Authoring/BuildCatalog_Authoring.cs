@@ -6,6 +6,10 @@ using UnityEngine;
 // Holds build costs, timings and the building / bot prefabs for each faction.
 public class BuildCatalog_Authoring : MonoBehaviour
 {
+    [Header("Start")]
+    [Tooltip("Resources the player starts with (each must fit the 200 of built-in storage)")]
+    public ResourceCost startingResources = new ResourceCost { iron = 100, silicate = 40, copper = 30 };
+
     [Header("General")]
     [Tooltip("Buildings must be placed within this distance of the player's ship")]
     public float placementRange = 60f;
@@ -37,8 +41,11 @@ public class BuildCatalog_Authoring : MonoBehaviour
     public GameObject storagePrefab;
 
     [Header("Worker bot")]
-    public ResourceCost workerBotCost = new ResourceCost { iron = 15, copper = 5, carbon = 5 };
-    public float workerBotTrainTime = 8f;
+    public ResourceCost workerBotCost = new ResourceCost { iron = 8, copper = 2 };
+    [Tooltip("Seconds per mining bot (Free Build makes it 0.5)")]
+    public float workerBotTrainTime = 7f;
+    [Tooltip("Size of mining bots: scales the model and its click and hit radius")]
+    [Min(0.1f)] public float botScale = 1f;
     [Tooltip("Empty = Assets/Prefabs/Worker Bot.prefab")]
     public GameObject workerBotPrefab;
     public float botSpeed = 14f;
@@ -82,7 +89,9 @@ class BuildCatalog_Baker : Baker<BuildCatalog_Authoring>
             botFireInterval = math.max(0.05f, a.botFireInterval),
             botProjectileSpeed = a.botProjectileSpeed,
             botSelectRadius = a.botSelectRadius,
-            botHealth = math.max(1f, a.botHealth)
+            botHealth = math.max(1f, a.botHealth),
+            botScale = math.max(0.1f, a.botScale),
+            startingResources = a.startingResources
         });
 
         DynamicBuffer<FactionBuildingPrefab> buildings = AddBuffer<FactionBuildingPrefab>(entity);

@@ -11,7 +11,8 @@ using UnityEngine.InputSystem;
 // spawnDistance away, heading in. F9 (testing) sends a wave right now.
 public partial class PirateSpawnSystem_Dots : SystemBase
 {
-    private double nextWave = -1;
+    private double started = -1;
+    private double lastWave = -1;
     private int waveCount;
     private Random rng;
 
@@ -27,14 +28,20 @@ public partial class PirateSpawnSystem_Dots : SystemBase
         Entity library = SystemAPI.GetSingletonEntity<PirateSpawnConfig>();
         PirateSpawnConfig cfg = SystemAPI.GetComponent<PirateSpawnConfig>(library);
         double now = SystemAPI.Time.ElapsedTime;
-        if (nextWave < 0)
-            nextWave = now + cfg.firstWaveDelay;
+        if (started < 0)
+            started = now;
+
+        // Bot Config can switch pirates off or override the roster's timing (read live).
+        GameRules rules = SystemAPI.HasSingleton<GameRules>() ? SystemAPI.GetSingleton<GameRules>() : GameRules.Default;
+        float firstDelay = rules.pirateFirstWave >= 0f ? rules.pirateFirstWave : cfg.firstWaveDelay;
+        float interval = rules.pirateWaveInterval >= 0f ? rules.pirateWaveInterval : cfg.waveInterval;
+        double nextWave = lastWave < 0 ? started + firstDelay : lastWave + interval;
 
         Keyboard keyboard = Keyboard.current;
-        bool forced = keyboard != null && keyboard.f9Key.wasPressedThisFrame;
-        if (!forced && (!cfg.enabled || now < nextWave))
+        bool forced = rules.pirates && rules.pirateHotkey && keyboard != null && keyboard.f9Key.wasPressedThisFrame;
+        if (!forced && (!cfg.enabled || !rules.pirates || now < nextWave))
             return;
-        nextWave = now + cfg.waveInterval;
+        lastWave = now;
 
         if (!forced && SystemAPI.QueryBuilder().WithAll<PirateAI>().Build().CalculateEntityCount() >= cfg.maxAlive)
             return;

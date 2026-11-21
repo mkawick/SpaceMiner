@@ -57,6 +57,8 @@ public partial struct PirateSystem_Dots : ISystem
         float dt = SystemAPI.Time.DeltaTime;
         if (dt <= 0f)
             return;
+        if (SystemAPI.HasSingleton<GameRules>() && !SystemAPI.GetSingleton<GameRules>().pirates)
+            return; // switched off in Bot Config: pirates freeze
 
         LayerMatrix matrix = SystemAPI.HasSingleton<LayerMatrix>() ? SystemAPI.GetSingleton<LayerMatrix>() : LayerMatrix.Default();
         bool hasCatalog = SystemAPI.HasSingleton<WeaponCatalog>();

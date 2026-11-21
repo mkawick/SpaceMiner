@@ -50,13 +50,26 @@ public class RadialBuildMenu : MonoBehaviour
             new GameObject("Radial Build Menu").AddComponent<RadialBuildMenu>();
     }
 
+    // A build menu slot for a building, greyed out when Bot Config switches it off.
+    private static Slot BuildingSlot(BuildingId id, CombatFaction faction)
+    {
+        bool allowed = BotConfig.Rules.Allows(id);
+        return new Slot
+        {
+            title = FactionNames.Name(id, faction),
+            subtitle = allowed ? FactionNames.English(id) : "off (Bot Config)",
+            enabled = allowed,
+            id = id
+        };
+    }
+
     private void BuildSlots()
     {
         CombatFaction faction = GameEcs.PlayerFaction;
         slots = new[]
         {
-            new Slot { title = FactionNames.Name(BuildingId.WorkerFactory, faction), subtitle = FactionNames.English(BuildingId.WorkerFactory), enabled = true, id = BuildingId.WorkerFactory },
-            new Slot { title = FactionNames.Name(BuildingId.Storage, faction), subtitle = FactionNames.English(BuildingId.Storage), enabled = true, id = BuildingId.Storage },
+            BuildingSlot(BuildingId.WorkerFactory, faction),
+            BuildingSlot(BuildingId.Storage, faction),
             new Slot { title = "Refinery", subtitle = "coming soon" },
             new Slot { title = "Defense Tower", subtitle = "coming soon" },
             new Slot { title = "Radar", subtitle = "coming soon" },

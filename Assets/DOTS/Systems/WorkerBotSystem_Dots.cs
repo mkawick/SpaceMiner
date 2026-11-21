@@ -34,6 +34,8 @@ public partial struct WorkerBotSystem_Dots : ISystem
 
         BuildCatalog catalog = SystemAPI.GetSingleton<BuildCatalog>();
         float dt = SystemAPI.Time.DeltaTime;
+        if (SystemAPI.HasSingleton<GameRules>() && !SystemAPI.GetSingleton<GameRules>().Allows(UnitId.WorkerBot))
+            return; // switched off in Bot Config: mining bots freeze
 
         Entity player = Entity.Null;
         foreach (var (input, entity) in SystemAPI.Query<RefRO<InputData_Dots>>().WithAll<CargoItem>().WithEntityAccess())
@@ -123,7 +125,8 @@ public partial struct WorkerBotSystem_Dots : ISystem
                     float3 away = t.Position - rock;
                     away.y = 0f;
                     away = math.normalizesafe(away, new float3(0f, 0f, -1f));
-                    float standOff = rockRadius + catalog.botMiningStandOff;
+                    float botRadius = SystemAPI.HasComponent<Targetable>(entity) ? SystemAPI.GetComponent<Targetable>(entity).radius : catalog.botSelectRadius;
+                    float standOff = rockRadius + catalog.botMiningStandOff + botRadius;
                     float3 spot = rock + away * standOff;
 
                     bool inPlace = MoveTowards(ref t, spot, catalog, dt, 1f);
@@ -143,7 +146,7 @@ public partial struct WorkerBotSystem_Dots : ISystem
                                 faction = SystemAPI.HasComponent<Targetable>(entity)
                                     ? SystemAPI.GetComponent<Targetable>(entity).faction
                                     : CombatFaction.None,
-                                position = t.Position + toRock * (catalog.botSelectRadius + 0.5f),
+                                position = t.Position + toRock * (botRadius + 0.5f),
                                 dir = quaternion.LookRotationSafe(toRock, math.up()),
                                 speedBonus = 0f
                             });

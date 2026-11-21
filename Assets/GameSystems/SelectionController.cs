@@ -24,7 +24,7 @@ public class SelectionController : MonoBehaviour
     private float markerTime = -10f;
     private Color markerColour;
 
-    private GUIStyle panelTitle, panelText, buttonStyle;
+    private GUIStyle panelTitle, panelText, buttonStyle, panelSmall, iconLetter;
     private Rect panelRect;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
@@ -231,11 +231,13 @@ public class SelectionController : MonoBehaviour
 
     private void TrainFromSelectedFactory(EntityManager em)
     {
+        if (!BotConfig.Rules.Allows(UnitId.WorkerBot))
+            return;
         Entity factory = SelectedFactory(em);
         if (factory == Entity.Null || !em.GetComponentData<Building>(factory).IsComplete)
             return;
         Entity request = em.CreateEntity();
-        em.AddComponentData(request, new TrainRequest { building = factory });
+        em.AddComponentData(request, new TrainRequest { building = factory, unit = UnitId.WorkerBot });
     }
 
     private void OnGUI()
@@ -297,45 +299,203 @@ public class SelectionController : MonoBehaviour
         if (factory == Entity.Null && botCount == 0)
             return;
 
-        float width = 420f, height = factory != Entity.Null ? 104f : 58f;
-        panelRect = new Rect((Screen.width - width) * 0.5f, Screen.height - height - 16f, width, height);
-        GameInput.RegisterUiRect(panelRect);
-        GUI.color = new Color(0.03f, 0.04f, 0.06f, 0.82f);
-        GUI.DrawTexture(panelRect, Texture2D.whiteTexture);
-        GUI.color = new Color(0.78f, 0.32f, 0.04f, 1f);
-        GUI.DrawTexture(new Rect(panelRect.x, panelRect.y, panelRect.width, 2f), Texture2D.whiteTexture);
-        GUI.color = Color.white;
-
-        float x = panelRect.x + 12f, y = panelRect.y + 8f, w = width - 24f;
         if (factory != Entity.Null)
         {
-            Building building = em.GetComponentData<Building>(factory);
-            TrainQueue queue = em.GetComponentData<TrainQueue>(factory);
-            GameEcs.TryGetCatalog(out BuildCatalog catalog);
-            string botName = FactionNames.Name(UnitId.WorkerBot, faction);
-
-            GUI.Label(new Rect(x, y, w, 20f), $"{FactionNames.Name(building.id, faction)}  ·  {FactionNames.English(building.id)}", panelTitle);
-            if (!building.IsComplete)
-            {
-                float pct = building.progress / math.max(0.01f, building.buildTime);
-                GUI.Label(new Rect(x, y + 24f, w, 18f), $"Under construction  {pct * 100f:0}%", panelText);
-                DrawBar(new Rect(x, y + 46f, w, 8f), pct);
-                return;
-            }
-
-            string cost = catalog.freeBuild ? "free (testing)" : GameEcs.CostText(catalog.workerBotCost);
-            if (GUI.Button(new Rect(x, y + 26f, 230f, 30f), $"Train {botName}  [T]", buttonStyle))
-                TrainFromSelectedFactory(em);
-            GUI.Label(new Rect(x + 240f, y + 26f, w - 240f, 18f), cost, panelText);
-            GUI.Label(new Rect(x + 240f, y + 42f, w - 240f, 18f), $"Queued: {queue.queued}   Trained: {queue.trained}", panelText);
-            float trainTime = catalog.freeBuild ? 0.5f : catalog.workerBotTrainTime;
-            DrawBar(new Rect(x, y + 66f, w, 8f), queue.queued > 0 ? queue.progress / math.max(0.01f, trainTime) : 0f);
+            DrawFactoryPanel(em, factory, faction);
+            return;
         }
-        else
+
+        float width = 420f, height = 58f;
+        panelRect = new Rect((Screen.width - width) * 0.5f, Screen.height - height - 16f, width, height);
+        GameInput.RegisterUiRect(panelRect);
+        DrawPanelBackground(panelRect);
+        float x = panelRect.x + 12f, y = panelRect.y + 8f, w = width - 24f;
+        string botName = FactionNames.Name(UnitId.WorkerBot, faction);
+        GUI.Label(new Rect(x, y, w, 20f), $"{botCount} × {botName} ({FactionNames.English(UnitId.WorkerBot)})", panelTitle);
+        GUI.Label(new Rect(x, y + 22f, w, 18f), "Right-click an asteroid to mine it, or open space to move there.", panelText);
+    }
+
+    private static void DrawPanelBackground(Rect r)
+    {
+        GUI.color = new Color(0.03f, 0.04f, 0.06f, 0.82f);
+        GUI.DrawTexture(r, Texture2D.whiteTexture);
+        GUI.color = new Color(0.78f, 0.32f, 0.04f, 1f);
+        GUI.DrawTexture(new Rect(r.x, r.y, r.width, 2f), Texture2D.whiteTexture);
+        GUI.color = Color.white;
+    }
+
+    // Icon colours (from the project palette) and letters for each unit type.
+    private static Color UnitColour(UnitId unit)
+    {
+        switch (unit)
         {
-            string botName = FactionNames.Name(UnitId.WorkerBot, faction);
-            GUI.Label(new Rect(x, y, w, 20f), $"{botCount} × {botName} ({FactionNames.English(UnitId.WorkerBot)})", panelTitle);
-            GUI.Label(new Rect(x, y + 22f, w, 18f), "Right-click an asteroid to mine it, or open space to move there.", panelText);
+            case UnitId.WorkerBot: return new Color(0xE1 / 255f, 0x76 / 255f, 0x33 / 255f);   // #E17633
+            case UnitId.BuilderBot: return new Color(0xCC / 255f, 0xE8 / 255f, 0xCC / 255f);  // #CCE8CC
+            case UnitId.DefenderBot: return new Color(0xCC / 255f, 0x8C / 255f, 0xC8 / 255f); // #CC8CC8
+            case UnitId.AttackerBot: return new Color(0x67 / 255f, 0x13 / 255f, 0x51 / 255f); // #671351
+            default: return new Color(0xF6 / 255f, 0xEF / 255f, 0xEE / 255f);                 // #F6EFEE
+        }
+    }
+
+    private static string UnitLetter(UnitId unit)
+    {
+        switch (unit)
+        {
+            case UnitId.WorkerBot: return "M";
+            case UnitId.BuilderBot: return "B";
+            case UnitId.DefenderBot: return "D";
+            case UnitId.AttackerBot: return "A";
+            case UnitId.DefenceShip: return "DS";
+            default: return "AS";
+        }
+    }
+
+    private void DrawIcon(Rect r, UnitId unit, bool dim)
+    {
+        Color c = UnitColour(unit);
+        if (dim) c = Color.Lerp(c, new Color(0.25f, 0.25f, 0.25f), 0.65f);
+        GUI.color = c;
+        GUI.DrawTexture(r, Texture2D.whiteTexture);
+        GUI.color = Color.white;
+        float luminance = c.r * 0.3f + c.g * 0.59f + c.b * 0.11f;
+        iconLetter.normal.textColor = luminance > 0.5f ? new Color(0.1f, 0.08f, 0.1f) : new Color(0.96f, 0.94f, 0.93f);
+        iconLetter.fontSize = Mathf.Clamp((int)(r.height * 0.5f), 9, 18);
+        GUI.Label(r, UnitLetter(unit), iconLetter);
+    }
+
+    // The factory panel: what it can build (with costs), its queue as icons, and its progress.
+    // Click a unit to queue it (T queues a mining bot); click a waiting icon to remove it.
+    private void DrawFactoryPanel(EntityManager em, Entity factory, CombatFaction faction)
+    {
+        Building building = em.GetComponentData<Building>(factory);
+        GameEcs.TryGetCatalog(out BuildCatalog catalog);
+        GameRules rules = BotConfig.Rules;
+        Event e = Event.current;
+        string tooltip = null;
+
+        float width = 560f, height = building.IsComplete ? 178f : 72f;
+        panelRect = new Rect((Screen.width - width) * 0.5f, Screen.height - height - 16f, width, height);
+        GameInput.RegisterUiRect(panelRect);
+        DrawPanelBackground(panelRect);
+        float x = panelRect.x + 12f, y = panelRect.y + 8f, w = width - 24f;
+        GUI.Label(new Rect(x, y, w, 20f), $"{FactionNames.Name(building.id, faction)}  ·  {FactionNames.English(building.id)}", panelTitle);
+
+        if (!building.IsComplete)
+        {
+            float pct = building.progress / math.max(0.01f, building.buildTime);
+            GUI.Label(new Rect(x, y + 24f, w, 18f), $"Under construction  {pct * 100f:0}%", panelText);
+            DrawBar(new Rect(x, y + 46f, w, 8f), pct);
+            return;
+        }
+        if (!em.HasBuffer<QueuedUnit>(factory))
+            return;
+
+        TrainQueue progress = em.GetComponentData<TrainQueue>(factory);
+        DynamicBuffer<QueuedUnit> queue = em.GetBuffer<QueuedUnit>(factory, true);
+        int queued = queue.Length;
+        UnitId[] queueCopy = new UnitId[queued];
+        for (int i = 0; i < queued; i++) queueCopy[i] = queue[i].unit;
+
+        // Build buttons.
+        y += 26f;
+        float bw = (w - 3 * 8f) / 4f;
+        for (int i = 0; i < UnitRules.FactoryUnits.Length; i++)
+        {
+            UnitId unit = UnitRules.FactoryUnits[i];
+            bool implemented = UnitRules.Implemented(unit);
+            bool allowed = rules.Allows(unit);
+            bool usable = implemented && allowed && queued < UnitRules.MaxQueue;
+            var r = new Rect(x + i * (bw + 8f), y, bw, 46f);
+            bool hover = r.Contains(e.mousePosition);
+            GUI.color = hover && usable ? new Color(0.2f, 0.26f, 0.32f, 1f) : new Color(0.12f, 0.14f, 0.17f, 1f);
+            GUI.DrawTexture(r, Texture2D.whiteTexture);
+            GUI.color = Color.white;
+            DrawIcon(new Rect(r.x + 6f, r.y + 8f, 30f, 30f), unit, !usable);
+
+            string cost = catalog.freeBuild ? "free (testing)" : GameEcs.CostText(catalog.UnitCost(unit));
+            string state = !implemented ? "planned" : !allowed ? "off (Bot Config)" : cost;
+            panelSmall.normal.textColor = usable ? Color.white : new Color(0.55f, 0.55f, 0.55f);
+            panelSmall.fontStyle = FontStyle.Bold;
+            GUI.Label(new Rect(r.x + 42f, r.y + 6f, r.width - 46f, 16f), FactionNames.Name(unit, faction) + (unit == UnitId.WorkerBot ? "  [T]" : ""), panelSmall);
+            panelSmall.fontStyle = FontStyle.Normal;
+            panelSmall.normal.textColor = usable ? new Color(0.8f, 0.8f, 0.8f) : new Color(0.5f, 0.5f, 0.5f);
+            GUI.Label(new Rect(r.x + 42f, r.y + 24f, r.width - 46f, 16f), state, panelSmall);
+
+            if (hover)
+                tooltip = $"{FactionNames.Name(unit, faction)} ({FactionNames.English(unit)})\n{cost}  ·  {catalog.UnitTime(unit):0.#} s" + (implemented ? "" : "\nNot in the game yet");
+            if (hover && usable && e.type == EventType.MouseDown && e.button == 0)
+            {
+                Entity request = em.CreateEntity();
+                em.AddComponentData(request, new TrainRequest { building = factory, unit = unit });
+                e.Use();
+            }
+        }
+
+        // Queue.
+        y += 56f;
+        GUI.Label(new Rect(x, y + 8f, 80f, 18f), $"Queue {queued}/{UnitRules.MaxQueue}", panelText);
+        float slot = 36f, qx = x + 86f;
+        for (int i = 0; i < UnitRules.MaxQueue; i++)
+        {
+            var r = new Rect(qx + i * (slot + 6f), y, slot, slot);
+            if (i >= queued)
+            {
+                GUI.color = new Color(1f, 1f, 1f, 0.07f);
+                GUI.DrawTexture(r, Texture2D.whiteTexture);
+                GUI.color = Color.white;
+                continue;
+            }
+            UnitId unit = queueCopy[i];
+            bool current = i == 0;
+            DrawIcon(r, unit, false);
+            if (current)
+            {
+                if (progress.stalled)
+                {
+                    GUI.color = new Color(0.8f, 0.1f, 0.1f, 0.45f);
+                    GUI.DrawTexture(r, Texture2D.whiteTexture);
+                    GUI.color = Color.white;
+                }
+                float time = math.max(0.01f, catalog.UnitTime(unit));
+                DrawBar(new Rect(r.x, r.yMax + 2f, r.width, 4f), progress.progress / time);
+            }
+            bool hover = r.Contains(e.mousePosition);
+            if (hover)
+            {
+                GUI.color = Color.white;
+                GUI.DrawTexture(new Rect(r.x, r.y, r.width, 2f), Texture2D.whiteTexture);
+                GUI.DrawTexture(new Rect(r.x, r.yMax - 2f, r.width, 2f), Texture2D.whiteTexture);
+                string cost = catalog.freeBuild ? "free (testing)" : GameEcs.CostText(catalog.UnitCost(unit));
+                tooltip = $"{FactionNames.Name(unit, faction)} ({FactionNames.English(unit)})\n{cost}"
+                          + (current ? (progress.stalled ? "\nWaiting for resources" : "\nBuilding now") : "\nClick to remove");
+            }
+            if (hover && !current && e.type == EventType.MouseDown && e.button == 0)
+            {
+                Entity request = em.CreateEntity();
+                em.AddComponentData(request, new QueueRemoveRequest { building = factory, index = i });
+                e.Use();
+            }
+        }
+
+        // Status.
+        y += slot + 12f;
+        string status = queued == 0 ? "Idle: click a unit to queue it."
+            : progress.stalled ? (rules.Allows(queueCopy[0]) ? $"Stalled: waiting for {GameEcs.CostText(catalog.UnitCost(queueCopy[0]))}" : "Stalled: switched off in Bot Config")
+            : $"Building {FactionNames.Name(queueCopy[0], faction)}";
+        panelText.normal.textColor = progress.stalled && queued > 0 ? new Color(1f, 0.55f, 0.5f) : new Color(0.85f, 0.85f, 0.85f);
+        GUI.Label(new Rect(x, y, w - 120f, 18f), status, panelText);
+        panelText.normal.textColor = new Color(0.85f, 0.85f, 0.85f);
+        GUI.Label(new Rect(x + w - 110f, y, 110f, 18f), $"Built: {progress.trained}", panelText);
+
+        if (tooltip != null)
+        {
+            Vector2 m = e.mousePosition;
+            var tip = new Rect(m.x + 14f, m.y - 54f, 230f, 50f);
+            GUI.color = new Color(0f, 0f, 0f, 0.88f);
+            GUI.DrawTexture(tip, Texture2D.whiteTexture);
+            GUI.color = Color.white;
+            panelSmall.normal.textColor = Color.white;
+            GUI.Label(new Rect(tip.x + 6f, tip.y + 3f, tip.width - 12f, tip.height - 6f), tooltip, panelSmall);
         }
     }
 
@@ -390,5 +550,7 @@ public class SelectionController : MonoBehaviour
         panelText = new GUIStyle(GUI.skin.label) { fontSize = 12 };
         panelText.normal.textColor = new Color(0.85f, 0.85f, 0.85f);
         buttonStyle = new GUIStyle(GUI.skin.button) { fontSize = 13 };
+        panelSmall = new GUIStyle(GUI.skin.label) { fontSize = 11, wordWrap = true };
+        iconLetter = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter, fontStyle = FontStyle.Bold };
     }
 }
