@@ -22,10 +22,10 @@ def build_rafinerija(coll):
     # and faces the front (-Y). Each whorl grows 2.6x. The tube overlaps the inner whorl like a real nautilus.
     growth = math.log(2.6) / (2 * math.pi)
     th0, th1 = -3.6 * math.pi, 0.0
-    R1 = 4.3                      # spiral radius at the opening
+    R1 = 3.6                      # spiral radius at the opening
     steps, segs = 300, 40
     bm = bmesh.new()
-    rings, ring_th = [], []
+    rings, ring_th, ring_c = [], [], []
     for s in range(steps + 1):
         th = th0 + (th1 - th0) * s / steps
         r = R1 * math.exp(growth * th)
@@ -35,20 +35,27 @@ def build_rafinerija(coll):
         dP = Vector((0.0, -(growth * math.cos(ang) - math.sin(ang)), growth * math.sin(ang) + math.cos(ang))).normalized()
         n_in = Vector((1, 0, 0)).cross(dP).normalized()       # in-plane normal
         if n_in.dot(-P) < 0: n_in = -n_in                    # pointing toward the spiral centre
-        rho = 0.6 * r
-        # chamber ridges (septa) every 0.55 rad
-        if abs(((th / 0.55) % 1.0) - 0.5) > 0.46: rho *= 1.035
-        rings.append(frame_ring(bm, P, n_in, Vector((1, 0, 0)), rho, segs))
-        ring_th.append(th)
+        # Involute like a real nautilus: each whorl is wide enough to wrap over the earlier ones, so the
+        # flanks are smooth and only a small dimple shows in the centre. Chamber walls are inside, not on the skin.
+        rho = 0.85 * r
+        # raised growth ridges across the shell (Grix chitin look), every 0.5 rad
+        if abs(((th / 0.5) % 1.0) - 0.5) > 0.44: rho *= 1.03
+        rings.append(frame_ring(bm, P, n_in, Vector((1, 0, 0)), rho, segs, flatten=0.7))
+        ring_th.append(th); ring_c.append(P.copy())
     for s in range(steps):
         a, b = rings[s], rings[s + 1]
         for k in range(segs):
             f = bm.faces.new((a[k], a[(k + 1) % segs], b[(k + 1) % segs], b[k]))
+            # Faces must point away from the tube's centre line, or game engines (back-face culling) show the inside.
+            f.normal_update()
+            if f.normal.dot(f.calc_center_median() - (ring_c[s] + ring_c[s + 1]) * 0.5) < 0:
+                f.normal_flip()
             th = ring_th[s]
             phi = 2 * math.pi * (k + 0.5) / segs
             outer = math.cos(phi) < 0.15                     # the outside of the whorl (away from centre)
             # classic nautilus flame stripes on the outer surface, fading out toward the opening
-            stripe = math.sin(th * 4.6 + 0.9 * math.cos(phi) + 0.35 * math.sin(3 * phi)) > 0.55 and th < -0.9 and math.cos(phi) < -0.25
+            # flame stripes sweep across the flanks from the centre dimple to the rim, fading toward the opening
+            stripe = math.sin(th * 4.6 - 1.6 * math.cos(phi) + 0.35 * math.sin(3 * phi)) > 0.5 and th < -1.1 and math.cos(phi) < 0.55
             f.material_index = 1 if (outer and stripe) else 0
     # inner floor of the opening (dark), team-colour rim
     me = bpy.data.meshes.new('Shell'); bm.to_mesh(me); bm.free()
@@ -61,11 +68,11 @@ def build_rafinerija(coll):
     ang = -math.pi * 0.5
     mouthC = Vector((0, -R1 * math.cos(ang), R1 * math.sin(ang)))       # (0, 0, -R1)
     tangent = Vector((0, -(growth * math.cos(ang) - math.sin(ang)), growth * math.sin(ang) + math.cos(ang))).normalized()
-    rhoM = 0.6 * R1
+    rhoM = 0.85 * R1
     for nm, rr, off, mk, th_ in (('mouthRim', 1.04, 0.0, 'team', 0.35), ('mouthHole', 0.86, -0.25, 'hole', 0.2)):
         bm = bmesh.new()
         bmesh.ops.create_cone(bm, cap_ends=True, segments=segs, radius1=rhoM * rr, radius2=rhoM * rr, depth=th_)
-        bmesh.ops.scale(bm, vec=(0.95, 1.0, 1.0), verts=bm.verts)
+        bmesh.ops.scale(bm, vec=(0.7, 1.0, 1.0), verts=bm.verts)
         q = tangent.to_track_quat('Z', 'Y')
         bmesh.ops.rotate(bm, verts=bm.verts, matrix=q.to_matrix())
         bmesh.ops.translate(bm, vec=mouthC + tangent * off, verts=bm.verts)
@@ -76,9 +83,9 @@ def build_rafinerija(coll):
         th = -0.7 - i * 0.8
         r = R1 * math.exp(growth * th); a = th - math.pi * 0.5
         P = Vector((0, -r * math.cos(a), r * math.sin(a)))
-        rho = 0.6 * r
+        rho = 0.85 * r
         for side in (1, -1):
-            c = P + Vector((side * rho * 0.9, 0, 0))
+            c = P + Vector((side * rho * 0.69, 0, 0))
             s_ = 0.22 * rho
             parts.append(ellipsoid('window', tuple(c), (s_ * 0.3, s_ * 1.5, s_ * 0.8), M['glow'], coll, 12, 8,
                                    rot=(math.degrees(-a), 0, 0)))
@@ -118,7 +125,7 @@ def build_rafinerija(coll):
     body.parent = root
 
     # flag on top of the shell
-    top_z = body.location.z + 1.6 * R1 * math.exp(growth * -math.pi)
+    top_z = body.location.z + 1.85 * R1 * math.exp(growth * -math.pi)
     flag = quad('Flag', (0, 0, 0), 1.6, M['flag'], coll)
     flag.location = (0, 0, top_z + 0.02)
     flag.parent = root
