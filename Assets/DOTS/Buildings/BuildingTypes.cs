@@ -5,6 +5,7 @@ public enum BuildingId : byte
 {
     WorkerFactory = 0,
     Storage = 1,
+    Refinery = 2,
 }
 
 public enum UnitId : byte
@@ -72,6 +73,11 @@ public struct BuildCatalog : IComponentData
     public float storageRadius;
     public float storageHealth;
 
+    public ResourceCost refineryCost;
+    public float refineryBuildTime;
+    public float refineryRadius;
+    public float refineryHealth;
+
     public ResourceCost workerBotCost;
     public float workerBotTrainTime;
     public float botSpeed;
@@ -90,10 +96,10 @@ public struct BuildCatalog : IComponentData
     public ResourceCost UnitCost(UnitId unit) => unit == UnitId.WorkerBot ? workerBotCost : UnitRules.PlannedCost(unit);
     public float UnitTime(UnitId unit) => freeBuild ? 0.5f : unit == UnitId.WorkerBot ? workerBotTrainTime : UnitRules.PlannedTime(unit);
 
-    public ResourceCost CostOf(BuildingId id) => id == BuildingId.Storage ? storageCost : workerFactoryCost;
-    public float RadiusOf(BuildingId id) => id == BuildingId.Storage ? storageRadius : workerFactoryRadius;
-    public float BuildTimeOf(BuildingId id) => id == BuildingId.Storage ? storageBuildTime : workerFactoryBuildTime;
-    public float HealthOf(BuildingId id) => id == BuildingId.Storage ? storageHealth : workerFactoryHealth;
+    public ResourceCost CostOf(BuildingId id) => id == BuildingId.Storage ? storageCost : id == BuildingId.Refinery ? refineryCost : workerFactoryCost;
+    public float RadiusOf(BuildingId id) => id == BuildingId.Storage ? storageRadius : id == BuildingId.Refinery ? refineryRadius : workerFactoryRadius;
+    public float BuildTimeOf(BuildingId id) => id == BuildingId.Storage ? storageBuildTime : id == BuildingId.Refinery ? refineryBuildTime : workerFactoryBuildTime;
+    public float HealthOf(BuildingId id) => id == BuildingId.Storage ? storageHealth : id == BuildingId.Refinery ? refineryHealth : workerFactoryHealth;
 }
 
 // A building prefab per faction. faction None = the fallback used when a faction has no prefab.
@@ -107,6 +113,15 @@ public struct FactionBuildingPrefab : IBufferElementData
 
 public struct WorkerBotPrefab : IComponentData
 {
+    public Entity prefab; // used when a faction has no mining bot of its own
+}
+
+// A unit prefab per faction (e.g. the Grix Rudar). Factions without one use WorkerBotPrefab.
+[InternalBufferCapacity(4)]
+public struct FactionUnitPrefab : IBufferElementData
+{
+    public UnitId unit;
+    public CombatFaction faction;
     public Entity prefab;
 }
 

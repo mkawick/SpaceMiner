@@ -42,6 +42,7 @@ public class BotConfig : MonoBehaviour
     [Header("Buildings")]
     public bool workerFactory = true;
     public bool storageDepot = true;
+    public bool refinery = true;
 
     [Header("Test tools")]
     [Tooltip("F8 spawns hostile training drones")]
@@ -79,6 +80,7 @@ public class BotConfig : MonoBehaviour
             attackShips = attackShips,
             workerFactory = workerFactory,
             storageDepot = storageDepot,
+            refinery = refinery,
             trainingDrones = trainingDrones
         };
     }

@@ -144,7 +144,8 @@ public partial struct AsteroidFieldSpawnSystem_Dots : ISystem
                 if (d < 0.34f) radiusScale = 1.3f; // the deep field has bigger rocks
                 break;
         }
-        count = math.max(0, count);
+        // Every hex has at least one iron, one carbon and one silicate asteroid (see below).
+        count = math.max(GuaranteedCount, count);
 
         // Asteroids stay inside the hex's inner circle so they never cross into a neighbour.
         float innerRadius = cfg.hexSize * HexGrid.Sqrt3 * 0.5f * 0.85f;
@@ -157,7 +158,8 @@ public partial struct AsteroidFieldSpawnSystem_Dots : ISystem
             // Try a few random spots; skip the asteroid if none is free.
             bool placed = false;
             float2 offset = float2.zero;
-            for (int attempt = 0; attempt < 12 && !placed; attempt++)
+            int attempts = i < GuaranteedCount ? 60 : 12; // the guaranteed rocks must never be skipped
+            for (int attempt = 0; attempt < attempts && !placed; attempt++)
             {
                 float angle = rng.NextFloat(0f, 2f * math.PI);
                 float dist = math.sqrt(rng.NextFloat()) * (innerRadius - radius);
@@ -179,9 +181,13 @@ public partial struct AsteroidFieldSpawnSystem_Dots : ISystem
             if (!placed)
                 continue;
 
-            ResourceType type = kind == HexKind.Wild
-                ? PickWildType(ref rng, d)
-                : AsteroidFieldRules.StarterType(colour, i);
+            ResourceType type;
+            if (i < GuaranteedCount)
+                type = Guaranteed(i);
+            else if (kind == HexKind.Wild)
+                type = PickWildType(ref rng, d);
+            else
+                type = AsteroidFieldRules.StarterType(colour, i - GuaranteedCount);
 
             float2 position = math.round((centre + offset) * 100f) / 100f; // 0.01-unit grid: identical everywhere
             spawns.Add(new Spawn
@@ -199,6 +205,12 @@ public partial struct AsteroidFieldSpawnSystem_Dots : ISystem
             });
         }
     }
+
+    // The basics every hex starts with, so anyone can build and make steel locally:
+    // iron, carbon (steel = iron + carbon) and silicate. The rest of a hex follows its own rules.
+    private const int GuaranteedCount = 3;
+    private static ResourceType Guaranteed(int i) =>
+        i == 0 ? ResourceType.Iron : i == 1 ? ResourceType.Carbon : ResourceType.Silicate; // Burst-safe (no managed array)
 
     // Common types everywhere; gold toward the centre; fermite only in the deep field.
     private static ResourceType PickWildType(ref Random rng, float d)

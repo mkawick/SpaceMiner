@@ -45,6 +45,8 @@ public class SpaceShipAuthoringComponent_Dots : MonoBehaviour
     public float collectorMaxPullSpeed = 40f;
     //public GameObject spaceship;
     public GameObject weapon;
+    [Tooltip("Ships with two or more children named FiringPoint... fire from all of them at once; each shot does this much of the weapon's damage (2 guns x 0.6 = 1.2x). One gun, or none (fires from Weapon), keeps full damage.")]
+    public float gunDamageScale = 0.6f;
 }
 
 
@@ -60,6 +62,14 @@ public struct SpaceShipControllerData_Dots : IComponentData
     public Entity firingObject;
     public float3 firingPoint;
     public float maxHealth;
+}
+
+// A gun on the player's ship (children named FiringPoint...), in the ship's local space.
+[InternalBufferCapacity(4)]
+public struct ShipGun : IBufferElementData
+{
+    public float3 localPosition;
+    public float damageScale;
 }
 
 public struct SpaceShipStatus_Dots : IComponentData
@@ -133,6 +143,17 @@ public class SpaceShipBaker_Dots : Baker<SpaceShipAuthoringComponent_Dots>
                     density = 0f
                 });
             }
+            DynamicBuffer<ShipGun> guns = AddBuffer<ShipGun>(spaceshipEntity);
+            foreach (Transform t in GetComponentsInChildren<Transform>())
+                if (t != authoring.transform && t.name.StartsWith("FiringPoint"))
+                    guns.Add(new ShipGun
+                    {
+                        localPosition = authoring.transform.InverseTransformPoint(t.position),
+                        damageScale = authoring.gunDamageScale
+                    });
+            if (guns.Length == 1)
+                guns[0] = new ShipGun { localPosition = guns[0].localPosition, damageScale = 1f }; // a single gun keeps full damage
+
             AddComponent(spaceshipEntity, new PlayerTarget());
             AddComponent(spaceshipEntity, new ActiveWeapon { slot = 0 });
             DynamicBuffer<WeaponSlot> weapons = AddBuffer<WeaponSlot>(spaceshipEntity);

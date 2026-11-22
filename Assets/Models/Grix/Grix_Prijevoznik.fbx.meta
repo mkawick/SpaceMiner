@@ -3,11 +3,61 @@ guid: 603dabb81dc9c364eb5527bab5ed0a22
 ModelImporter:
   serializedVersion: 24600
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlagDecal
+    second: {fileID: 2100000, guid: f9382337a53b4494843f2038985d08c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grix_Blue
+    second: {fileID: 2100000, guid: 0000848642f444d3be7a6d91b1ec95c2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grix_Chitin
+    second: {fileID: 2100000, guid: 90f848dc78924e01ba19b4fc71035c07, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grix_ChitinPlum
+    second: {fileID: 2100000, guid: 4ad20b129a084a3d9ea92ea15c5b1742, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grix_Eye
+    second: {fileID: 2100000, guid: 583e04259fb1432cafe01588c109d1b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grix_Glow
+    second: {fileID: 2100000, guid: 966a4f3bf2aa4496999e0b71dd7ea28c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grix_Red
+    second: {fileID: 2100000, guid: bcd11d6a434e4208b19ebf007a49131b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grix_White
+    second: {fileID: 2100000, guid: adf27441778d497ca76bbbd5248b1be0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grix_Wing
+    second: {fileID: 2100000, guid: 7eb8d8375bfa48918d421ab4eab39b63, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TeamColour
+    second: {fileID: 2100000, guid: 332c9d94b7de4e41a3006fc9edf230aa, type: 2}
   materials:
     materialImportMode: 2
-    materialName: 0
-    materialSearch: 1
+    materialName: 1
+    materialSearch: 0
     materialLocation: 1
     searchTexturesGlobally: 0
   animations:

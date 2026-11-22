@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: HexGrid
+  m_Shader: {fileID: 4800000, guid: be878245e1c8453c93f7e77bc5b397f5, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats:
+    - _FadeEnd: 4000
+    - _FadeStart: 700
+    - _GlowWidth: 14
+    - _HexSize: 200
+    - _LineWidth: 1.5
+    m_Colors:
+    - _GlowColor: {r: 0.8, g: 0.91, b: 0.8, a: 0.05}
+    - _LineColor: {r: 0.8, g: 0.91, b: 0.8, a: 0.3}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

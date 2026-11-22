@@ -7,8 +7,9 @@ using Unity.Transforms;
 // Worker bots: wait (Idle), fly to a point (Moving), or mine an asteroid (Mining): keep a short
 // distance, shoot it so ore pops out, and pull the ore in. Loose ore around the work site that the
 // collector can't reach from the mining spot gets fetched, including the last pieces after the
-// asteroid breaks up. When the hold is full they fly home (Returning), unload into the player's
-// cargo, and come back to the same site; once it's clean they move to the nearest asteroid.
+// asteroid breaks up. When the hold is full they fly to the nearest drop-off (Returning: a finished
+// Storage depot / hive or Worker Factory), unload into the player's cargo, and come back to the same
+// site; once it's clean they move to the nearest asteroid.
 [BurstCompile]
 [UpdateAfter(typeof(BuildingSystem_Dots))]
 public partial struct WorkerBotSystem_Dots : ISystem
@@ -157,8 +158,12 @@ public partial struct WorkerBotSystem_Dots : ISystem
 
                 case BotState.Returning:
                 {
-                    if (!IsBuilding(ref state, bot.home))
-                        bot.home = NearestFactory(ref state, t.Position.xz);
+                    // Always head for the closest drop-off, so a hive built near the asteroids shortens every trip.
+                    Entity dropOff = NearestDropOff(ref state, t.Position.xz);
+                    if (dropOff != Entity.Null)
+                        bot.home = dropOff;
+                    else if (!IsBuilding(ref state, bot.home))
+                        bot.home = Entity.Null;
                     if (bot.home == Entity.Null)
                     {
                         bot.state = BotState.Idle;
@@ -278,14 +283,16 @@ public partial struct WorkerBotSystem_Dots : ISystem
         return best;
     }
 
-    private Entity NearestFactory(ref SystemState state, float2 from)
+    // The closest finished building bots can unload at: a Storage depot (the Grix hive) or a Worker Factory.
+    private Entity NearestDropOff(ref SystemState state, float2 from)
     {
         Entity best = Entity.Null;
         float bestSqr = float.MaxValue;
         foreach (var (building, transform, entity) in
                  SystemAPI.Query<RefRO<Building>, RefRO<LocalTransform>>().WithEntityAccess())
         {
-            if (building.ValueRO.id != BuildingId.WorkerFactory || !building.ValueRO.IsComplete)
+            BuildingId id = building.ValueRO.id;
+            if ((id != BuildingId.WorkerFactory && id != BuildingId.Storage) || !building.ValueRO.IsComplete)
                 continue;
             float dSqr = math.distancesq(transform.ValueRO.Position.xz, from);
             if (dSqr < bestSqr)

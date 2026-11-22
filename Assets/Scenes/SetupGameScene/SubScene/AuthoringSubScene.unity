@@ -1589,6 +1589,7 @@ MonoBehaviour:
   collectorPullAcceleration: 60
   collectorMaxPullSpeed: 40
   weapon: {fileID: 0}
+  gunDamageScale: 0.6
 --- !u!43 &1802159612
 Mesh:
   m_ObjectHideFlags: 0
@@ -2069,7 +2070,7 @@ PrefabInstance:
       objectReference: {fileID: 904312901}
     - target: {fileID: 1831269658280985453, guid: 2ced5adda475d7d479016b82e7260798, type: 3}
       propertyPath: m_VersionIndex
-      value: 3292
+      value: 3295
       objectReference: {fileID: 0}
     - target: {fileID: 3436793613676418938, guid: 2ced5adda475d7d479016b82e7260798, type: 3}
       propertyPath: m_Mesh
@@ -2089,7 +2090,7 @@ PrefabInstance:
       objectReference: {fileID: 1802159612}
     - target: {fileID: 5937193584902195317, guid: 2ced5adda475d7d479016b82e7260798, type: 3}
       propertyPath: m_VersionIndex
-      value: 3292
+      value: 3295
       objectReference: {fileID: 0}
     - target: {fileID: 5989296192688971048, guid: 2ced5adda475d7d479016b82e7260798, type: 3}
       propertyPath: m_Mesh
@@ -2105,7 +2106,7 @@ PrefabInstance:
       objectReference: {fileID: 2015103405}
     - target: {fileID: 6442589485534417526, guid: 2ced5adda475d7d479016b82e7260798, type: 3}
       propertyPath: m_VersionIndex
-      value: 3292
+      value: 3295
       objectReference: {fileID: 0}
     - target: {fileID: 6596393045174775316, guid: 2ced5adda475d7d479016b82e7260798, type: 3}
       propertyPath: m_Mesh
@@ -2113,7 +2114,7 @@ PrefabInstance:
       objectReference: {fileID: 1565760053}
     - target: {fileID: 6596393045174775316, guid: 2ced5adda475d7d479016b82e7260798, type: 3}
       propertyPath: m_VersionIndex
-      value: 3292
+      value: 3295
       objectReference: {fileID: 0}
     - target: {fileID: 7596403056724889783, guid: 2ced5adda475d7d479016b82e7260798, type: 3}
       propertyPath: m_Mesh
@@ -2121,7 +2122,7 @@ PrefabInstance:
       objectReference: {fileID: 1182556880}
     - target: {fileID: 7596403056724889783, guid: 2ced5adda475d7d479016b82e7260798, type: 3}
       propertyPath: m_VersionIndex
-      value: 3292
+      value: 3295
       objectReference: {fileID: 0}
     - target: {fileID: 7676835628209357440, guid: 2ced5adda475d7d479016b82e7260798, type: 3}
       propertyPath: m_Mesh
@@ -2129,7 +2130,7 @@ PrefabInstance:
       objectReference: {fileID: 68897068}
     - target: {fileID: 7676835628209357440, guid: 2ced5adda475d7d479016b82e7260798, type: 3}
       propertyPath: m_VersionIndex
-      value: 3292
+      value: 3295
       objectReference: {fileID: 0}
     - target: {fileID: 8180579398172842585, guid: 2ced5adda475d7d479016b82e7260798, type: 3}
       propertyPath: m_Mesh
@@ -2141,7 +2142,7 @@ PrefabInstance:
       objectReference: {fileID: 908068329}
     - target: {fileID: 8347249592535775828, guid: 2ced5adda475d7d479016b82e7260798, type: 3}
       propertyPath: m_VersionIndex
-      value: 3292
+      value: 3295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

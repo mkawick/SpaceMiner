@@ -668,6 +668,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2125885563}
+    - target: {fileID: 1326669173546950460, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3205
+      objectReference: {fileID: 0}
     - target: {fileID: 1862009376642655010, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -696,14 +700,26 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 173513370}
+    - target: {fileID: 5458637554824851125, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3196
+      objectReference: {fileID: 0}
     - target: {fileID: 5803912994258678341, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1802354920}
+    - target: {fileID: 5803912994258678341, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3205
+      objectReference: {fileID: 0}
     - target: {fileID: 5938015453698985511, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1194264067}
+    - target: {fileID: 5938015453698985511, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3205
+      objectReference: {fileID: 0}
     - target: {fileID: 6349791522386559353, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -712,6 +728,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1497167135}
+    - target: {fileID: 6441724731411584036, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3205
+      objectReference: {fileID: 0}
     - target: {fileID: 6708193280932779199, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -720,10 +740,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 188989860}
+    - target: {fileID: 7028190252129541841, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3205
+      objectReference: {fileID: 0}
     - target: {fileID: 7091872872216874214, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 778022142}
+    - target: {fileID: 7091872872216874214, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3205
+      objectReference: {fileID: 0}
     - target: {fileID: 7390058501533694397, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.72383
@@ -768,6 +796,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1492997057}
+    - target: {fileID: 8707674557524108805, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
+      propertyPath: m_VersionIndex
+      value: 3205
+      objectReference: {fileID: 0}
     - target: {fileID: 8829303797072823816, guid: 61d608a22c1798c42bc36480e07a6c02, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -787,6 +819,7 @@ GameObject:
   m_Component:
   - component: {fileID: 444692820}
   - component: {fileID: 444692821}
+  - component: {fileID: 444692822}
   m_Layer: 0
   m_Name: GameSession
   m_TagString: Untagged
@@ -821,8 +854,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92d65bda121e594f8f1cd8974dc9bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameSession
-  startingShipType: 0
+  startingShipType: 1
   joinTimeout: 10
+  playerColour: {r: 0.4953458, g: 0.9528301, b: 0.45843703, a: 1}
+  teamColourMaterial: {fileID: 0}
+--- !u!114 &444692822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444692819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ecd96bf6a02e114caaa719a6ba031e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BotConfig
+  pirates: 1
+  pirateHotkey: 1
+  overridePirateTiming: 1
+  firstWaveDelay: 600
+  waveInterval: 300
+  allBots: 1
+  miners: 1
+  builders: 1
+  defenders: 1
+  attackers: 1
+  defenceShips: 1
+  attackShips: 1
+  workerFactory: 1
+  storageDepot: 1
+  trainingDrones: 1
 --- !u!43 &553271161
 Mesh:
   m_ObjectHideFlags: 0
@@ -1823,7 +1885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1242305243
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2097,6 +2159,54 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &1486325031
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1486325033}
+  - component: {fileID: 1486325032}
+  m_Layer: 0
+  m_Name: HexGrid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1486325032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486325031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f75812a19777033498a9356b7e581def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HexGridBackground
+  material: {fileID: 2100000, guid: d8af30c58ded474aa46775bcbfe20fe5, type: 2}
+  hexSize: 0
+  height: -2
+  quadSize: 12000
+--- !u!4 &1486325033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486325031}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1492997057
 Mesh:
   m_ObjectHideFlags: 0
@@ -3926,3 +4036,4 @@ SceneRoots:
   - {fileID: 444692820}
   - {fileID: 852241417417145152}
   - {fileID: 347635774}
+  - {fileID: 1486325033}

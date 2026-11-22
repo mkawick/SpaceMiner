@@ -13,6 +13,7 @@ public struct ProjectileRequest : IComponentData
     public float3 position;
     public quaternion dir;
     public float speedBonus; // the shooter's forward speed, so shots never fall behind a fast ship
+    public float damageScale; // 0 = full damage (1); twin guns use e.g. 0.6 each
 }
 
 // Turns ProjectileRequest entities into projectiles, using the prefabs listed on the Spawner.
@@ -63,11 +64,12 @@ public partial struct ProjectileSpawnerSystem_Dots : ISystem
                         Scale = def.scale > 0f ? def.scale : 1f
                     });
                     ecb.AddComponent(projectile, new MoveEntityTag_Dots { speed = speed, dir = dir });
+                    float damageScale = r.damageScale > 0f ? r.damageScale : 1f;
                     ecb.AddComponent(projectile, new Projectile
                     {
                         speed = speed,
-                        hullDamage = def.hullDamage,
-                        rockDamage = def.rockDamage,
+                        hullDamage = def.hullDamage * damageScale,
+                        rockDamage = def.rockDamage * damageScale,
                         owner = r.owner,
                         faction = r.faction,
                         layer = def.projectileLayer

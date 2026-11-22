@@ -17,12 +17,22 @@ public class GameSession : MonoBehaviour
     public int startingShipType = 0;
     [Tooltip("Seconds to wait for the player's ship before giving up with an error")]
     public float joinTimeout = 10f;
+    [Tooltip("The player's colour (later chosen on the join screen). Tints the TeamColour parts of units and buildings, and the home hex on the grid")]
+    public Color playerColour = Color.white;
+    [Tooltip("Empty = Assets/Models/Grix/Materials/TeamColour.mat. Tinted for the session, restored when play stops. Single-player shortcut: every TeamColour part gets this colour")]
+    public Material teamColourMaterial;
+
+    public static Color PlayerColour => Instance != null ? Instance.playerColour : Color.white;
 
     public static GameSession Instance { get; private set; }
     public Stage CurrentStage { get; private set; } = Stage.Boot;
     public string Status { get; private set; } = "Starting";
 
     private float stageStarted;
+    private Color savedTeamColour;
+    private bool tinted;
+    private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
+    private static readonly int ColorId = Shader.PropertyToID("_Color");
     private EntityQuery playerQuery;
     private EntityQuery fieldReadyQuery;
     private World queryWorld;
@@ -35,12 +45,41 @@ public class GameSession : MonoBehaviour
             return;
         }
         Instance = this;
+        TintTeamColour();
     }
 
     private void OnDestroy()
     {
+        RestoreTeamColour();
         if (Instance == this)
             Instance = null;
+    }
+
+    // Single player: the shared TeamColour material takes the player's colour for this session.
+    // (Multiplayer will need a per-unit colour instead.)
+    private void TintTeamColour()
+    {
+#if UNITY_EDITOR
+        if (teamColourMaterial == null)
+            teamColourMaterial = UnityEditor.AssetDatabase.LoadAssetAtPath<Material>("Assets/Models/Grix/Materials/TeamColour.mat");
+#endif
+        if (teamColourMaterial == null || !teamColourMaterial.HasProperty(BaseColorId))
+            return;
+        savedTeamColour = teamColourMaterial.GetColor(BaseColorId);
+        teamColourMaterial.SetColor(BaseColorId, playerColour);
+        if (teamColourMaterial.HasProperty(ColorId))
+            teamColourMaterial.SetColor(ColorId, playerColour);
+        tinted = true;
+    }
+
+    private void RestoreTeamColour()
+    {
+        if (!tinted || teamColourMaterial == null)
+            return;
+        teamColourMaterial.SetColor(BaseColorId, savedTeamColour);
+        if (teamColourMaterial.HasProperty(ColorId))
+            teamColourMaterial.SetColor(ColorId, savedTeamColour);
+        tinted = false;
     }
 
     private void Update()

@@ -10,6 +10,8 @@ public static class FactionNames
                 return Pick(faction, grix: "Tvornica", fairway: "Roboterstube", postibule: "Robotkammare", english: "Worker Factory");
             case BuildingId.Storage:
                 return Pick(faction, grix: "Skladište", fairway: "Lager", postibule: "Förråd", english: "Storage Depot");
+            case BuildingId.Refinery:
+                return Pick(faction, grix: "Rafinerija", fairway: "Raffinerie", postibule: "Raffinaderi", english: "Refinery");
             default:
                 return id.ToString();
         }
@@ -37,6 +39,7 @@ public static class FactionNames
         {
             case BuildingId.WorkerFactory: return "Bot Factory";
             case BuildingId.Storage: return "Storage Depot";
+            case BuildingId.Refinery: return "Refinery";
             default: return id.ToString();
         }
     }

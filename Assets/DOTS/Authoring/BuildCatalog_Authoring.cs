@@ -39,6 +39,19 @@ public class BuildCatalog_Authoring : MonoBehaviour
     public float storageHealth = 400f;
     [Tooltip("Empty = Assets/Prefabs/Storage Depot.prefab")]
     public GameObject storagePrefab;
+    [Tooltip("Empty = Assets/Prefabs/Grix/Skladiste - Storage Depot.prefab")]
+    public GameObject grixStorage;
+
+    [Header("Refinery")]
+    [Tooltip("Turns ore into steel plates (iron + carbon) and hydrogen (ice). Refining itself comes next")]
+    public ResourceCost refineryCost = new ResourceCost { iron = 100, silicate = 50, carbon = 30 };
+    public float refineryBuildTime = 15f;
+    public float refineryRadius = 10f;
+    public float refineryHealth = 450f;
+    [Tooltip("Used when a faction has no refinery of its own. Empty = the Grix Rafinerija for now")]
+    public GameObject refineryPrefab;
+    [Tooltip("Empty = Assets/Prefabs/Grix/Rafinerija - Refinery.prefab")]
+    public GameObject grixRefinery;
 
     [Header("Worker bot")]
     public ResourceCost workerBotCost = new ResourceCost { iron = 8, copper = 2 };
@@ -46,8 +59,14 @@ public class BuildCatalog_Authoring : MonoBehaviour
     public float workerBotTrainTime = 7f;
     [Tooltip("Size of mining bots: scales the model and its click and hit radius")]
     [Min(0.1f)] public float botScale = 1f;
-    [Tooltip("Empty = Assets/Prefabs/Worker Bot.prefab")]
+    [Tooltip("Used when a faction has no mining bot of its own. Empty = Assets/Prefabs/Worker Bot.prefab")]
     public GameObject workerBotPrefab;
+    [Tooltip("Empty = Assets/Prefabs/Grix/Rudar - Mining Bot.prefab")]
+    public GameObject grixWorkerBot;
+    [Tooltip("Empty = use the default mining bot")]
+    public GameObject fairwayWorkerBot;
+    [Tooltip("Empty = use the default mining bot")]
+    public GameObject postibuleWorkerBot;
     public float botSpeed = 14f;
     public float botTurnSpeedDegrees = 240f;
     public float botCargoCapacity = 10f;
@@ -78,6 +97,10 @@ class BuildCatalog_Baker : Baker<BuildCatalog_Authoring>
             storageBuildTime = math.max(0.1f, a.storageBuildTime),
             storageRadius = math.max(1f, a.storageRadius),
             storageHealth = math.max(1f, a.storageHealth),
+            refineryCost = a.refineryCost,
+            refineryBuildTime = math.max(0.1f, a.refineryBuildTime),
+            refineryRadius = math.max(1f, a.refineryRadius),
+            refineryHealth = math.max(1f, a.refineryHealth),
             workerBotCost = a.workerBotCost,
             workerBotTrainTime = math.max(0.1f, a.workerBotTrainTime),
             botSpeed = a.botSpeed,
@@ -100,6 +123,14 @@ class BuildCatalog_Baker : Baker<BuildCatalog_Authoring>
         AddBuilding(buildings, BuildingId.WorkerFactory, CombatFaction.FairwayDominion, a.fairwayWorkerFactory, "Assets/Prefabs/Fairway Dominion/Roboterstube - Worker Factory.prefab");
         AddBuilding(buildings, BuildingId.WorkerFactory, CombatFaction.PostibuleSanctuary, a.postibuleWorkerFactory, "Assets/Prefabs/Postibule Sanctuary/Robotkammare - Worker Factory.prefab");
         AddBuilding(buildings, BuildingId.Storage, CombatFaction.None, a.storagePrefab, "Assets/Prefabs/Storage Depot.prefab");
+        AddBuilding(buildings, BuildingId.Storage, CombatFaction.Grix, a.grixStorage, "Assets/Prefabs/Grix/Skladiste - Storage Depot.prefab");
+        AddBuilding(buildings, BuildingId.Refinery, CombatFaction.None, a.refineryPrefab, "Assets/Prefabs/Grix/Rafinerija - Refinery.prefab");
+        AddBuilding(buildings, BuildingId.Refinery, CombatFaction.Grix, a.grixRefinery, "Assets/Prefabs/Grix/Rafinerija - Refinery.prefab");
+
+        DynamicBuffer<FactionUnitPrefab> units = AddBuffer<FactionUnitPrefab>(entity);
+        AddUnit(units, UnitId.WorkerBot, CombatFaction.Grix, a.grixWorkerBot, "Assets/Prefabs/Grix/Rudar - Mining Bot.prefab");
+        AddUnit(units, UnitId.WorkerBot, CombatFaction.FairwayDominion, a.fairwayWorkerBot, null);
+        AddUnit(units, UnitId.WorkerBot, CombatFaction.PostibuleSanctuary, a.postibuleWorkerBot, null);
 
         GameObject bot = Resolve(a.workerBotPrefab, "Assets/Prefabs/Worker Bot.prefab");
         AddComponent(entity, new WorkerBotPrefab
@@ -122,11 +153,25 @@ class BuildCatalog_Baker : Baker<BuildCatalog_Authoring>
         });
     }
 
+    private void AddUnit(DynamicBuffer<FactionUnitPrefab> buffer, UnitId unit, CombatFaction faction,
+                         GameObject assigned, string fallbackPath)
+    {
+        GameObject prefab = Resolve(assigned, fallbackPath);
+        if (prefab == null)
+            return;
+        buffer.Add(new FactionUnitPrefab
+        {
+            unit = unit,
+            faction = faction,
+            prefab = GetEntity(prefab, TransformUsageFlags.Dynamic)
+        });
+    }
+
     private GameObject Resolve(GameObject assigned, string fallbackPath)
     {
         GameObject prefab = assigned;
 #if UNITY_EDITOR
-        if (prefab == null)
+        if (prefab == null && !string.IsNullOrEmpty(fallbackPath))
             prefab = UnityEditor.AssetDatabase.LoadAssetAtPath<GameObject>(fallbackPath);
 #endif
         if (prefab != null)

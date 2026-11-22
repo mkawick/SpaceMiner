@@ -79,16 +79,23 @@ public partial class Input_to_SpaceShip_System_Dots : SystemBase
 
             WeaponDef def = WeaponData.Find(slot.id, hasCatalog, catalog);
             LocalTransform t = transform.ValueRO;
-            Entity request = ecb.CreateEntity();
-            ecb.AddComponent(request, new ProjectileRequest
+            // Ships with FiringPoint guns fire from all of them (each at reduced damage); others fire once.
+            DynamicBuffer<ShipGun> guns = SystemAPI.HasBuffer<ShipGun>(entity) ? SystemAPI.GetBuffer<ShipGun>(entity) : default;
+            int gunCount = guns.IsCreated ? guns.Length : 0;
+            for (int g = 0; g < math.max(1, gunCount); g++)
             {
-                weapon = slot.id,
-                owner = entity,
-                faction = targetable.ValueRO.faction,
-                position = t.TransformPoint(config.ValueRO.firingPoint),
-                dir = t.Rotation,
-                speedBonus = status.ValueRO.speed
-            });
+                Entity request = ecb.CreateEntity();
+                ecb.AddComponent(request, new ProjectileRequest
+                {
+                    weapon = slot.id,
+                    owner = entity,
+                    faction = targetable.ValueRO.faction,
+                    position = t.TransformPoint(gunCount > 0 ? guns[g].localPosition : config.ValueRO.firingPoint),
+                    dir = t.Rotation,
+                    speedBonus = status.ValueRO.speed,
+                    damageScale = gunCount > 0 ? guns[g].damageScale : 1f
+                });
+            }
             slot.interval = math.max(0.01f, def.fireInterval);
             slot.readyTime = now + slot.interval;
             slots[slotIndex] = slot;

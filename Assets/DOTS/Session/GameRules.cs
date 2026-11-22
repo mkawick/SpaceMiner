@@ -23,6 +23,7 @@ public struct GameRules : IComponentData
     // Buildings. Off = greyed out in the build menu and refused if requested.
     public bool workerFactory;
     public bool storageDepot;
+    public bool refinery;
 
     // Test tools
     public bool trainingDrones; // F8
@@ -32,7 +33,7 @@ public struct GameRules : IComponentData
         pirates = true, pirateHotkey = true, pirateFirstWave = -1f, pirateWaveInterval = -1f,
         allBots = true, miners = true, builders = true, defenders = true, attackers = true,
         defenceShips = true, attackShips = true,
-        workerFactory = true, storageDepot = true,
+        workerFactory = true, storageDepot = true, refinery = true,
         trainingDrones = true
     };
 
@@ -58,6 +59,7 @@ public struct GameRules : IComponentData
         {
             case BuildingId.WorkerFactory: return workerFactory;
             case BuildingId.Storage: return storageDepot;
+            case BuildingId.Refinery: return refinery;
             default: return true;
         }
     }

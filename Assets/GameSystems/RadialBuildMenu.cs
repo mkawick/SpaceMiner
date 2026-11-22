@@ -70,7 +70,7 @@ public class RadialBuildMenu : MonoBehaviour
         {
             BuildingSlot(BuildingId.WorkerFactory, faction),
             BuildingSlot(BuildingId.Storage, faction),
-            new Slot { title = "Refinery", subtitle = "coming soon" },
+            BuildingSlot(BuildingId.Refinery, faction),
             new Slot { title = "Defense Tower", subtitle = "coming soon" },
             new Slot { title = "Radar", subtitle = "coming soon" },
         };

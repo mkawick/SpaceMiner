@@ -155,6 +155,18 @@ public partial struct BuildingSystem_Dots : ISystem
         return fallback;
     }
 
+    // The faction's own model for a unit (e.g. the Grix Rudar), or the default if it has none.
+    private static Entity FindUnitPrefab(EntityManager em, Entity catalogEntity, UnitId unit, CombatFaction faction, Entity fallback)
+    {
+        if (!em.HasBuffer<FactionUnitPrefab>(catalogEntity))
+            return fallback;
+        DynamicBuffer<FactionUnitPrefab> prefabs = em.GetBuffer<FactionUnitPrefab>(catalogEntity);
+        for (int i = 0; i < prefabs.Length; i++)
+            if (prefabs[i].unit == unit && prefabs[i].faction == faction && prefabs[i].prefab != Entity.Null)
+                return prefabs[i].prefab;
+        return fallback;
+    }
+
     // Adds requested units to factory queues, and takes out ones the player removed. Nothing is
     // paid here: a unit is paid for when it reaches the front of the queue.
     private void QueueRequestedBots(ref SystemState state, EntityManager em, BuildCatalog catalog, Entity player)
@@ -268,15 +280,15 @@ public partial struct BuildingSystem_Dots : ISystem
         {
             if (spawnUnits[i] != UnitId.WorkerBot)
                 continue; // other unit types don't exist yet
-            if (botPrefab == Entity.Null)
+            Entity factory = spawns[i];
+            LocalTransform factoryTransform = em.GetComponentData<LocalTransform>(factory);
+            Building building = em.GetComponentData<Building>(factory);
+            Entity unitPrefab = FindUnitPrefab(em, catalogEntity, UnitId.WorkerBot, building.faction, botPrefab);
+            if (unitPrefab == Entity.Null)
             {
                 UnityEngine.Debug.LogWarning("No mining bot prefab; add one to BuildCatalog_Authoring.");
                 continue;
             }
-
-            Entity factory = spawns[i];
-            LocalTransform factoryTransform = em.GetComponentData<LocalTransform>(factory);
-            Building building = em.GetComponentData<Building>(factory);
             TrainQueue queue = em.GetComponentData<TrainQueue>(factory);
             float scale = catalog.botScale > 0f ? catalog.botScale : 1f;
             float botRadius = catalog.botSelectRadius * scale;
@@ -286,7 +298,7 @@ public partial struct BuildingSystem_Dots : ISystem
             float ring = building.radius + botRadius * 1.6f + 2f + (queue.trained / 9) * botRadius * 2.2f;
             float3 offset = new float3(math.sin(angle), 0f, math.cos(angle)) * ring;
 
-            Entity bot = em.Instantiate(botPrefab);
+            Entity bot = em.Instantiate(unitPrefab);
             LocalTransform t = em.GetComponentData<LocalTransform>(bot); // keep the prefab's own scale
             t.Position = factoryTransform.Position + offset;
             t.Rotation = quaternion.LookRotationSafe(offset, math.up());
